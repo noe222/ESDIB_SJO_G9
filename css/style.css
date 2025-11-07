@@ -1,0 +1,66 @@
+:root {
+  --font-title: "Playfair Display", serif;
+  --font-body: "Inter", sans-serif;
+  --color-bg: #faf7f2;
+  --color-primary: #c6b497;
+  --color-text: #222;
+  --color-accent: #a4c3b2;
+  --font-main: "Georgia", serif;
+  --font-alt: "Inter", sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-alt);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 4rem;
+  background-color: var(--color-primary);
+  border-radius: 20px;
+  margin: 2rem;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.circle {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background-color: #777;
+}
+
+.text h1 {
+  font-family: var(--font-main);
+  font-size: 4rem;
+  margin-bottom: 0.5rem;
+}
+
+.text .subtitle {
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.cta {
+  display: inline-block;
+  margin-top: 1rem;
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: 500;
+  transition: transform 0.2s ease;
+}
+
+.cta:hover {
+  transform: translateX(5px);
+}

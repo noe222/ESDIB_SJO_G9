@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Relájate | Neuma</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/relax.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">neuma</div>
+    <nav id="nav-links" class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="tips.html">Consejos</a>
+      <a href="relax.html" class="active">Relájate</a>
+      <a href="about.html">Sobre nosotros</a>
+    </nav>
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span><span></span><span></span>
+    </div>
+  </header>
+
+  <!-- Sección principal -->
+  <main class="relax-container">
+    <section class="relax-intro">
+      <h1>Relájate con Neuma</h1>
+      <p>Elige un ambiente sonoro y deja que la calma te acompañe.</p>
+    </section>
+
+    <!-- Tarjetas de sonidos -->
+    <section class="sound-grid">
+      <div class="sound-card" data-sound="mar">
+        🌊
+        <p>Sonido del mar</p>
+      </div>
+      <div class="sound-card" data-sound="lluvia">
+        🌧️
+        <p>Lluvia suave</p>
+      </div>
+      <div class="sound-card" data-sound="bosque">
+        🌲
+        <p>Bosque tranquilo</p>
+      </div>
+      <div class="sound-card" data-sound="fuego">
+        🔥
+        <p>Chimenea</p>
+      </div>
+    </section>
+
+    <!-- Reproductor -->
+    <section class="player">
+      <p id="current-sound">Selecciona un sonido</p>
+      <button id="play-btn">▶️ Reproducir</button>
+      <audio id="audio-player"></audio>
+    </section>
+  </main>
+
+  <script src="js/navbar.js"></script>
+  <script src="js/relax.js"></script>
+</body>
+</html>

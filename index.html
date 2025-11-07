@@ -1,13 +1,47 @@
-<!DOCTYPE html> 
-<html lang="es"></html>
+<!DOCTYPE html>
+<html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Página Web</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neuma | Desconecta y respira</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    <h1>Bienvenido a mi página web</h1>
-    <p>Esta es una página de ejemplo.</p>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">neuma</div>
+    <nav id="nav-links" class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="tips.html">Consejos</a>
+      <a href="relax.html">Relájate</a>
+      <a href="about.html">Sobre nosotros</a>
+    </nav>
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span><span></span><span></span>
+    </div>
+  </header>
+
+  <!-- Hero principal -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="circle"></div>
+      <div class="text">
+        <h1>Medita</h1>
+        <p class="subtitle"><em>Respira. Desconecta. Encuentra calma.</em></p>
+        <p>
+          En Neuma te ayudamos a reconectar contigo mismo a través de la
+          música, el silencio y los pequeños descansos.
+        </p>
+        <a href="relax.html" class="cta">Pulsa para más →</a>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/navbar.js"></script>
 </body>
-</html>         
+</html>
+    
