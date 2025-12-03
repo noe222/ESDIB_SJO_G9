@@ -3,22 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Relájate | Neuma</title>
+  <title>Neuma | Escucha</title>
+  
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/navbar.css" />
-  <link rel="stylesheet" href="css/relax.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/escucha.css" /> <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-  <!-- Navbar -->
   <header class="navbar">
     <div class="logo">neuma</div>
     <nav id="nav-links" class="nav-links">
       <a href="index.html">Inicio</a>
       <a href="origen.html">Origen</a>
-      <a href="escucha.html">Escucha</a>
-      <a href="siente.html">Siente</a>
+      <a href="escucha.html" class="active">Escucha</a> <a href="siente.html">Siente</a>
       <a href="medita.html">Medita</a>
       <a href="equipo.html">Equipo</a>
     </nav>
@@ -27,42 +28,56 @@
     </div>
   </header>
 
-  <!-- Sección principal -->
-  <main class="relax-container">
-    <section class="relax-intro">
-      <h1>Relájate con Neuma</h1>
-      <p>Elige un ambiente sonoro y deja que la calma te acompañe.</p>
+  <main class="escucha-container">
+    
+    <section class="escucha-hero">
+      <h1>Ambientes Sonoros</h1>
+      <p>Elige tu refugio. Cierra los ojos y deja que el sonido te transporte.</p>
     </section>
 
-    <!-- Tarjetas de sonidos -->
-    <section class="sound-grid">
-      <div class="sound-card" data-sound="mar">
-        🌊
-        <p>Sonido del mar</p>
+    <section class="player-status">
+      <div class="status-box">
+        <p id="current-sound" class="sound-label">Selecciona un ambiente abajo</p>
+        <button id="play-btn" class="main-play-btn">▶ Reproducir</button>
       </div>
-      <div class="sound-card" data-sound="lluvia">
-        🌧️
-        <p>Lluvia suave</p>
-      </div>
-      <div class="sound-card" data-sound="bosque">
-        🌲
-        <p>Bosque tranquilo</p>
-      </div>
-      <div class="sound-card" data-sound="fuego">
-        🔥
-        <p>Chimenea</p>
-      </div>
-    </section>
-
-    <!-- Reproductor -->
-    <section class="player">
-      <p id="current-sound">Selecciona un sonido</p>
-      <button id="play-btn">▶️ Reproducir</button>
       <audio id="audio-player"></audio>
     </section>
+
+    <section class="sound-grid">
+      
+      <div class="sound-card" data-sound="mar">
+        <div class="icon-circle">🌊</div>
+        <h3>Mar en calma</h3>
+        <p>El ritmo constante de las olas.</p>
+      </div>
+
+      <div class="sound-card" data-sound="lluvia">
+        <div class="icon-circle">🌧️</div>
+        <h3>Lluvia suave</h3>
+        <p>Gotas cayendo sobre la ventana.</p>
+      </div>
+
+      <div class="sound-card" data-sound="bosque">
+        <div class="icon-circle">🌲</div>
+        <h3>Bosque</h3>
+        <p>Pájaros y viento entre los árboles.</p>
+      </div>
+
+      <div class="sound-card" data-sound="fuego">
+        <div class="icon-circle">🔥</div>
+        <h3>Chimenea</h3>
+        <p>El crujir de la madera ardiendo.</p>
+      </div>
+
+    </section>
+
   </main>
 
+  <footer class="simple-footer">
+    <h2 class="footer-logo">neuma</h2>
+  </footer>
+
   <script src="js/navbar.js"></script>
-  <script src="js/relax.js"></script>
+  <script src="js/relax.js"></script> 
 </body>
 </html>

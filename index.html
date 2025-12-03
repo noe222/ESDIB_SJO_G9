@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Neuma | Desconecta y respira</title>
+  <title>Neuma | Inicio</title>
+  
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/navbar.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/index.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <!-- Navbar -->
+  
   <header class="navbar">
-    <div class="logo">neuma</div>
-    <nav id="nav-links" class="nav-links">
-      <a href="index.html">Inicio</a>
+    <div class="logo">neuma</div> <nav id="nav-links" class="nav-links">
+      <a href="index.html" class="active">Inicio</a>
       <a href="origen.html">Origen</a>
+      <a href="escucha.html">Escucha</a>
+      <a href="siente.html">Siente</a>
+      <a href="medita.html">Medita</a>
       <a href="equipo.html">Equipo</a>
     </nav>
     <div class="menu-toggle" id="menu-toggle">
@@ -24,30 +30,76 @@
     </div>
   </header>
 
-  <!-- Hero principal -->
-  <section class="hero">
-    <div class="hero-content">
-      <div class="circle"></div>
-      <div class="text">
-        <h1>Medita</h1>
-        <p class="subtitle"><em>Respira. Desconecta. Encuentra calma.</em></p>
-        <p>
-          En Neuma te ayudamos a reconectar contigo mismo a través de la
-          música, el silencio y los pequeños descansos.
+  <main>
+    <section class="hero-image-container">
+      <div class="hero-content">
+        <h1 class="big-logo">neuma</h1>
+        <p class="intro-text">
+          Cus niet venihiliquam doluptiur.<br>
+          Encuentra tu momento de calma.
         </p>
-        <a href="relax.html" class="cta">Pulsa para más →</a>
       </div>
-    </div>
-  </section>
-<<<<<<< HEAD
-=======
-FSFWFSDFDSFSDFDFSDFSD
-SD
-SDSD
-DSDS
-DS
->>>>>>> a19a4c3 (.)
+    </section>
+
+    <section class="card-section bg-medita">
+      <div class="container split-layout">
+        <div class="visual-col">
+          <div class="circle-placeholder icon-circle">
+            <span class="icon">logo</span> 
+          </div>
+        </div>
+        <div class="text-col">
+          <h2>Medita</h2>
+          <p class="italic-subtitle">Cus niet venihiliquam doluptiur.</p>
+          <p>
+            Descubre prácticas de respiración y yoga para reconectar con tu cuerpo.
+          </p>
+          <a href="medita.html" class="arrow-link">Pulsa para más <span>&longrightarrow;</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="card-section bg-escucha">
+      <div class="container split-layout reverse">
+        <div class="visual-col">
+          <div class="circle-placeholder icon-circle">
+            <span class="icon">logo</span>
+          </div>
+        </div>
+        <div class="text-col">
+          <h2>Escucha</h2>
+          <p class="italic-subtitle">Cus niet venihiliquam doluptiur.</p>
+          <p>
+            Sumérgete en ambientes sonoros naturales para calmar tu mente.
+          </p>
+          <a href="escucha.html" class="arrow-link">Pulsa para más <span>&longrightarrow;</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="card-section bg-siente">
+      <div class="container split-layout">
+        <div class="visual-col">
+           <div class="circle-placeholder icon-circle">
+            <span class="icon">logo</span>
+          </div>
+        </div>
+        <div class="text-col">
+          <h2>Siente</h2>
+          <p class="italic-subtitle">Cus niet venihiliquam doluptiur.</p>
+          <p>
+            Conecta con la naturaleza y escapa de la rutina digital.
+          </p>
+          <a href="siente.html" class="arrow-link">Pulsa para más <span>&longrightarrow;</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="simple-footer">
+    <h2 class="footer-logo">neuma</h2>
+  </footer>
+
   <script src="js/navbar.js"></script>
 </body>
 </html>
-    

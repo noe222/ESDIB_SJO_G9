@@ -1,52 +1,103 @@
-.tips-container {
-  max-width: 1100px;
-  margin: 4rem auto;
-  padding: 0 2rem;
+/* css/medita.css */
+
+.page-intro {
   text-align: center;
+  padding: 4rem 1rem;
 }
 
-.tips-intro h1 {
-  font-family: var(--font-title);
-  font-size: 2.5rem;
-  color: var(--color-text);
+.intro-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  color: #8fa38f; /* Un verde suave */
 }
 
-.tips-intro p {
-  margin-top: 0.5rem;
-  font-size: 1.1rem;
-  color: #555;
+.page-intro h1 {
+  font-size: 3rem;
+  color: #444;
 }
 
-.tips-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
+/* --- SECCIONES TEMÁTICAS --- */
+.topic-section {
+  padding: 2rem 0;
+  width: 100%;
 }
 
-.tip-card {
-  background-color: var(--color-bg);
+.topic-container {
+  display: flex;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  gap: 4rem;
+  padding: 0 2rem;
+}
+
+/* Alternancia */
+.split { flex-direction: row; }
+.split.reverse { flex-direction: row-reverse; }
+
+/* Visual (Imágenes) */
+.topic-visual {
+  flex: 1;
+  height: 350px;
   border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  padding: 2rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Colores de fondo para los placeholders de imagen (según wireframe) */
+.bg-beige { background-color: #DBC8B0; } /* Tono tierra/beige */
+.bg-green { background-color: #C8D69B; } /* Tono verde */
+
+/* Texto */
+.topic-text {
+  flex: 1;
   text-align: left;
 }
 
-.tip-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
-}
-
-.tip-card h2 {
+.topic-text h2 {
   font-family: var(--font-title);
-  font-size: 1.3rem;
+  font-size: 2.5rem;
   margin-bottom: 0.5rem;
-  color: var(--color-text);
+  color: #333;
 }
 
-.tip-card p {
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #444;
+.topic-text .subtitle {
+  font-style: italic;
+  color: #888;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-title);
+}
+
+.btn-more {
+  display: inline-block;
+  margin-top: 1.5rem;
+  text-decoration: none;
+  color: #333;
+  border-bottom: 1px solid #333;
+  padding-bottom: 2px;
+  transition: opacity 0.3s;
+}
+
+.btn-more:hover { opacity: 0.6; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .topic-container, .topic-container.reverse {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+  
+  .topic-text {
+    align-items: center;
+  }
+  
+  .topic-visual {
+    width: 100%;
+    height: 250px;
+  }
 }

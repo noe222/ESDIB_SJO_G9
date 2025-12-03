@@ -3,25 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Origen | Neuma</title>
+  <title>Neuma | Origen</title>
+  
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/navbar.css" />
-  <link rel="stylesheet" href="css/origen.css" />
-
-  <!-- Tipografía -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-
-  <!-- Librería de animaciones AOS -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/origen.css" /> <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-  <!-- Navbar -->
   <header class="navbar">
     <div class="logo">neuma</div>
-   <nav id="nav-links" class="nav-links">
+    <nav id="nav-links" class="nav-links">
       <a href="index.html">Inicio</a>
-      <a href="origen.html">Origen</a>
+      <a href="origen.html" class="active">Origen</a>
       <a href="escucha.html">Escucha</a>
       <a href="siente.html">Siente</a>
       <a href="medita.html">Medita</a>
@@ -32,64 +29,57 @@
     </div>
   </header>
 
-  <!-- Fondo suave con textura -->
-  <div class="background-gradient"></div>
-
-  <!-- Contenido principal -->
-  <main class="about-container">
-
-    <section class="about-hero" data-aos="fade-up">
+  <main>
+    <section class="about-intro">
       <h1>Sobre nosotros</h1>
-      <p>En Neuma creemos en la importancia de reconectar con lo esencial: el descanso, la calma y el bienestar.</p>
+      <p class="intro-text">
+        En Neuma creemos en la importancia de reconectar con lo esencial. 
+        Un espacio digital diseñado para devolverte la calma en lugar de quitártela.
+      </p>
     </section>
 
-    <section class="about-content">
-      <div class="about-text" data-aos="fade-right">
-        <h2>Nuestra historia</h2>
-        <p>Neuma nació como una idea entre jóvenes apasionados por la tecnología y el diseño. Observamos cómo el ritmo digital actual puede llegar a consumirnos, y quisimos crear un espacio donde detenerse fuera posible.</p>
-        <p>Desde nuestros primeros bocetos tuvimos claro el propósito: ayudar a las personas a recuperar su equilibrio, ofreciendo herramientas simples pero efectivas para reconectar con uno mismo.</p>
+    <section class="values-section">
+      <h2 class="values-title">Valores</h2>
+      <p class="values-subtitle">neuma</p>
+
+      <div class="values-content">
+        <div class="venn-diagram">
+          <div class="circle circle-left">
+            <span>Conciencia</span>
+          </div>
+          <div class="circle circle-right">
+            <span>Conexión</span>
+          </div>
+        </div>
+
+        <div class="values-description">
+          <p>
+            Buscamos el equilibrio entre la tecnología y el bienestar humano.
+            Creemos que la desconexión consciente es la llave para una
+            conexión real con nuestro entorno.
+          </p>
+        </div>
       </div>
+    </section>
 
-      <div class="about-text" data-aos="fade-left">
-        <h2>Nuestra filosofía</h2>
-        <p>Cada sección de Neuma está pensada para invitarte a respirar: <strong>Consejos</strong> para mejorar tu bienestar digital, <strong>Relájate</strong> para desconectar, y <strong>espacios visuales</strong> donde el diseño también transmite calma.</p>
-        <p>Porque creemos que el bienestar no está en apagar el mundo digital, sino en aprender a convivir con él de forma saludable.</p>
+    <section class="visual-gallery">
+      <div class="gallery-item">
+        <div class="img-placeholder">Foto Arena</div>
       </div>
-    </section>
-
-    <section class="about-quote" data-aos="zoom-in">
-      <blockquote>“A veces, desconectarse es la mejor forma de volver a conectar.”</blockquote>
-    </section>
-
-    <!-- Bloque de contacto/agradecimiento -->
-    <section class="about-contact" data-aos="fade-up">
-      <h2>Queremos escucharte</h2>
-      <p>Cuéntanos cómo te ha ayudado Neuma o comparte tus propias ideas para desconectar.</p>
-
-      <form class="contact-form">
-        <input type="text" placeholder="Tu nombre" required />
-        <textarea placeholder="Tu mensaje..." required></textarea>
-        <button type="submit">Enviar mensaje</button>
-      </form>
-    </section>
-
-    <section class="about-footer">
-      <p>Neuma © 2025 — Creado con calma y propósito.</p>
+      <div class="gallery-item">
+        <div class="img-placeholder">Foto Cara</div>
+      </div>
+      <div class="gallery-item">
+        <div class="img-placeholder">Foto Agua</div>
+      </div>
     </section>
 
   </main>
 
+  <footer class="simple-footer">
+    <h2 class="footer-logo">neuma</h2>
+  </footer>
+
   <script src="js/navbar.js"></script>
-
-  <!-- Scripts de animaciones -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 900,
-      easing: 'ease-in-out',
-      once: true
-    });
-  </script>
-
 </body>
 </html>

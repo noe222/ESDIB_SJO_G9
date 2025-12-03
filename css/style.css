@@ -1,66 +1,45 @@
+/* css/style.css */
+
 :root {
-  --font-title: "montserrat", serif;
-  --font-body: "Inter", sans-serif;
-  --color-bg: #faf7f2;
-  --color-primary: #c6b497;
-  --color-text: #222;
-  --color-accent: #a4c3b2;
-  --font-main: "Georgia", serif;
-  --font-alt: "Inter", sans-serif;
+  /* Tipografías */
+  --font-title: 'Playfair Display', serif; /* Títulos elegantes */
+  --font-body: 'Inter', sans-serif;        /* Texto de lectura */
+
+  /* Colores Base */
+  --color-bg: #FDFBF7;       /* Fondo general muy claro */
+  --color-text: #2C2C2C;     /* Texto casi negro */
+  --color-accent: #a4c3b2;   
+
+  /* Colores específicos de las secciones (Aproximados del wireframe) */
+  --bg-medita: #E3D595;  /* Tono amarillo/arena */
+  --bg-escucha: #C7B59D; /* Tono tierra/marrón claro */
+  --bg-siente: #C8D69B;  /* Tono verde suave */
+  
+  /* Utilidad para los círculos */
+  --circle-bg: #F2EBE5;  /* Color crema de los círculos vacíos */
+}
+
+/* Reseteo básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  font-family: var(--font-alt);
+  font-family: var(--font-body);
   background-color: var(--color-bg);
   color: var(--color-text);
+  line-height: 1.6;
 }
 
-/* Hero */
-.hero {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 80vh;
-  padding: 4rem;
-  background-color: var(--color-primary);
-  border-radius: 20px;
-  margin: 2rem;
+/* Títulos Globales */
+h1, h2, h3 {
+  font-family: var(--font-title);
+  font-weight: 400; /* Playfair suele verse bien regular */
 }
 
-.hero-content {
-  display: flex;
-  align-items: center;
-  gap: 4rem;
-}
-
-.circle {
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  background-color: #777;
-}
-
-.text h1 {
-  font-family: var(--font-main);
-  font-size: 4rem;
-  margin-bottom: 0.5rem;
-}
-
-.text .subtitle {
-  font-style: italic;
-  margin-bottom: 1rem;
-}
-
-.cta {
-  display: inline-block;
-  margin-top: 1rem;
+a {
   text-decoration: none;
-  color: var(--color-text);
-  font-weight: 500;
-  transition: transform 0.2s ease;
-}
-
-.cta:hover {
-  transform: translateX(5px);
+  color: inherit;
 }

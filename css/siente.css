@@ -1,0 +1,150 @@
+/* css/siente.css */
+
+/* --- Cabecera Intro (Icono Estrella) --- */
+.page-intro {
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.intro-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  color: #E3D595; /* Amarillo/Dorado suave para la estrella */
+}
+
+.page-intro h1 {
+  font-family: var(--font-title);
+  font-size: 3rem;
+  color: #444;
+  margin-bottom: 0.5rem;
+}
+
+.page-intro p {
+  color: #888;
+  font-size: 1.1rem;
+}
+
+/* --- SECCIONES EN ZIGZAG --- */
+.topic-section {
+  padding: 3rem 0;
+  width: 100%;
+}
+
+.topic-container {
+  display: flex;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: 5rem;     /* Espacio entre imagen y texto */
+  padding: 0 2rem;
+}
+
+/* Clases para alternar orden: Izquierda o Derecha */
+.split { 
+  flex-direction: row; 
+}
+
+.split.reverse { 
+  flex-direction: row-reverse; 
+}
+
+/* --- Parte Visual (Donde irán las fotos) --- */
+.topic-visual {
+  flex: 1;         /* Ocupa el 50% */
+  height: 400px;   /* Altura fija para que todas sean iguales */
+  border-radius: 12px; /* Bordes redondeados */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* Estilos temporales para el placeholder */
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  
+  /* Sombra suave */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* Colores de fondo para las "fotos" (según wireframe) */
+.bg-beige { 
+  background-color: #DBC8B0; /* Tono tierra suave */
+}
+
+.bg-green { 
+  background-color: #C8D69B; /* Tono verde pistacho suave */
+}
+
+/* --- Parte Texto --- */
+.topic-text {
+  flex: 1; /* Ocupa el otro 50% */
+  text-align: left;
+  padding: 1rem;
+}
+
+.topic-text h2 {
+  font-family: var(--font-title);
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+  line-height: 1.2;
+}
+
+.topic-text .subtitle {
+  font-family: var(--font-title);
+  font-style: italic;
+  color: #888;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.topic-text p {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 2rem;
+  max-width: 400px; /* Para que el texto no se estire demasiado */
+}
+
+/* Botón "Pulsa para más" */
+.btn-more {
+  display: inline-block;
+  text-decoration: none;
+  color: #333;
+  border-bottom: 1px solid #333;
+  padding-bottom: 4px;
+  font-size: 0.9rem;
+  transition: opacity 0.3s ease, padding 0.3s ease;
+}
+
+.btn-more:hover {
+  opacity: 0.6;
+  padding-bottom: 8px; /* Efecto sutil al pasar ratón */
+}
+
+/* --- RESPONSIVE (Móvil) --- */
+@media (max-width: 850px) {
+  .topic-container, 
+  .topic-container.reverse {
+    flex-direction: column; /* Poner en columna */
+    text-align: center;
+    gap: 2rem;
+  }
+  
+  .topic-text {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .topic-visual {
+    width: 100%; /* Imagen ancho completo en móvil */
+    height: 300px;
+  }
+  
+  .topic-text h2 {
+    font-size: 2.2rem;
+  }
+}
