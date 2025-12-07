@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Neuma</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; max-width: 800px; margin: 0 auto; background: #f4f4f4; }
+    h1 { color: #333; }
+    
+    /* Caja de Login */
+    .login-box { background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 2rem; }
+    input[type="text"] { padding: 0.5rem; width: 300px; border: 1px solid #ddd; border-radius: 4px; }
+    button { padding: 0.5rem 1rem; cursor: pointer; background: #333; color: white; border: none; border-radius: 4px; }
+    button:hover { background: #555; }
+
+    /* Lista de Pendientes */
+    .pending-item { background: white; border-left: 5px solid orange; margin-bottom: 1rem; padding: 1rem; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); display: flex; gap: 1rem; }
+    .pending-content { flex: 1; }
+    .pending-actions { display: flex; flex-direction: column; gap: 0.5rem; justify-content: center; }
+    
+    .btn-approve { background: #4CAF50; } /* Verde */
+    .btn-delete { background: #F44336; }  /* Rojo */
+    
+    .meta { font-size: 0.85rem; color: #666; margin-bottom: 0.5rem; }
+    .preview-img { max-height: 100px; border-radius: 4px; margin-top: 0.5rem; }
+  </style>
+</head>
+<body>
+
+  <h1>Panel de Moderación Neuma</h1>
+
+  <div class="login-box">
+    <p>Introduce la <strong>API KEY</strong> (está en tu archivo .env):</p>
+    <input type="text" id="apiKeyInput" placeholder="Pega aquí la API KEY...">
+    <button onclick="loadPending()">Cargar Pendientes</button>
+  </div>
+
+  <div id="pendingList">
+    <p>Introduce la clave para ver publicaciones pendientes.</p>
+  </div>
+
+  <script>
+    const API_URL = '/api';
+
+    // Función para leer la key del input
+    function getKey() {
+      return document.getElementById('apiKeyInput').value.trim();
+    }
+
+    // 1. CARGAR PENDIENTES
+async function loadPending() {
+      const key = getKey();
+      if (!key) return alert('¡Necesitas la API Key!');
+
+      console.log("Consultando API con Key:", key); // Debug
+
+      try {
+        const res = await fetch(`${API_URL}/admin/pending`, {
+          headers: { 'x-api-key': key }
+        });
+
+        console.log("Status admin:", res.status); // Debug
+
+        if (res.status === 401) return alert('Clave incorrecta (401)');
+        if (res.status !== 200) return alert('Error del servidor: ' + res.status);
+
+        const posts = await res.json();
+        console.log("Posts recibidos:", posts); // Debug
+
+        const container = document.getElementById('pendingList');
+
+        posts.forEach(post => {
+          // Si tiene foto, la mostramos en pequeño
+          const imgHtml = post.photos && post.photos.length > 0 
+            ? `<img src="${post.photos[0].url}" class="preview-img">` 
+            : '';
+            
+          const html = `
+            <div class="pending-item" id="post-${post._id}">
+              <div class="pending-content">
+                <div class="meta">
+                  <strong>${post.category.toUpperCase()}</strong> | Por: ${post.author} | ${new Date(post.createdAt).toLocaleDateString()}
+                </div>
+                <h3>${post.title}</h3>
+                <p>${post.description}</p>
+                ${post.songUrl ? `<a href="${post.songUrl}" target="_blank">🎵 Link Canción</a><br>` : ''}
+                ${imgHtml}
+              </div>
+              <div class="pending-actions">
+                <button class="btn-approve" onclick="approvePost('${post._id}')">✅ Aprobar</button>
+                <button class="btn-delete" onclick="deletePost('${post._id}')">🗑️ Borrar</button>
+              </div>
+            </div>
+          `;
+          container.innerHTML += html;
+        });
+
+      } catch (err) {
+        console.error(err);
+        alert('Error cargando datos');
+      }
+    }
+
+    // 2. APROBAR POST
+    async function approvePost(id) {
+      const key = getKey();
+      if (!confirm('¿Seguro que quieres publicar esto en la web?')) return;
+
+      try {
+        const res = await fetch(`${API_URL}/community/${id}/approve`, {
+          method: 'PUT',
+          headers: { 'x-api-key': key }
+        });
+        
+        if (res.ok) {
+          // Eliminar el elemento de la lista visualmente
+          document.getElementById(`post-${id}`).remove();
+          alert('¡Publicado!');
+        } else {
+          alert('Error al aprobar');
+        }
+      } catch (err) { alert('Error de conexión'); }
+    }
+
+    // 3. BORRAR POST
+    async function deletePost(id) {
+      const key = getKey();
+      if (!confirm('¿Borrar definitivamente esta aportación? No se puede deshacer.')) return;
+
+      try {
+        const res = await fetch(`${API_URL}/community/${id}`, {
+          method: 'DELETE',
+          headers: { 'x-api-key': key }
+        });
+
+        if (res.ok) {
+          document.getElementById(`post-${id}`).remove();
+        } else {
+          alert('Error al borrar');
+        }
+      } catch (err) { alert('Error de conexión'); }
+    }
+  </script>
+
+</body>
+</html>

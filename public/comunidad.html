@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neuma | Comunidad</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <style>
+    /* Estilos específicos para esta página */
+    .community-container { max-width: 900px; margin: 4rem auto; padding: 0 1rem; }
+    
+    /* Formulario */
+    .upload-box {
+      background: #FDFBF7; 
+      border: 2px dashed #C7B59D; 
+      border-radius: 16px;
+      padding: 2rem; 
+      margin-bottom: 4rem; 
+      text-align: center;
+    }
+    .form-group { margin-bottom: 1.5rem; text-align: left; }
+    .form-group label { display: block; margin-bottom: 0.5rem; font-weight: bold; color: #555; }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%; 
+      padding: 0.8rem; 
+      border: 1px solid #ccc; 
+      border-radius: 8px; 
+      font-family: inherit;
+      font-size: 1rem;
+    }
+    .btn-submit {
+      background: #a4c3b2; 
+      color: white; 
+      border: none; 
+      padding: 1rem 2rem;
+      border-radius: 30px; 
+      cursor: pointer; 
+      font-size: 1rem; 
+      margin-top: 1rem;
+      transition: background 0.3s ease;
+    }
+    .btn-submit:hover { background: #8fa38f; }
+    .btn-submit:disabled { background: #ccc; cursor: not-allowed; }
+
+    /* Muro de Posts */
+    .posts-grid { display: grid; gap: 2rem; }
+    .post-card {
+      background: white; 
+      border: 1px solid #eee; 
+      border-radius: 12px; 
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .post-header { display: flex; justify-content: space-between; margin-bottom: 1rem; color: #888; font-size: 0.9rem; }
+    .post-category { 
+      background: #E3D595; 
+      padding: 0.2rem 0.6rem; 
+      border-radius: 4px; 
+      color: #444; 
+      font-size: 0.8rem; 
+      text-transform: uppercase; 
+      font-weight: bold;
+    }
+    .post-image { width: 100%; height: auto; border-radius: 8px; margin-top: 1rem; object-fit: cover; max-height: 400px; }
+    .song-link { display: inline-block; margin-top: 1rem; color: #a4c3b2; text-decoration: none; font-weight: bold; }
+    .song-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">neuma</div>
+    <nav id="nav-links" class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="origen.html">Origen</a>
+      <a href="escucha.html">Escucha</a>
+      <a href="siente.html">Siente</a>
+      <a href="medita.html">Medita</a>
+      <a href="comunidad.html" class="active">Comunidad</a>
+    </nav>
+    <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
+  </header>
+
+  <main class="community-container">
+    <h1>Comparte tu calma</h1>
+    <p style="text-align: center; margin-bottom: 2rem; color: #666;">
+      ¿Tienes una canción, un consejo o una foto que te ayude a desconectar? Compártelo con nosotros.
+    </p>
+    
+    <section class="upload-box">
+      <h3>Nueva Aportación</h3>
+      <form id="communityForm">
+        
+        <div class="form-group">
+          <label for="title">Título</label>
+          <input type="text" id="title" name="title" required placeholder="Ej: Mi rincón de paz">
+        </div>
+
+        <div class="form-group">
+          <label for="category">Categoría</label>
+          <select name="category" id="category">
+            <option value="medita">Meditación</option>
+            <option value="escucha">Música/Sonido</option>
+            <option value="siente">Consejo/Hábito</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="author">Tu Nombre (Opcional)</label>
+          <input type="text" id="author" name="author" placeholder="Anónimo">
+        </div>
+
+        <div class="form-group">
+          <label for="description">Descripción / Consejo</label>
+          <textarea id="description" name="description" rows="3" required placeholder="Cuéntanos por qué te ayuda..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="songUrl">Link a Canción (Spotify/Youtube) - Opcional</label>
+          <input type="url" id="songUrl" name="songUrl" placeholder="https://...">
+        </div>
+
+        <div class="form-group">
+          <label for="photos">Foto (Opcional)</label>
+          <input type="file" id="photos" name="photos" accept="image/*">
+        </div>
+
+        <button type="submit" class="btn-submit">Enviar para revisión</button>
+      </form>
+    </section>
+
+    <section id="postsMuro" class="posts-grid">
+      <p style="text-align:center; color: #888;">Cargando comunidad...</p>
+    </section>
+  </main>
+
+  <script src="js/navbar.js"></script>
+  
+  <script>
+    const API_URL = '/api/community'; // URL relativa
+
+    // 1. CARGAR POSTS (GET)
+    async function loadPosts() {
+      try {
+        const res = await fetch(API_URL);
+        
+        if (!res.ok) {
+          throw new Error(`Error del servidor: ${res.status}`);
+        }
+
+        const posts = await res.json();
+        const container = document.getElementById('postsMuro');
+        container.innerHTML = ''; // Limpiar mensaje de carga
+
+        if (posts.length === 0) {
+          container.innerHTML = '<p style="text-align:center; color: #666;">Aún no hay publicaciones aprobadas. ¡Sé el primero!</p>';
+          return;
+        }
+
+        posts.forEach(post => {
+          // Procesar imagen si existe
+          const imgHtml = post.photos && post.photos.length > 0 
+            ? `<img src="${post.photos[0].url}" alt="${post.title}" class="post-image" loading="lazy">` 
+            : '';
+          
+          // Procesar link si existe
+          const linkHtml = post.songUrl 
+            ? `<a href="${post.songUrl}" target="_blank" class="song-link">🎵 Escuchar Canción</a>` 
+            : '';
+
+          // Crear tarjeta HTML
+          const card = `
+            <article class="post-card">
+              <div class="post-header">
+                <span>${post.author || 'Anónimo'}</span>
+                <span class="post-category">${post.category}</span>
+              </div>
+              <h2>${post.title}</h2>
+              <p>${post.description}</p>
+              ${imgHtml}
+              ${linkHtml}
+            </article>
+          `;
+          container.innerHTML += card;
+        });
+      } catch (err) {
+        console.error("Error cargando posts:", err);
+        document.getElementById('postsMuro').innerHTML = '<p style="text-align:center; color: red;">Error al cargar el contenido.</p>';
+      }
+    }
+
+    // 2. ENVIAR FORMULARIO (POST)
+    document.getElementById('communityForm').addEventListener('submit', async (e) => {
+      e.preventDefault(); // Evitar recarga de página
+      
+      const form = e.target;
+      const formData = new FormData(form); // Recoge todos los inputs y archivos automáticamente
+      const btn = form.querySelector('button');
+
+      // Estado de carga
+      btn.textContent = 'Enviando...';
+      btn.disabled = true;
+
+      try {
+        console.log("Enviando datos a:", API_URL);
+        
+        const res = await fetch(API_URL, {
+          method: 'POST',
+          body: formData 
+        });
+
+        console.log("Respuesta status:", res.status);
+
+        if (res.ok) {
+          const data = await res.json();
+          alert('¡Éxito! Tu aportación ha sido enviada para revisión.');
+          form.reset(); // Limpiar formulario
+        } else {
+          const errorData = await res.json();
+          alert('Error: ' + (errorData.error || 'Ocurrió un error desconocido'));
+        }
+      } catch (err) {
+        console.error("Error de red:", err);
+        alert('Error de conexión con el servidor. Revisa la consola.');
+      } finally {
+        // Restaurar botón
+        btn.textContent = 'Enviar para revisión';
+        btn.disabled = false;
+      }
+    });
+
+    // Cargar posts al entrar en la página
+    loadPosts();
+  </script>
+</body>
+</html>
