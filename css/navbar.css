@@ -1,0 +1,121 @@
+/* css/navbar.css */
+
+/* --- Estilos Base de la Barra --- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background-color: transparent; /* Fondo transparente para que se vea limpio */
+  position: relative; /* Ya NO es sticky */
+  z-index: 1001; /* Aseguramos que esté por encima */
+}
+
+.logo {
+  font-family: var(--font-title);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--color-text);
+  z-index: 1002; /* El logo siempre visible, incluso con menú abierto */
+  position: relative;
+}
+
+/* --- Enlaces (Versión Escritorio) --- */
+.nav-links {
+  display: flex;
+  gap: 3rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  position: relative;
+  transition: opacity 0.3s ease;
+}
+
+.nav-links a:hover {
+  opacity: 0.6;
+}
+
+/* Indicador de página activa */
+.nav-links a.active {
+  font-weight: 600;
+}
+
+/* --- Botón Hamburguesa --- */
+.menu-toggle {
+  display: none; /* Oculto en escritorio */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 1002; /* Siempre visible encima del overlay */
+}
+
+.menu-toggle span {
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-text);
+  transition: all 0.3s ease;
+}
+
+/* --- RESPONSIVE / MENU DE PANTALLA COMPLETA --- */
+@media (max-width: 850px) {
+  
+  /* Mostrar botón hamburguesa */
+  .menu-toggle {
+    display: flex;
+  }
+
+  /* El contenedor de enlaces se convierte en el Overlay */
+  .nav-links {
+    position: fixed; /* Fijo en la pantalla */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Ocupa toda la altura */
+    background-color: var(--color-bg); /* Mismo color de fondo de la web */
+    
+    /* Centrar contenido */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    
+    /* Efecto de transición (deslizar o aparecer) */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: all 0.4s ease-in-out;
+  }
+
+  /* Estilos de los enlaces en modo móvil (más grandes) */
+  .nav-links a {
+    font-family: var(--font-title);
+    font-size: 2rem; /* Texto grande */
+    color: var(--color-text);
+  }
+
+  /* --- Clase .active: Cuando se abre el menú --- */
+  .nav-links.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* Animación del icono hamburguesa a "X" */
+  .menu-toggle.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+  }
+  
+  .menu-toggle.open span:nth-child(2) {
+    opacity: 0; /* La del medio desaparece */
+  }
+  
+  .menu-toggle.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -6px);
+  }
+}

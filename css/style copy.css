@@ -1,0 +1,45 @@
+/* css/style.css */
+
+:root {
+  /* Tipografías */
+  --font-title: 'Playfair Display', serif; /* Títulos elegantes */
+  --font-body: 'Inter', sans-serif;        /* Texto de lectura */
+
+  /* Colores Base */
+  --color-bg: #FDFBF7;       /* Fondo general muy claro */
+  --color-text: #2C2C2C;     /* Texto casi negro */
+  --color-accent: #a4c3b2;   
+
+  /* Colores específicos de las secciones (Aproximados del wireframe) */
+  --bg-medita: #E3D595;  /* Tono amarillo/arena */
+  --bg-escucha: #C7B59D; /* Tono tierra/marrón claro */
+  --bg-siente: #C8D69B;  /* Tono verde suave */
+  
+  /* Utilidad para los círculos */
+  --circle-bg: #F2EBE5;  /* Color crema de los círculos vacíos */
+}
+
+/* Reseteo básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+/* Títulos Globales */
+h1, h2, h3 {
+  font-family: var(--font-title);
+  font-weight: 400; /* Playfair suele verse bien regular */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
