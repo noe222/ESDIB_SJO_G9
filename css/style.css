@@ -1,170 +1,242 @@
-/* css/style.css */
+/* css/equipo.css */
 
-:root {
-  /* Tipografías */
-  --font-title: 'Playfair Display', serif; /* Títulos elegantes */
-  --font-body: 'Inter', sans-serif;        /* Texto de lectura */
-
-  /* Colores Base */
-  --color-bg: #FDFBF7;       /* Fondo general muy claro */
-  --color-text: #2C2C2C;     /* Texto casi negro */
-  --color-accent: #a4c3b2;   
-
-  /* Colores específicos de las secciones (Aproximados del wireframe) */
-  --bg-medita: #E3D595;  /* Tono amarillo/arena */
-  --bg-escucha: #C7B59D; /* Tono tierra/marrón claro */
-  --bg-siente: #C8D69B;  /* Tono verde suave */
-  
-  /* Utilidad para los círculos */
-  --circle-bg: #F2EBE5;  /* Color crema de los círculos vacíos */
+/* Contenedor principal con margen superior */
+.equipo-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  text-align: center;
 }
 
-/* Reseteo básico */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* --- Encabezado --- */
+.equipo-header h1 {
+  font-size: 3.5rem;
+  color: #6D6D6D; /* Gris medio/tierra según diseño */
+  margin-bottom: 1.5rem;
 }
 
-body {
-  font-family: var(--font-body);
-  background-color: var(--color-bg);
-  color: var(--color-text);
+.equipo-description {
+  max-width: 600px;
+  margin: 0 auto 4rem auto;
+  color: #888;
+  font-size: 0.95rem;
   line-height: 1.6;
 }
 
-/* Títulos Globales */
-h1, h2, h3 {
-  font-family: var(--font-title);
-  font-weight: 400; /* Playfair suele verse bien regular */
+/* --- Imagen Principal --- */
+.main-visual {
+  margin-bottom: 4rem;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* css/navbar.css */
-
-/* --- Estilos Base de la Barra --- */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 2rem;
-  background-color: transparent; /* Fondo transparente para que se vea limpio */
-  position: relative; /* Ya NO es sticky */
-  z-index: 1001; /* Aseguramos que esté por encima */
-}
-
-.logo {
-  font-family: var(--font-title);
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: var(--color-text);
-  z-index: 1002; /* El logo siempre visible, incluso con menú abierto */
-  position: relative;
-}
-
-/* --- Enlaces (Versión Escritorio) --- */
-.nav-links {
-  display: flex;
-  gap: 3rem;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: var(--color-text);
-  font-family: var(--font-body);
-  font-size: 1rem;
-  position: relative;
-  transition: opacity 0.3s ease;
-}
-
-.nav-links a:hover {
-  opacity: 0.6;
-}
-
-/* Indicador de página activa */
-.nav-links a.active {
-  font-weight: 600;
-}
-
-/* --- Botón Hamburguesa --- */
-.menu-toggle {
-  display: none; /* Oculto en escritorio */
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 20px;
-  cursor: pointer;
-  z-index: 1002; /* Siempre visible encima del overlay */
-}
-
-.menu-toggle span {
+.large-placeholder {
   width: 100%;
-  height: 2px;
-  background-color: var(--color-text);
-  transition: all 0.3s ease;
+  height: 400px; /* Altura fija para el rectángulo grande */
+  background-color: #F2EBE5; /* Color crema suave del wireframe */
+  border-radius: 4px; /* Bordes muy ligeramente redondeados */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #C0B0A0; /* Color del texto placeholder */
+  font-style: italic;
 }
 
-/* --- RESPONSIVE / MENU DE PANTALLA COMPLETA --- */
-@media (max-width: 850px) {
-  
-  /* Mostrar botón hamburguesa */
-  .menu-toggle {
-    display: flex;
+/* --- Grid Inferior --- */
+.team-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem; /* Espacio entre columnas */
+}
+
+/* Tarjetas de los miembros (Las 3 primeras columnas) */
+.member-card {
+  flex: 1; /* Ocupan el mismo ancho */
+  aspect-ratio: 3/4; /* Mantiene proporción vertical rectangular */
+}
+
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #ddd; /* Borde sutil para ver el espacio vacío */
+  background-color: #fff;
+}
+
+/* Columna de Logos (La 4ta columna) */
+.logos-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Espacio vertical entre los dos logos */
+}
+
+.logo-box {
+  flex: 1; /* Ocupan mitad y mitad de la altura de la columna */
+  background-color: #fff; /* Fondo blanco para los logos */
+  border: 1px solid #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #aaa;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+/* --- Responsive para Móvil --- */
+@media (max-width: 768px) {
+  .team-grid {
+    flex-direction: column; /* Poner uno debajo de otro en móvil */
   }
 
-  /* El contenedor de enlaces se convierte en el Overlay */
-  .nav-links {
-    position: fixed; /* Fijo en la pantalla */
-    top: 0;
-    left: 0;
+  .member-card, .logos-column {
     width: 100%;
-    height: 100vh; /* Ocupa toda la altura */
-    background-color: var(--color-bg); /* Mismo color de fondo de la web */
-    
-    /* Centrar contenido */
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2.5rem;
-    
-    /* Efecto de transición (deslizar o aparecer) */
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-20px);
-    transition: all 0.4s ease-in-out;
-  }
-
-  /* Estilos de los enlaces en modo móvil (más grandes) */
-  .nav-links a {
-    font-family: var(--font-title);
-    font-size: 2rem; /* Texto grande */
-    color: var(--color-text);
-  }
-
-  /* --- Clase .active: Cuando se abre el menú --- */
-  .nav-links.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-
-  /* Animación del icono hamburguesa a "X" */
-  .menu-toggle.open span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 6px);
-  }
-  
-  .menu-toggle.open span:nth-child(2) {
-    opacity: 0; /* La del medio desaparece */
-  }
-  
-  .menu-toggle.open span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -6px);
+    height: 300px; /* Altura fija en móvil */
   }
 }
+
+
+
+
+/* css/escucha.css */
+
+.escucha-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+/* --- Hero --- */
+.escucha-hero {
+  margin-bottom: 3rem;
+}
+
+.escucha-hero h1 {
+  font-size: 3.5rem;
+  color: #5A5A5A;
+  margin-bottom: 1rem;
+}
+
+.escucha-hero p {
+  font-size: 1.1rem;
+  color: #888;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* --- Reproductor / Estado --- */
+.player-status {
+  margin-bottom: 4rem;
+  display: flex;
+  justify-content: center;
+}
+
+.status-box {
+  background-color: var(--bg-escucha); /* Fondo tono tierra */
+  padding: 2rem 3rem;
+  border-radius: 50px; /* Forma de píldora grande */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 15px rgba(199, 181, 157, 0.4);
+}
+
+.sound-label {
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+  color: #fff; /* Texto blanco sobre fondo tierra */
+  font-style: italic;
+}
+
+.main-play-btn {
+  background-color: #fff;
+  color: #444;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.main-play-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* --- Grid de Sonidos --- */
+.sound-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.sound-card {
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Estado hover y activo de la tarjeta */
+.sound-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--bg-escucha);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.icon-circle {
+  font-size: 2.5rem;
+  background-color: #F9F9F9;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  transition: background-color 0.3s;
+}
+
+.sound-card:hover .icon-circle {
+  background-color: var(--circle-bg); /* Un tono crema suave */
+}
+
+.sound-card h3 {
+  font-family: var(--font-title);
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: #444;
+}
+
+.sound-card p {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .escucha-hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .status-box {
+    padding: 1.5rem;
+    border-radius: 30px;
+  }
+}
+
+
+
 
 /* css/index.css */
 
@@ -320,6 +392,237 @@ a {
   .circle-placeholder { width: 200px; height: 200px; margin-bottom: 2rem; }
   .text-col h2 { font-size: 2.5rem; }
 }
+
+
+
+/* css/medita.css */
+
+.page-intro {
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.intro-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  color: #8fa38f; /* Un verde suave */
+}
+
+.page-intro h1 {
+  font-size: 3rem;
+  color: #444;
+}
+
+/* --- SECCIONES TEMÁTICAS --- */
+.topic-section {
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.topic-container {
+  display: flex;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  gap: 4rem;
+  padding: 0 2rem;
+}
+
+/* Alternancia */
+.split { flex-direction: row; }
+.split.reverse { flex-direction: row-reverse; }
+
+/* Visual (Imágenes) */
+.topic-visual {
+  flex: 1;
+  height: 350px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Colores de fondo para los placeholders de imagen (según wireframe) */
+.bg-beige { background-color: #DBC8B0; } /* Tono tierra/beige */
+.bg-green { background-color: #C8D69B; } /* Tono verde */
+
+/* Texto */
+.topic-text {
+  flex: 1;
+  text-align: left;
+}
+
+.topic-text h2 {
+  font-family: var(--font-title);
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.topic-text .subtitle {
+  font-style: italic;
+  color: #888;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-title);
+}
+
+.btn-more {
+  display: inline-block;
+  margin-top: 1.5rem;
+  text-decoration: none;
+  color: #333;
+  border-bottom: 1px solid #333;
+  padding-bottom: 2px;
+  transition: opacity 0.3s;
+}
+
+.btn-more:hover { opacity: 0.6; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .topic-container, .topic-container.reverse {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+  
+  .topic-text {
+    align-items: center;
+  }
+  
+  .topic-visual {
+    width: 100%;
+    height: 250px;
+  }
+}
+
+/* css/navbar.css */
+
+/* --- Estilos Base de la Barra --- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background-color: transparent; /* Fondo transparente para que se vea limpio */
+  position: relative; /* Ya NO es sticky */
+  z-index: 1001; /* Aseguramos que esté por encima */
+}
+
+.logo {
+  font-family: var(--font-title);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--color-text);
+  z-index: 1002; /* El logo siempre visible, incluso con menú abierto */
+  position: relative;
+}
+
+/* --- Enlaces (Versión Escritorio) --- */
+.nav-links {
+  display: flex;
+  gap: 3rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  position: relative;
+  transition: opacity 0.3s ease;
+}
+
+.nav-links a:hover {
+  opacity: 0.6;
+}
+
+/* Indicador de página activa */
+.nav-links a.active {
+  font-weight: 600;
+}
+
+/* --- Botón Hamburguesa --- */
+.menu-toggle {
+  display: none; /* Oculto en escritorio */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 1002; /* Siempre visible encima del overlay */
+}
+
+.menu-toggle span {
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-text);
+  transition: all 0.3s ease;
+}
+
+/* --- RESPONSIVE / MENU DE PANTALLA COMPLETA --- */
+@media (max-width: 850px) {
+  
+  /* Mostrar botón hamburguesa */
+  .menu-toggle {
+    display: flex;
+  }
+
+  /* El contenedor de enlaces se convierte en el Overlay */
+  .nav-links {
+    position: fixed; /* Fijo en la pantalla */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Ocupa toda la altura */
+    background-color: var(--color-bg); /* Mismo color de fondo de la web */
+    
+    /* Centrar contenido */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    
+    /* Efecto de transición (deslizar o aparecer) */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: all 0.4s ease-in-out;
+  }
+
+  /* Estilos de los enlaces en modo móvil (más grandes) */
+  .nav-links a {
+    font-family: var(--font-title);
+    font-size: 2rem; /* Texto grande */
+    color: var(--color-text);
+  }
+
+  /* --- Clase .active: Cuando se abre el menú --- */
+  .nav-links.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* Animación del icono hamburguesa a "X" */
+  .menu-toggle.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+  }
+  
+  .menu-toggle.open span:nth-child(2) {
+    opacity: 0; /* La del medio desaparece */
+  }
+  
+  .menu-toggle.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -6px);
+  }
+}
+
+
+
 
 /* css/origen.css */
 
@@ -484,345 +787,8 @@ a {
   }
 }
 
-/* css/equipo.css */
-
-/* Contenedor principal con margen superior */
-.equipo-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 4rem 2rem;
-  text-align: center;
-}
-
-/* --- Encabezado --- */
-.equipo-header h1 {
-  font-size: 3.5rem;
-  color: #6D6D6D; /* Gris medio/tierra según diseño */
-  margin-bottom: 1.5rem;
-}
-
-.equipo-description {
-  max-width: 600px;
-  margin: 0 auto 4rem auto;
-  color: #888;
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-
-/* --- Imagen Principal --- */
-.main-visual {
-  margin-bottom: 4rem;
-}
-
-.large-placeholder {
-  width: 100%;
-  height: 400px; /* Altura fija para el rectángulo grande */
-  background-color: #F2EBE5; /* Color crema suave del wireframe */
-  border-radius: 4px; /* Bordes muy ligeramente redondeados */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #C0B0A0; /* Color del texto placeholder */
-  font-style: italic;
-}
-
-/* --- Grid Inferior --- */
-.team-grid {
-  display: flex;
-  justify-content: space-between;
-  gap: 2rem; /* Espacio entre columnas */
-}
-
-/* Tarjetas de los miembros (Las 3 primeras columnas) */
-.member-card {
-  flex: 1; /* Ocupan el mismo ancho */
-  aspect-ratio: 3/4; /* Mantiene proporción vertical rectangular */
-}
-
-.photo-placeholder {
-  width: 100%;
-  height: 100%;
-  border: 1px solid #ddd; /* Borde sutil para ver el espacio vacío */
-  background-color: #fff;
-}
-
-/* Columna de Logos (La 4ta columna) */
-.logos-column {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem; /* Espacio vertical entre los dos logos */
-}
-
-.logo-box {
-  flex: 1; /* Ocupan mitad y mitad de la altura de la columna */
-  background-color: #fff; /* Fondo blanco para los logos */
-  border: 1px solid #ddd;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #aaa;
-  font-size: 0.8rem;
-  font-weight: bold;
-}
-
-/* --- Responsive para Móvil --- */
-@media (max-width: 768px) {
-  .team-grid {
-    flex-direction: column; /* Poner uno debajo de otro en móvil */
-  }
-
-  .member-card, .logos-column {
-    width: 100%;
-    height: 300px; /* Altura fija en móvil */
-  }
-}
-
-/* css/medita.css */
-
-.page-intro {
-  text-align: center;
-  padding: 4rem 1rem;
-}
-
-.intro-icon {
-  font-size: 4rem;
-  margin-bottom: 1rem;
-  color: #8fa38f; /* Un verde suave */
-}
-
-.page-intro h1 {
-  font-size: 3rem;
-  color: #444;
-}
-
-/* --- SECCIONES TEMÁTICAS --- */
-.topic-section {
-  padding: 2rem 0;
-  width: 100%;
-}
-
-.topic-container {
-  display: flex;
-  align-items: center;
-  max-width: 1000px;
-  margin: 0 auto;
-  gap: 4rem;
-  padding: 0 2rem;
-}
-
-/* Alternancia */
-.split { flex-direction: row; }
-.split.reverse { flex-direction: row-reverse; }
-
-/* Visual (Imágenes) */
-.topic-visual {
-  flex: 1;
-  height: 350px;
-  border-radius: 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-/* Colores de fondo para los placeholders de imagen (según wireframe) */
-.bg-beige { background-color: #DBC8B0; } /* Tono tierra/beige */
-.bg-green { background-color: #C8D69B; } /* Tono verde */
-
-/* Texto */
-.topic-text {
-  flex: 1;
-  text-align: left;
-}
-
-.topic-text h2 {
-  font-family: var(--font-title);
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-  color: #333;
-}
-
-.topic-text .subtitle {
-  font-style: italic;
-  color: #888;
-  margin-bottom: 1.5rem;
-  font-family: var(--font-title);
-}
-
-.btn-more {
-  display: inline-block;
-  margin-top: 1.5rem;
-  text-decoration: none;
-  color: #333;
-  border-bottom: 1px solid #333;
-  padding-bottom: 2px;
-  transition: opacity 0.3s;
-}
-
-.btn-more:hover { opacity: 0.6; }
-
-/* Responsive */
-@media (max-width: 768px) {
-  .topic-container, .topic-container.reverse {
-    flex-direction: column;
-    text-align: center;
-    gap: 2rem;
-  }
-  
-  .topic-text {
-    align-items: center;
-  }
-  
-  .topic-visual {
-    width: 100%;
-    height: 250px;
-  }
-}
 
 
-
-/* css/escucha.css */
-
-.escucha-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 4rem 2rem;
-  text-align: center;
-}
-
-/* --- Hero --- */
-.escucha-hero {
-  margin-bottom: 3rem;
-}
-
-.escucha-hero h1 {
-  font-size: 3.5rem;
-  color: #5A5A5A;
-  margin-bottom: 1rem;
-}
-
-.escucha-hero p {
-  font-size: 1.1rem;
-  color: #888;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-/* --- Reproductor / Estado --- */
-.player-status {
-  margin-bottom: 4rem;
-  display: flex;
-  justify-content: center;
-}
-
-.status-box {
-  background-color: var(--bg-escucha); /* Fondo tono tierra */
-  padding: 2rem 3rem;
-  border-radius: 50px; /* Forma de píldora grande */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  width: 100%;
-  max-width: 400px;
-  box-shadow: 0 4px 15px rgba(199, 181, 157, 0.4);
-}
-
-.sound-label {
-  font-family: var(--font-title);
-  font-size: 1.2rem;
-  color: #fff; /* Texto blanco sobre fondo tierra */
-  font-style: italic;
-}
-
-.main-play-btn {
-  background-color: #fff;
-  color: #444;
-  border: none;
-  padding: 0.8rem 2rem;
-  border-radius: 30px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.main-play-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-/* --- Grid de Sonidos --- */
-.sound-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-}
-
-.sound-card {
-  background-color: #fff;
-  border: 1px solid #eee;
-  border-radius: 20px;
-  padding: 2rem 1.5rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Estado hover y activo de la tarjeta */
-.sound-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--bg-escucha);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-}
-
-.icon-circle {
-  font-size: 2.5rem;
-  background-color: #F9F9F9;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  transition: background-color 0.3s;
-}
-
-.sound-card:hover .icon-circle {
-  background-color: var(--circle-bg); /* Un tono crema suave */
-}
-
-.sound-card h3 {
-  font-family: var(--font-title);
-  font-size: 1.3rem;
-  margin-bottom: 0.5rem;
-  color: #444;
-}
-
-.sound-card p {
-  font-size: 0.9rem;
-  color: #777;
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  .escucha-hero h1 {
-    font-size: 2.5rem;
-  }
-  
-  .status-box {
-    padding: 1.5rem;
-    border-radius: 30px;
-  }
-}
 
 
 
@@ -976,3 +942,53 @@ a {
     font-size: 2.2rem;
   }
 }
+
+
+
+
+/* css/style.css */
+
+:root {
+  /* Tipografías */
+  --font-title: 'Playfair Display', serif; /* Títulos elegantes */
+  --font-body: 'Inter', sans-serif;        /* Texto de lectura */
+
+  /* Colores Base */
+  --color-bg: #FDFBF7;       /* Fondo general muy claro */
+  --color-text: #2C2C2C;     /* Texto casi negro */
+  --color-accent: #a4c3b2;   
+
+  /* Colores específicos de las secciones (Aproximados del wireframe) */
+  --bg-medita: #E3D595;  /* Tono amarillo/arena */
+  --bg-escucha: #C7B59D; /* Tono tierra/marrón claro */
+  --bg-siente: #C8D69B;  /* Tono verde suave */
+  
+  /* Utilidad para los círculos */
+  --circle-bg: #F2EBE5;  /* Color crema de los círculos vacíos */
+}
+
+/* Reseteo básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+/* Títulos Globales */
+h1, h2, h3 {
+  font-family: var(--font-title);
+  font-weight: 400; /* Playfair suele verse bien regular */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
