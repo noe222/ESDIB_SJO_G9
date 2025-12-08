@@ -16,90 +16,120 @@
 
 <body>
   
-  <header class="navbar">
-    <div class="logo">neuma</div> <nav id="nav-links" class="nav-links">
-      <a href="index.html" class="active">Inicio</a>
-      <a href="origen.html">Origen</a>
+<header class="navbar">
+    <a href="index.html" class="logo">
+      <img src="assets/images/neuma_logo.svg" alt="neuma">
+    </a>
+    
+    <div class="nav-right">
+      <nav class="desktop-links">
+        <a href="index.html">Inicio</a>
+        <a href="origen.html">Origen</a>
+        <a href="equipo.html">Equipo</a>
+      </nav>
+      <div class="menu-toggle" id="menu-toggle">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <div class="dropdown-menu" id="dropdown-menu">
+      <a href="medita.html">Medita</a>
       <a href="escucha.html">Escucha</a>
       <a href="siente.html">Siente</a>
-      <a href="medita.html">Medita</a>
-      <a href="equipo.html">Equipo</a>
       <a href="comunidad.html">Comunidad</a>
-    </nav>
-    <div class="menu-toggle" id="menu-toggle">
-      <span></span><span></span><span></span>
+      
+      <div class="mobile-separator" style="height:1px; background:#eee; width:100%; margin:1rem 0; display:none;"></div>
+      
+      <a href="index.html" class="mobile-link" style="display:none;">Inicio</a>
+      <a href="origen.html" class="mobile-link" style="display:none;">Origen</a>
+      <a href="equipo.html" class="mobile-link" style="display:none;">Equipo</a>
     </div>
   </header>
 
   <main>
-    <section class="hero-image-container">
-      <div class="hero-content">
-        <h1 class="big-logo">neuma</h1>
-        <p class="intro-text">
-          Cus niet venihiliquam doluptiur.<br>
-          Encuentra tu momento de calma.
-        </p>
-      </div>
+    <section class="hero-container">
+      <img src="assets/images/neuma_logo.svg" alt="neuma" class="hero-logo">
+      <p class="hero-text">Encuentra tu momento de calma.</p>
     </section>
 
-    <section class="card-section bg-medita">
-      <div class="container split-layout">
-        <div class="visual-col">
-          <div class="circle-placeholder icon-circle">
-            <span class="icon">logo</span> 
-          </div>
-        </div>
-        <div class="text-col">
+    <section class="full-width-card bg-medita">
+      <div class="card-content normal-order">
+        
+        <div class="text-side">
           <h2>Medita</h2>
-          <p class="italic-subtitle">Cus niet venihiliquam doluptiur.</p>
-          <p>
-            Descubre prácticas de respiración y yoga para reconectar con tu cuerpo.
-          </p>
-          <a href="medita.html" class="arrow-link">Pulsa para más <span>&longrightarrow;</span></a>
+          <p class="subtitle">Tus acciones cobran sentido.</p>
+          <p class="desc">Tomar conciencia de ti y tu entorno hace que vivas de manera más calmada y placentera.</p>
+          <a href="medita.html" class="big-arrow-link">
+            <img src="assets/images/flecha.svg" alt="Ir">
+          </a>
         </div>
+
+        <div class="visual-side">
+          <div class="circle-icon">
+            <img src="assets/images/hoja.svg" alt="Hoja">
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <section class="card-section bg-escucha">
-      <div class="container split-layout reverse">
-        <div class="visual-col">
-          <div class="circle-placeholder icon-circle">
-            <span class="icon">logo</span>
+    <section class="full-width-card bg-escucha">
+      <div class="card-content reverse-order">
+        
+        <div class="visual-side">
+          <div class="circle-icon">
+            <img src="assets/images/olas.svg" alt="Olas">
           </div>
         </div>
-        <div class="text-col">
+
+        <div class="text-side">
           <h2>Escucha</h2>
-          <p class="italic-subtitle">Cus niet venihiliquam doluptiur.</p>
-          <p>
-            Sumérgete en ambientes sonoros naturales para calmar tu mente.
-          </p>
-          <a href="escucha.html" class="arrow-link">Pulsa para más <span>&longrightarrow;</span></a>
+          <p class="subtitle">Tus acciones cobran sentido.</p>
+          <p class="desc">Tomar conciencia de ti y tu entorno hace que vivas de manera más calmada y placentera.</p>
+          <a href="escucha.html" class="big-arrow-link">
+            <img src="assets/images/flecha.svg" alt="Ir">
+          </a>
         </div>
+
       </div>
     </section>
 
-    <section class="card-section bg-siente">
-      <div class="container split-layout">
-        <div class="visual-col">
-           <div class="circle-placeholder icon-circle">
-            <span class="icon">logo</span>
+    <section class="full-width-card bg-siente">
+      <div class="card-content normal-order">
+        
+        <div class="text-side">
+          <h2>Siente</h2>
+          <p class="subtitle">Tus acciones cobran sentido.</p>
+          <p class="desc">Tomar conciencia de ti y tu entorno hace que vivas de manera más calmada y placentera.</p>
+          <a href="siente.html" class="big-arrow-link">
+            <img src="assets/images/flecha.svg" alt="Ir">
+          </a>
+        </div>
+
+        <div class="visual-side">
+          <div class="circle-icon">
+            <img src="assets/images/estrella.svg" alt="Estrella">
           </div>
         </div>
-        <div class="text-col">
-          <h2>Siente</h2>
-          <p class="italic-subtitle">Cus niet venihiliquam doluptiur.</p>
-          <p>
-            Conecta con la naturaleza y escapa de la rutina digital.
-          </p>
-          <a href="siente.html" class="arrow-link">Pulsa para más <span>&longrightarrow;</span></a>
-        </div>
+
       </div>
     </section>
+
   </main>
 
   <footer class="simple-footer">
-    <h2 class="footer-logo"><a href="#top">neuma</a></h2>
+    <a href="#top" class="footer-logo">
+      <img src="assets/images/neuma_logo.svg" alt="neuma">
+    </a>
   </footer>
+
+
   <script src="js/navbar.js"></script>
+<style>
+    @media (max-width: 850px) {
+      .mobile-link { display: block !important; }
+      .mobile-separator { display: block !important; }
+    }
+  </style>
 </body>
 </html>

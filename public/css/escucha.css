@@ -1,4 +1,4 @@
-/* css/escucha.css */
+/* public/css/escucha.css */
 
 .escucha-container {
   max-width: 1000px;
@@ -12,16 +12,26 @@
   margin-bottom: 3rem;
 }
 
+/* NUEVO: Icono grande y centrado */
+.escucha-hero .intro-icon img {
+  width: 300px;
+  height: auto;
+  display: block;
+  margin: 0 auto 1.5rem auto; /* Centrado y separación abajo */
+}
+
 .escucha-hero h1 {
+  font-family: var(--font-title);
   font-size: 3.5rem;
-  color: #5A5A5A;
+  color: var(--color-title); /* Usamos variable global */
   margin-bottom: 1rem;
 }
 
 .escucha-hero p {
+  font-family: var(--font-body);
   font-size: 1.1rem;
-  color: #888;
-  max-width: 500px;
+  color: var(--color-text);
+  max-width: 600px;
   margin: 0 auto;
 }
 
@@ -35,7 +45,7 @@
 .status-box {
   background-color: var(--bg-escucha); /* Fondo tono tierra */
   padding: 2rem 3rem;
-  border-radius: 50px; /* Forma de píldora grande */
+  border-radius: 50px; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,7 +58,7 @@
 .sound-label {
   font-family: var(--font-title);
   font-size: 1.2rem;
-  color: #fff; /* Texto blanco sobre fondo tierra */
+  color: #fff; 
   font-style: italic;
 }
 
@@ -90,7 +100,6 @@
   align-items: center;
 }
 
-/* Estado hover y activo de la tarjeta */
 .sound-card:hover {
   transform: translateY(-5px);
   border-color: var(--bg-escucha);
@@ -111,7 +120,7 @@
 }
 
 .sound-card:hover .icon-circle {
-  background-color: var(--circle-bg); /* Un tono crema suave */
+  background-color: var(--circle-bg); 
 }
 
 .sound-card h3 {
@@ -126,14 +135,7 @@
   color: #777;
 }
 
-/* Responsive */
 @media (max-width: 600px) {
-  .escucha-hero h1 {
-    font-size: 2.5rem;
-  }
-  
-  .status-box {
-    padding: 1.5rem;
-    border-radius: 30px;
-  }
+  .escucha-hero h1 { font-size: 2.5rem; }
+  .status-box { padding: 1.5rem; border-radius: 30px; }
 }

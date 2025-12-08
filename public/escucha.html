@@ -4,34 +4,48 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Neuma | Escucha</title>
-  
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/navbar.css" />
-  <link rel="stylesheet" href="css/escucha.css" /> <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/escucha.css" /> 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-  <header class="navbar">
-    <div class="logo">neuma</div>
-    <nav id="nav-links" class="nav-links">
-      <a href="index.html">Inicio</a>
-      <a href="origen.html">Origen</a>
-      <a href="escucha.html" class="active">Escucha</a> <a href="siente.html">Siente</a>
+<header class="navbar">
+    <a href="index.html" class="logo">
+      <img src="assets/images/neuma_logo.svg" alt="neuma">
+    </a>
+    
+    <div class="nav-right">
+      <nav class="desktop-links">
+        <a href="index.html">Inicio</a>
+        <a href="origen.html">Origen</a>
+        <a href="equipo.html">Equipo</a>
+      </nav>
+      <div class="menu-toggle" id="menu-toggle">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <div class="dropdown-menu" id="dropdown-menu">
       <a href="medita.html">Medita</a>
-      <a href="equipo.html">Equipo</a>
+      <a href="escucha.html">Escucha</a>
+      <a href="siente.html">Siente</a>
       <a href="comunidad.html">Comunidad</a>
-    </nav>
-    <div class="menu-toggle" id="menu-toggle">
-      <span></span><span></span><span></span>
+      
+      <div class="mobile-separator" style="height:1px; background:#eee; width:100%; margin:1rem 0; display:none;"></div>
+      
+      <a href="index.html" class="mobile-link" style="display:none;">Inicio</a>
+      <a href="origen.html" class="mobile-link" style="display:none;">Origen</a>
+      <a href="equipo.html" class="mobile-link" style="display:none;">Equipo</a>
     </div>
   </header>
 
   <main class="escucha-container">
-    
     <section class="escucha-hero">
+      <div class="intro-icon">
+        <img src="assets/images/olas.svg" alt="Escucha">
+      </div>
       <h1>Ambientes Sonoros</h1>
       <p>Elige tu refugio. Cierra los ojos y deja que el sonido te transporte.</p>
     </section>
@@ -45,40 +59,42 @@
     </section>
 
     <section class="sound-grid">
-      
       <div class="sound-card" data-sound="mar">
         <div class="icon-circle">🌊</div>
         <h3>Mar en calma</h3>
         <p>El ritmo constante de las olas.</p>
       </div>
-
       <div class="sound-card" data-sound="lluvia">
         <div class="icon-circle">🌧️</div>
         <h3>Lluvia suave</h3>
         <p>Gotas cayendo sobre la ventana.</p>
       </div>
-
       <div class="sound-card" data-sound="bosque">
         <div class="icon-circle">🌲</div>
         <h3>Bosque</h3>
         <p>Pájaros y viento entre los árboles.</p>
       </div>
-
       <div class="sound-card" data-sound="fuego">
         <div class="icon-circle">🔥</div>
         <h3>Chimenea</h3>
         <p>El crujir de la madera ardiendo.</p>
       </div>
-
     </section>
-
   </main>
 
   <footer class="simple-footer">
-    <h2 class="footer-logo"><a href="#top">neuma</a></h2>
+    <a href="#top" class="footer-logo">
+      <img src="assets/images/neuma_logo.svg" alt="neuma">
+    </a>
   </footer>
 
   <script src="js/navbar.js"></script>
   <script src="js/relax.js"></script> 
+  <style>
+    @media (max-width: 850px) {
+      .mobile-link { display: block !important; }
+      .mobile-separator { display: block !important; }
+    }
+  </style>
 </body>
 </html>

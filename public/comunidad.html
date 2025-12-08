@@ -69,17 +69,34 @@
 </head>
 <body>
 
-  <header class="navbar">
-    <div class="logo">neuma</div>
-    <nav id="nav-links" class="nav-links">
-      <a href="index.html">Inicio</a>
-      <a href="origen.html">Origen</a>
+<header class="navbar">
+    <a href="index.html" class="logo">
+      <img src="assets/images/neuma_logo.svg" alt="neuma">
+    </a>
+    
+    <div class="nav-right">
+      <nav class="desktop-links">
+        <a href="index.html">Inicio</a>
+        <a href="origen.html">Origen</a>
+        <a href="equipo.html">Equipo</a>
+      </nav>
+      <div class="menu-toggle" id="menu-toggle">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <div class="dropdown-menu" id="dropdown-menu">
+      <a href="medita.html">Medita</a>
       <a href="escucha.html">Escucha</a>
       <a href="siente.html">Siente</a>
-      <a href="medita.html">Medita</a>
-      <a href="comunidad.html" class="active">Comunidad</a>
-    </nav>
-    <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
+      <a href="comunidad.html">Comunidad</a>
+      
+      <div class="mobile-separator" style="height:1px; background:#eee; width:100%; margin:1rem 0; display:none;"></div>
+      
+      <a href="index.html" class="mobile-link" style="display:none;">Inicio</a>
+      <a href="origen.html" class="mobile-link" style="display:none;">Origen</a>
+      <a href="equipo.html" class="mobile-link" style="display:none;">Equipo</a>
+    </div>
   </header>
 
   <main class="community-container">
@@ -234,5 +251,11 @@
     // Cargar posts al entrar en la página
     loadPosts();
   </script>
+  <style>
+    @media (max-width: 850px) {
+      .mobile-link { display: block !important; }
+      .mobile-separator { display: block !important; }
+    }
+  </style>
 </body>
 </html>
