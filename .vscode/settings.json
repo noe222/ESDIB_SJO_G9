@@ -1,0 +1,5 @@
+{
+    "appService.showBuildDuringDeployPrompt": false,
+    "appService.defaultWebAppToDeploy": "/subscriptions/91110777-762d-4e78-8d31-ec3a4f831079/resourceGroups/NeumaResourceGroup/providers/Microsoft.Web/sites/Neumaa",
+    "appService.deploySubpath": "."
+}
