@@ -1,138 +1,113 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Neuma | Inicio</title>
-  
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/navbar.css" />
-  <link rel="stylesheet" href="css/index.css" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neuma | Inicio</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  
-<header class="navbar">
-    <a href="index.html" class="logo">
-      <img src="assets/images/neuma_logo.svg" alt="neuma">
-    </a>
-    
+
+  <header class="navbar">
+    <a href="index.html" class="logo"><img src="assets/images/neuma_logo.svg" alt="neuma"></a>
     <div class="nav-right">
       <nav class="desktop-links">
-        <a href="index.html">Inicio</a>
+        <a href="index.html" class="active">Inicio</a>
         <a href="origen.html">Origen</a>
         <a href="equipo.html">Equipo</a>
       </nav>
-      <div class="menu-toggle" id="menu-toggle">
-        <span></span><span></span><span></span>
-      </div>
+      <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
     </div>
-
     <div class="dropdown-menu" id="dropdown-menu">
+      <a href="index.html">Inicio</a>
       <a href="medita.html">Medita</a>
+      <a href="origen.html">Origen</a>
       <a href="escucha.html">Escucha</a>
+      <a href="equipo.html">Equipo</a>
       <a href="siente.html">Siente</a>
       <a href="comunidad.html">Comunidad</a>
-      
-      <div class="mobile-separator" style="height:1px; background:#eee; width:100%; margin:1rem 0; display:none;"></div>
-      
-      <a href="index.html" class="mobile-link" style="display:none;">Inicio</a>
-      <a href="origen.html" class="mobile-link" style="display:none;">Origen</a>
-      <a href="equipo.html" class="mobile-link" style="display:none;">Equipo</a>
     </div>
   </header>
 
   <main>
-    <section class="hero-container">
+    <section class="hero-container snap-section">
       <img src="assets/images/neuma_logo.svg" alt="neuma" class="hero-logo">
-      <p class="hero-text">Deja el estres atrás.</p>
+      <p>...y el ruido del día se disuelve</p>
     </section>
 
-    <section class="full-width-card bg-medita">
+    <section class="full-width-card bg-medita snap-section">
       <div class="card-content normal-order">
-        
         <div class="text-side">
           <h2>Medita</h2>
-          <p class="subtitle">Revitaliza tu mentalidad.</p>
-          <p class="desc">Puedes dejar espacio a que las cosas que quieres ocurran,
-te proponemos consejos y métodos para que veas más allá
-de tu estrés.</p>
-          <a href="medita.html" class="big-arrow-link">
-            <img src="assets/images/flecha.svg" alt="Ir">
-          </a>
-        </div>
-
-        <div class="visual-side">
-          <div class="circle-icon">
-            <img src="assets/images/hoja.svg" alt="Hoja">
+          <p class="card-subtitle">Revitaliza tu mentalidad.</p>
+          <p class="card-description">Puedes dejar espacio a que las cosas que quieres ocurran, te proponemos consejos y
+            métodos para que veas más allá de tu estrés.</p>
+          <div class="card-rating">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+              class="star">★</span><span class="star">★</span>
           </div>
+          <a href="medita.html" class="big-arrow-link"><img src="assets/images/flecha.svg" alt="Ir"></a>
         </div>
-
+        <div class="visual-side">
+          <div class="circle-icon"><img src="assets/images/hoja.svg" alt="Hoja"></div>
+        </div>
       </div>
     </section>
 
-    <section class="full-width-card bg-escucha">
+    <section class="full-width-card bg-escucha snap-section">
       <div class="card-content reverse-order">
-        
-        <div class="visual-side">
-          <div class="circle-icon">
-            <img src="assets/images/olas.svg" alt="Olas">
-          </div>
-        </div>
-
         <div class="text-side">
           <h2>Escucha</h2>
-          <p class="subtitle">Naturaleza sonora.</p>
-          <p class="desc">Te invitamos a esta colección de sonidos ambientales, 
-hechos para ayudarte a crear un lugar tranquilo en tu mente.</p>
-          <a href="escucha.html" class="big-arrow-link">
-            <img src="assets/images/flecha.svg" alt="Ir">
-          </a>
+          <p class="card-subtitle">Naturaleza sonora.</p>
+          <p class="card-description">Sumérgete en sonidos naturales cuidadosamente seleccionados. Desde olas hasta
+            bosques, cada audio te transporta a un espacio de calma profunda.</p>
+          <div class="card-rating">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+              class="star">★</span><span class="star">★</span>
+          </div>
+          <a href="escucha.html" class="big-arrow-link"><img src="assets/images/flecha.svg" alt="Ir"></a>
         </div>
-
+        <div class="visual-side">
+          <div class="circle-icon"><img src="assets/images/olas.svg" alt="Olas"></div>
+        </div>
       </div>
     </section>
 
-    <section class="full-width-card bg-siente">
+    <section class="full-width-card bg-siente snap-section">
       <div class="card-content normal-order">
-        
         <div class="text-side">
           <h2>Siente</h2>
-          <p class="subtitle">Tus acciones cobran sentido.</p>
-          <p class="desc">Tomar conciencia de ti y tu entorno hace que vivas de manera más calmada y placentera.</p>
-          <a href="siente.html" class="big-arrow-link">
-            <img src="assets/images/flecha.svg" alt="Ir">
-          </a>
-        </div>
-
-        <div class="visual-side">
-          <div class="circle-icon">
-            <img src="assets/images/estrella.svg" alt="Estrella">
+          <p class="card-subtitle">Expresa, (tus emociones, explora)</p>
+          <p class="card-description">Herramientas para identificar y gestionar tus emociones. Aprende a expresarte de
+            forma consciente y crea conexiones más profundas contigo mismo.</p>
+          <div class="card-rating">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+              class="star">★</span><span class="star">★</span>
           </div>
+          <a href="siente.html" class="big-arrow-link"><img src="assets/images/flecha.svg" alt="Ir"></a>
         </div>
-
+        <div class="visual-side">
+          <div class="circle-icon"><img src="assets/images/estrella.svg" alt="Estrella"></div>
+        </div>
       </div>
     </section>
-
   </main>
 
-  <footer class="simple-footer">
-    <a href="#top" class="footer-logo">
-      <img src="assets/images/neuma_logo.svg" alt="neuma">
-    </a>
+  <footer class="simple-footer snap-section">
+    <div class="footer-logo"><img src="assets/images/neuma_logo.svg" alt="neuma"></div>
+    <div class="footer-links">
+      <a href="index.html">Inicio</a>
+      <a href="medita.html">Medita</a>
+      <a href="origen.html">Origen</a>
+      <a href="escucha.html">Escucha</a>
+      <a href="equipo.html">Equipo</a>
+      <a href="siente.html">Siente</a>
+    </div>
   </footer>
-
-
   <script src="js/navbar.js"></script>
-<style>
-    @media (max-width: 850px) {
-      .mobile-link { display: block !important; }
-      .mobile-separator { display: block !important; }
-    }
-  </style>
+  <script src="js/scroll-snap.js"></script>
 </body>
+
 </html>

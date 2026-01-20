@@ -1,100 +1,217 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Neuma | Escucha</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/navbar.css" />
-  <link rel="stylesheet" href="css/escucha.css" /> 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-<header class="navbar">
-    <a href="index.html" class="logo">
-      <img src="assets/images/neuma_logo.svg" alt="neuma">
-    </a>
-    
+  <header class="navbar">
+    <a href="index.html" class="logo"><img src="assets/images/neuma_logo.svg" alt="neuma"></a>
     <div class="nav-right">
       <nav class="desktop-links">
         <a href="index.html">Inicio</a>
         <a href="origen.html">Origen</a>
         <a href="equipo.html">Equipo</a>
       </nav>
-      <div class="menu-toggle" id="menu-toggle">
-        <span></span><span></span><span></span>
-      </div>
+      <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
     </div>
-
     <div class="dropdown-menu" id="dropdown-menu">
+      <a href="index.html">Inicio</a>
       <a href="medita.html">Medita</a>
+      <a href="origen.html">Origen</a>
       <a href="escucha.html">Escucha</a>
+      <a href="equipo.html">Equipo</a>
       <a href="siente.html">Siente</a>
       <a href="comunidad.html">Comunidad</a>
-      
-      <div class="mobile-separator" style="height:1px; background:#eee; width:100%; margin:1rem 0; display:none;"></div>
-      
-      <a href="index.html" class="mobile-link" style="display:none;">Inicio</a>
-      <a href="origen.html" class="mobile-link" style="display:none;">Origen</a>
-      <a href="equipo.html" class="mobile-link" style="display:none;">Equipo</a>
     </div>
   </header>
 
-  <main class="escucha-container">
-    <section class="escucha-hero">
-      <div class="intro-icon">
-        <img src="assets/images/olas.svg" alt="Escucha">
-      </div>
-      <h1>Ambientes Sonoros</h1>
-      <p>Elige tu refugio. Cierra los ojos y deja que el sonido te transporte.</p>
+  <main>
+    <section class="page-intro snap-section">
+      <div class="intro-icon"><img src="assets/images/olas.svg" alt="Escucha"></div>
+      <h1>Escucha</h1>
+      <p>Naturaleza sonora.</p>
     </section>
 
-    <section class="player-status">
-      <div class="status-box">
-        <p id="current-sound" class="sound-label">Selecciona un ambiente abajo</p>
-        <button id="play-btn" class="main-play-btn">▶ Reproducir</button>
-      </div>
-      <audio id="audio-player"></audio>
-    </section>
+    <section class="escucha-grid">
+      <!-- Hoguera -->
+      <a href="escucha-detalle.html" class="sound-card">
+        <img src="https://images.unsplash.com/photo-1525003909774-7a8ae637c3cd?w=600&q=80" alt="Hoguera"
+          class="sound-card-bg">
+        <div class="sound-card-overlay">
+          <h3>Hoguera</h3>
+        </div>
+      </a>
 
-    <section class="sound-grid">
-      <div class="sound-card" data-sound="mar">
-        <div class="icon-circle">🌊</div>
-        <h3>Mar en calma</h3>
-        <p>El ritmo constante de las olas.</p>
+      <!-- Bosque -->
+      <div class="sound-card">
+        <img src="https://images.unsplash.com/photo-1511497584788-876760111969?w=600&q=80" alt="Bosque"
+          class="sound-card-bg">
+        <div class="sound-card-overlay">
+          <h3>Bosque</h3>
+          <div class="audio-controls">
+            <button class="audio-btn prev" onclick="prevTrack(this)"></button>
+            <button class="audio-btn play" onclick="togglePlay(this)"></button>
+            <button class="audio-btn next" onclick="nextTrack(this)"></button>
+          </div>
+          <audio src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"></audio>
+        </div>
       </div>
-      <div class="sound-card" data-sound="lluvia">
-        <div class="icon-circle">🌧️</div>
-        <h3>Lluvia suave</h3>
-        <p>Gotas cayendo sobre la ventana.</p>
+
+      <!-- Mar -->
+      <div class="sound-card">
+        <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=600&q=80" alt="Mar"
+          class="sound-card-bg">
+        <div class="sound-card-overlay">
+          <h3>Mar</h3>
+          <div class="audio-controls">
+            <button class="audio-btn prev" onclick="prevTrack(this)"></button>
+            <button class="audio-btn play" onclick="togglePlay(this)"></button>
+            <button class="audio-btn next" onclick="nextTrack(this)"></button>
+          </div>
+          <audio src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"></audio>
+        </div>
       </div>
-      <div class="sound-card" data-sound="bosque">
-        <div class="icon-circle">🌲</div>
-        <h3>Bosque</h3>
-        <p>Pájaros y viento entre los árboles.</p>
+
+      <!-- Playa -->
+      <div class="sound-card">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80" alt="Playa"
+          class="sound-card-bg">
+        <div class="sound-card-overlay">
+          <h3>Playa</h3>
+          <div class="audio-controls">
+            <button class="audio-btn prev" onclick="prevTrack(this)"></button>
+            <button class="audio-btn play" onclick="togglePlay(this)"></button>
+            <button class="audio-btn next" onclick="nextTrack(this)"></button>
+          </div>
+          <audio src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"></audio>
+        </div>
       </div>
-      <div class="sound-card" data-sound="fuego">
-        <div class="icon-circle">🔥</div>
-        <h3>Chimenea</h3>
-        <p>El crujir de la madera ardiendo.</p>
+
+      <!-- Lluvia -->
+      <div class="sound-card">
+        <img src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=600&q=80" alt="Lluvia"
+          class="sound-card-bg">
+        <div class="sound-card-overlay">
+          <h3>Lluvia</h3>
+          <div class="audio-controls">
+            <button class="audio-btn prev" onclick="prevTrack(this)"></button>
+            <button class="audio-btn play" onclick="togglePlay(this)"></button>
+            <button class="audio-btn next" onclick="nextTrack(this)"></button>
+          </div>
+          <audio src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3"></audio>
+        </div>
+      </div>
+
+      <!-- Noche -->
+      <div class="sound-card">
+        <img src="https://images.unsplash.com/photo-1498419727874-5aba1dc1730b?w=600&q=80" alt="Noche"
+          class="sound-card-bg">
+        <div class="sound-card-overlay">
+          <h3>Noche</h3>
+          <div class="audio-controls">
+            <button class="audio-btn prev" onclick="prevTrack(this)"></button>
+            <button class="audio-btn play" onclick="togglePlay(this)"></button>
+            <button class="audio-btn next" onclick="nextTrack(this)"></button>
+          </div>
+          <audio src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3"></audio>
+        </div>
+      </div>
+
+      <!-- Tormenta -->
+      <div class="sound-card">
+        <img src="https://images.unsplash.com/photo-1605727216801-e27ce1d0cc28?w=600&q=80" alt="Tormenta"
+          class="sound-card-bg">
+        <div class="sound-card-overlay">
+          <h3>Tormenta</h3>
+          <div class="audio-controls">
+            <button class="audio-btn prev" onclick="prevTrack(this)"></button>
+            <button class="audio-btn play" onclick="togglePlay(this)"></button>
+            <button class="audio-btn next" onclick="nextTrack(this)"></button>
+          </div>
+          <audio src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3"></audio>
+        </div>
+      </div>
+
+      <!-- Viento -->
+      <div class="sound-card">
+        <img src="https://images.unsplash.com/photo-1500740516770-92bd004b996e?w=600&q=80" alt="Viento"
+          class="sound-card-bg">
+        <div class="sound-card-overlay">
+          <h3>Viento</h3>
+          <div class="audio-controls">
+            <button class="audio-btn prev" onclick="prevTrack(this)"></button>
+            <button class="audio-btn play" onclick="togglePlay(this)"></button>
+            <button class="audio-btn next" onclick="nextTrack(this)"></button>
+          </div>
+          <audio src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3"></audio>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="simple-footer">
-    <a href="#top" class="footer-logo">
-      <img src="assets/images/neuma_logo.svg" alt="neuma">
-    </a>
+  <footer class="simple-footer snap-section">
+    <div class="footer-logo"><img src="assets/images/neuma_logo.svg" alt="neuma"></div>
+    <div class="footer-links">
+      <a href="index.html">Inicio</a>
+      <a href="medita.html">Medita</a>
+      <a href="origen.html">Origen</a>
+      <a href="escucha.html">Escucha</a>
+      <a href="equipo.html">Equipo</a>
+      <a href="siente.html">Siente</a>
+    </div>
   </footer>
 
   <script src="js/navbar.js"></script>
-  <script src="js/relax.js"></script> 
-  <style>
-    @media (max-width: 850px) {
-      .mobile-link { display: block !important; }
-      .mobile-separator { display: block !important; }
+  <script>
+    // Control de reproducción de audio
+    function togglePlay(btn) {
+      const card = btn.closest('.sound-card');
+      const audio = card.querySelector('audio');
+
+      // Pausar todos los demás audios
+      document.querySelectorAll('.sound-card audio').forEach(a => {
+        if (a !== audio) {
+          a.pause();
+          a.currentTime = 0;
+        }
+      });
+
+      // Cambiar todos los botones a play
+      document.querySelectorAll('.audio-btn.pause').forEach(b => {
+        b.classList.remove('pause');
+        b.classList.add('play');
+      });
+
+      // Toggle play/pause del actual
+      if (audio.paused) {
+        audio.play();
+        btn.classList.remove('play');
+        btn.classList.add('pause');
+      } else {
+        audio.pause();
+        btn.classList.remove('pause');
+        btn.classList.add('play');
+      }
     }
-  </style>
+
+    function prevTrack(btn) {
+      const card = btn.closest('.sound-card');
+      const audio = card.querySelector('audio');
+      audio.currentTime = Math.max(0, audio.currentTime - 10);
+    }
+
+    function nextTrack(btn) {
+      const card = btn.closest('.sound-card');
+      const audio = card.querySelector('audio');
+      audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+    }
+  </script>
 </body>
+
 </html>

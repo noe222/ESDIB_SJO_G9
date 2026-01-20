@@ -1,109 +1,171 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Neuma | Medita</title>
-  
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/navbar.css" />
-  <link rel="stylesheet" href="css/medita.css" /> <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
   <header class="navbar">
-    <a href="index.html" class="logo">
-      <img src="assets/images/neuma_logo.svg" alt="neuma">
-    </a>
-    
+    <a href="index.html" class="logo"><img src="assets/images/neuma_logo.svg" alt="neuma"></a>
     <div class="nav-right">
       <nav class="desktop-links">
         <a href="index.html">Inicio</a>
         <a href="origen.html">Origen</a>
         <a href="equipo.html">Equipo</a>
       </nav>
-      <div class="menu-toggle" id="menu-toggle">
-        <span></span><span></span><span></span>
-      </div>
+      <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
     </div>
-
     <div class="dropdown-menu" id="dropdown-menu">
-      <a href="medita.html" class="active">Medita</a>
+      <a href="index.html">Inicio</a>
+      <a href="medita.html">Medita</a>
+      <a href="origen.html">Origen</a>
       <a href="escucha.html">Escucha</a>
+      <a href="equipo.html">Equipo</a>
       <a href="siente.html">Siente</a>
       <a href="comunidad.html">Comunidad</a>
-      <div class="mobile-separator" style="height:1px; background:#eee; width:100%; margin:1rem 0; display:none;"></div>
-      <a href="index.html" class="mobile-link" style="display:none;">Inicio</a>
-      <a href="origen.html" class="mobile-link" style="display:none;">Origen</a>
-      <a href="equipo.html" class="mobile-link" style="display:none;">Equipo</a>
     </div>
   </header>
 
   <main>
-    <section class="page-intro">
-      <div class="intro-icon">
-        <img src="assets/images/hoja.svg" alt="Medita">
-      </div>
+    <section class="page-intro snap-section">
+      <div class="intro-icon"><img src="assets/images/hoja.svg" alt="Medita"></div>
       <h1>Medita</h1>
-      <p>Pequeñas prácticas para grandes cambios.</p>
+      <p>Revitaliza tu mentalidad.</p>
     </section>
 
-    <section class="topic-section">
-      <div class="topic-container split">
-        <div class="topic-visual bg-beige">
-          <span>Img Respirar</span>
+    <section class="topic-section snap-section">
+      <div class="topic-container">
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <h2>Respirar</h2>
+          <p>Vuelve al presente con la respiración consciente.</p>
         </div>
-        <div class="topic-text">
-          <h2>Respirar...</h2>
-          <p class="subtitle">Cus niet venihiliquam doluptiur.</p>
-          <p>Tómate un momento para inhalar y exhalar. La respiración consciente es el ancla al presente.</p>
-          <a href="#" class="btn-more">Pulsa para más &rarr;</a>
+
+        <div class="accordion-container">
+
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span class="accordion-title">Calma Profunda (4-4-6)</span>
+              <div class="accordion-icon"><img src="assets/images/iconos_neuma-07.png" alt="v"></div>
+            </button>
+            <div class="accordion-content">
+              <p>Práctica suave, acompaña tu respiración en cada inhalación, pausa y exhalación, ayudando a soltar
+                tensiones y tranquilizar la mente.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span class="accordion-title">Liberación de Tensiones</span>
+              <div class="accordion-icon"><img src="assets/images/iconos_neuma-07.png" alt="v"></div>
+            </button>
+            <div class="accordion-content">
+              <p>Mediante esta práctica delicada, tu respiración es guiada paso a paso favoreciendo la relajación
+                profunda y la serenidad mental.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span class="accordion-title">Volver al Presente (Triángulo)</span>
+              <div class="accordion-icon"><img src="assets/images/iconos_neuma-07.png" alt="v"></div>
+            </button>
+            <div class="accordion-content">
+              <p>La técnica del triángulo imaginario en la palma calma la ansiedad mediante tacto consciente y
+                respiración sincronizada.</p>
+              <ul class="steps-list">
+                <li><span class="step-number">1.</span> Extiende la palma de una mano dominante e imagina un triángulo
+                  formado por los dedos abiertos.</li>
+                <li><span class="step-number">2.</span> Apoya el dedo índice de la otra mano en la base exterior del
+                  pulgar.</li>
+                <li><span class="step-number">3.</span> Sube inhalando por el borde del dedo hasta la punta.</li>
+                <li><span class="step-number">4.</span> Baja hasta la base interior exhalando lentamente.</li>
+                <li><span class="step-number">5.</span> Inhala subiendo por el dedo corazón hacia su punta.</li>
+                <li><span class="step-number">6.</span> Exhala descendiendo con calma a la siguiente base interior hacia
+                  la izquierda.</li>
+                <li><span class="step-number">7.</span> Continúa este proceso hasta encontrar un estado consciente
+                  desconectando de la ansiedad.</li>
+              </ul>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
 
-    <section class="topic-section">
-      <div class="topic-container split reverse">
-        <div class="topic-visual bg-green">
-          <span>Img Yoga</span>
+    <section class="topic-section snap-section">
+      <div class="topic-container">
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <h2>Yoga</h2>
+          <p>Conecta cuerpo, mente y alma.</p>
         </div>
-        <div class="topic-text">
-          <h2>Yoga...</h2>
-          <p class="subtitle">Conecta cuerpo y mente.</p>
-          <p>Movimientos suaves para desentumecer el cuerpo después de largas horas frente a la pantalla.</p>
-          <a href="#" class="btn-more">Pulsa para más &rarr;</a>
+
+        <div class="accordion-container">
+
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span class="accordion-title">Yoga consciente</span>
+              <div class="accordion-icon"><img src="assets/images/iconos_neuma-07.png" alt="v"></div>
+            </button>
+            <div class="accordion-content">
+              <p>Práctica suave, acompaña tu respiración en cada inhalación pausa y exhalación, ayudando a soltar
+                tensiones y tranquilizar la mente.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span class="accordion-title">Yoga de conexión profunda</span>
+              <div class="accordion-icon"><img src="assets/images/iconos_neuma-07.png" alt="v"></div>
+            </button>
+            <div class="accordion-content">
+              <p>Mediante esta práctica delicada, tu respiración es guiada paso a paso favoreciendo la relajación
+                profunda y la serenidad mental.</p>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
-
-    <section class="topic-section">
-      <div class="topic-container split">
-        <div class="topic-visual bg-beige">
-          <span>Img Cuidado</span>
-        </div>
-        <div class="topic-text">
-          <h2>Cuida y déjate cuidar...</h2>
-          <p class="subtitle">El bienestar es compartido.</p>
-          <p>Pequeños gestos de autocuidado que se reflejan en tu entorno.</p>
-          <a href="#" class="btn-more">Pulsa para más &rarr;</a>
-        </div>
-      </div>
-    </section>
-
   </main>
 
-  <footer class="simple-footer">
-    <a href="#top" class="footer-logo">
-      <img src="assets/images/neuma_logo.svg" alt="neuma">
-    </a>
+  <footer class="simple-footer snap-section">
+    <div class="footer-logo"><img src="assets/images/neuma_logo.svg" alt="neuma"></div>
+    <div class="footer-links">
+      <a href="index.html">Inicio</a>
+      <a href="medita.html">Medita</a>
+      <a href="origen.html">Origen</a>
+      <a href="escucha.html">Escucha</a>
+      <a href="equipo.html">Equipo</a>
+      <a href="siente.html">Siente</a>
+    </div>
   </footer>
 
   <script src="js/navbar.js"></script>
-  <style>
-    @media (max-width: 850px) {
-      .mobile-link { display: block !important; }
-      .mobile-separator { display: block !important; }
-    }
-  </style>
+
+  <script>
+    const accordions = document.querySelectorAll('.accordion-header');
+
+    accordions.forEach(acc => {
+      acc.addEventListener('click', function () {
+        // Alternar clase active en el botón (para girar flecha)
+        this.classList.toggle('active');
+
+        // Controlar panel de contenido
+        const panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null; // Cerrar
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px"; // Abrir
+        }
+      });
+    });
+  </script>
+
 </body>
+
 </html>

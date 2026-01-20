@@ -1,75 +1,70 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Neuma | Origen</title>
-  
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/navbar.css" />
-  <link rel="stylesheet" href="css/origen.css" /> <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<header class="navbar">
-    <a href="index.html" class="logo">
-      <img src="assets/images/neuma_logo.svg" alt="neuma">
-    </a>
-    
+  <header class="navbar">
+    <a href="index.html" class="logo"><img src="assets/images/neuma_logo.svg" alt="neuma"></a>
     <div class="nav-right">
       <nav class="desktop-links">
         <a href="index.html">Inicio</a>
-        <a href="origen.html" class="active">Origen</a> <a href="equipo.html">Equipo</a>
+        <a href="origen.html" class="active">Origen</a>
+        <a href="equipo.html">Equipo</a>
       </nav>
-      <div class="menu-toggle" id="menu-toggle">
-        <span></span><span></span><span></span>
-      </div>
+      <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
     </div>
-
     <div class="dropdown-menu" id="dropdown-menu">
+      <a href="index.html">Inicio</a>
       <a href="medita.html">Medita</a>
+      <a href="origen.html">Origen</a>
       <a href="escucha.html">Escucha</a>
+      <a href="equipo.html">Equipo</a>
       <a href="siente.html">Siente</a>
       <a href="comunidad.html">Comunidad</a>
-      <div class="mobile-separator" style="height:1px; background:#eee; width:100%; margin:1rem 0; display:none;"></div>
-      <a href="index.html" class="mobile-link" style="display:none;">Inicio</a>
-      <a href="origen.html" class="mobile-link" style="display:none;">Origen</a>
-      <a href="equipo.html" class="mobile-link" style="display:none;">Equipo</a>
     </div>
   </header>
 
   <main>
     <section class="about-intro">
       <h1>Origen</h1>
-      <p class="intro-text">Quién</p>
 
-      <p class="intro-text">
-       Somos un equipo de estudiantes ofreciendo esta posible solución al problema social de la ansiedad, 
-       causada por el ritmo de vida, las pantallas y las redes sociales. 
-      </p>
+      <div class="origin-columns">
+        <div class="origin-column">
+          <h3>Qué</h3>
+          <p>
+            Somos un equipo de estudiantes ofreciendo esta posible solución al problema social de la ansiedad causada
+            por el ritmo de vida, las pantallas y las redes sociales.
+          </p>
+        </div>
 
-      <p class="intro-text">Qué</p>
+        <div class="origin-column">
+          <h3>Porqué</h3>
+          <p>
+            Creemos que en nuestra sociedad actual hace falta un espacio para relajarse y descansar de la incansable
+            sobreestimulación a la que estamos expuestos.
+          </p>
+        </div>
 
-      <p class="intro-text">
-      Con nuestro proyecto, buscamos crear un espacio para relajarse, descansar de la incansable sobreestimulación y poder, así, respirar tranquilamente.
-      </p>
-
-      <p class="intro-text">Cómo</p>
-
-      <p class="intro-text">
-      En neuma puedes encontrar una navegación tranquila, 
-      consejos y respaldo de una comunidad amigable que va aumentando día a día. 
-      </p>
-
-
+        <div class="origin-column">
+          <h3>Cómo</h3>
+          <p>
+            En neuma puedes encontrar una navegación tranquila, consejos y respaldo de una comunidad amigable que va
+            aumentando día a día.
+          </p>
+        </div>
+      </div>
     </section>
 
     <section class="values-section">
-      <h2 class="values-title">Valores</h2>
-      <p class="values-subtitle">neuma</p>
+      <h2 class="values-title">neuma</h2>
+      <p class="values-subtitle">Nuestro nombre</p>
 
       <div class="values-content">
         <div class="venn-diagram">
@@ -82,7 +77,7 @@
         </div>
 
         <div class="values-description">
-          <p class="">
+          <p>
             Pneuma: m. Fil. Aliento racional que, en la filosofía estoica, informa y ordena el universo.
           </p>
         </div>
@@ -90,6 +85,8 @@
     </section>
 
     <section class="visual-gallery">
+      <button class="gallery-nav gallery-prev" aria-label="Anterior">‹</button>
+
       <div class="gallery-item">
         <div class="img-placeholder">Foto Arena</div>
       </div>
@@ -99,22 +96,25 @@
       <div class="gallery-item">
         <div class="img-placeholder">Foto Agua</div>
       </div>
+
+      <button class="gallery-nav gallery-next" aria-label="Siguiente">›</button>
     </section>
 
   </main>
 
-  <footer class="simple-footer">
-    <a href="#top" class="footer-logo">
-      <img src="assets/images/neuma_logo.svg" alt="neuma">
-    </a>
+  <footer class="simple-footer snap-section">
+    <div class="footer-logo"><img src="assets/images/neuma_logo.svg" alt="neuma"></div>
+    <div class="footer-links">
+      <a href="index.html">Inicio</a>
+      <a href="medita.html">Medita</a>
+      <a href="origen.html">Origen</a>
+      <a href="escucha.html">Escucha</a>
+      <a href="equipo.html">Equipo</a>
+      <a href="siente.html">Siente</a>
+    </div>
   </footer>
 
   <script src="js/navbar.js"></script>
-  <style>
-    @media (max-width: 850px) {
-      .mobile-link { display: block !important; }
-      .mobile-separator { display: block !important; }
-    }
-  </style>
 </body>
+
 </html>

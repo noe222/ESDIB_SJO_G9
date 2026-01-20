@@ -1,101 +1,125 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Neuma | Equipo</title>
-  
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/navbar.css" />
-  <link rel="stylesheet" href="css/equipo.css" /> <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  
-<header class="navbar">
-    <a href="index.html" class="logo">
-      <img src="assets/images/neuma_logo.svg" alt="neuma">
-    </a>
-    
+
+  <header class="navbar">
+    <a href="index.html" class="logo"><img src="assets/images/neuma_logo.svg" alt="neuma"></a>
     <div class="nav-right">
       <nav class="desktop-links">
         <a href="index.html">Inicio</a>
         <a href="origen.html">Origen</a>
-        <a href="equipo.html">Equipo</a>
+        <a href="equipo.html" class="active">Equipo</a>
       </nav>
-      <div class="menu-toggle" id="menu-toggle">
-        <span></span><span></span><span></span>
-      </div>
+      <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
     </div>
-
     <div class="dropdown-menu" id="dropdown-menu">
+      <a href="index.html">Inicio</a>
       <a href="medita.html">Medita</a>
+      <a href="origen.html">Origen</a>
       <a href="escucha.html">Escucha</a>
+      <a href="equipo.html">Equipo</a>
       <a href="siente.html">Siente</a>
       <a href="comunidad.html">Comunidad</a>
-      
-      <div class="mobile-separator" style="height:1px; background:#eee; width:100%; margin:1rem 0; display:none;"></div>
-      
-      <a href="index.html" class="mobile-link" style="display:none;">Inicio</a>
-      <a href="origen.html" class="mobile-link" style="display:none;">Origen</a>
-      <a href="equipo.html" class="mobile-link" style="display:none;">Equipo</a>
     </div>
   </header>
-  <main class="equipo-container">
-    
-    <section class="equipo-header">
+
+  <main>
+    <section class="page-intro">
       <h1>Equipo</h1>
-      <p class="equipo-description">
-        Este proyecto nace de la colaboración entre estudiantes de diseño y desarrollo web. 
-        Uniendo creatividad y tecnología para crear un espacio de calma digital.
-      </p>
     </section>
 
-    <section class="main-visual">
-      <div class="large-placeholder">
-        <span><img src="assets/images/grupo_9.png" alt="Foto conjunto del grupo detrás del proyecto."></span>
-        
-      </div>
+    <section class="equipo-intro">
+      <h2>Quién</h2>
+      <p>El equipo combina perfiles creativos y técnicos con un objetivo común: desarrollar el frontend y backend de un
+        sitio web responsive.</p>
+      <p>Esta experiencia conjunta permite aplicar, de manera integrada, los conocimientos adquiridos.</p>
     </section>
 
-    <section class="team-grid">
-      <div class="member-card">
-        <div class="photo-placeholder"></div>
+    <section class="equipo-photos">
+      <div class="main-photo">
+        <img src="assets/images/grupo_noe.png" alt="Equipo completo">
       </div>
 
-      <div class="member-card">
-        <div class="photo-placeholder"></div>
-      </div>
-
-      <div class="member-card">
-        <div class="photo-placeholder"></div>
-      </div>
-
-      <div class="logos-column">
-        <div class="logo-box">
-          <span>Logo ESDIB</span>
+      <div class="equipo-grid-small">
+        <div class="member-card-small">
+          <img src="assets/images/grupo_noe.png" alt="Noe">
         </div>
-        <div class="logo-box">
-          <span>Logo Sant Josep</span>
+        <div class="member-card-small">
+          <img src="assets/images/grupo_carla.png" alt="Carla">
+        </div>
+        <div class="member-card-small">
+          <img src="assets/images/grupo_fernando.png" alt="Fernando">
+        </div>
+        <div class="member-card-small">
+          <img src="assets/images/grupo_itxas.png" alt="Itxas">
+        </div>
+        <div class="member-card-small">
+          <img src="assets/images/grupo_noe.png" alt="Miembro 5">
+        </div>
+        <div class="member-card-small">
+          <img src="assets/images/grupo_carla.png" alt="Miembro 6">
+        </div>
+      </div>
+    </section>
+
+    <section class="proyecto-section">
+      <div class="proyecto-content">
+        <div class="proyecto-formula">
+          <div class="formula-item">
+            <img src="assets/images/star_filled.png" alt="Star filled" class="formula-icon">
+          </div>
+          <div class="formula-item">
+            <img src="assets/images/star_outline.png" alt="Star outline" class="formula-icon">
+          </div>
+          <div class="formula-equation">
+            <p class="equation-text">ESJIB + SJO = ♥︎</p>
+            <p class="equation-emoji">
+              <img src="assets/images/emoji_smile.png" alt="Smile" class="emoji-icon">
+            </p>
+          </div>
+        </div>
+
+        <div class="proyecto-text">
+          <h3>Proyecto</h3>
+          <p>Este proyecto reúne estudiantes del grado superior de ESJIB, estudiantes del colegio Sant Josep Obrer de
+            Palma y estudiantes del CEIP de Son Ferriol, reunidos para hacer posible la integración de aquellas personas
+            con autismo.</p>
+        </div>
+      </div>
+
+      <div class="proyecto-logos">
+        <div class="logo-item">
+          <div class="logo-circle"></div>
+        </div>
+        <div class="logo-item">
+          <div class="logo-rect"></div>
         </div>
       </div>
     </section>
 
   </main>
 
-  <footer class="simple-footer">
-    <a href="#top" class="footer-logo">
-      <img src="assets/images/neuma_logo.svg" alt="neuma">
-    </a>
+  <footer class="simple-footer snap-section">
+    <div class="footer-logo"><img src="assets/images/neuma_logo.svg" alt="neuma"></div>
+    <div class="footer-links">
+      <a href="index.html">Inicio</a>
+      <a href="medita.html">Medita</a>
+      <a href="origen.html">Origen</a>
+      <a href="escucha.html">Escucha</a>
+      <a href="equipo.html">Equipo</a>
+      <a href="siente.html">Siente</a>
+    </div>
   </footer>
+
   <script src="js/navbar.js"></script>
-  <style>
-    @media (max-width: 850px) {
-      .mobile-link { display: block !important; }
-      .mobile-separator { display: block !important; }
-    }
-  </style>
 </body>
+
 </html>
