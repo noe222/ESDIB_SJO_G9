@@ -1,0 +1,164 @@
+/* ========================================================================
+   EQUIPO-DESKTOP.CSS - Estilos desktop específicos para página de equipo
+   Basado en el wireframe del usuario
+   Solo se aplica en desktop (min-width: 768px)
+   ======================================================================== */
+
+@media (min-width: 768px) {
+
+    /* === HERO / TÍTULO === */
+    .page-intro {
+        --bg-color: #FAF7F2;
+        padding: 4rem 2rem 2rem;
+        min-height: auto;
+    }
+
+    .page-intro h1 {
+        font-size: 3rem;
+        text-align: left;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* === SECCIÓN "QUIÉN" - 3 COLUMNAS === */
+    .equipo-intro {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 2rem 3rem;
+    }
+
+    .equipo-intro .column:first-child h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        font-weight: 500;
+    }
+
+    .equipo-intro .column p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: var(--color-text);
+    }
+
+    /* === SECCIÓN FOTO + ECUACIÓN === */
+    .equipo-photo-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        max-width: 1200px;
+        margin: 3rem auto;
+        padding: 0 2rem;
+    }
+
+    .team-photo {
+        width: 100%;
+    }
+
+    .team-photo img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    /* Ecuación y elementos decorativos */
+    .team-formula {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .stars {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+    }
+
+    .stars img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .equation {
+        font-size: 2rem;
+        font-weight: 500;
+        margin: 0;
+    }
+
+    .star-left {
+        width: 40px;
+        height: 40px;
+    }
+
+    .emoji {
+        font-size: 3rem;
+        margin: 0;
+    }
+
+    /* Sección Proyecto dentro de la fórmula */
+    .team-formula h3 {
+        font-size: 1.5rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        font-weight: 500;
+    }
+
+    .team-formula .proyecto-description {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        max-width: 400px;
+    }
+
+    /* === LOGOS INSTITUCIONALES === */
+    .proyecto-logos {
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+        margin-top: 2rem;
+    }
+
+    .logo-item img {
+        width: 120px;
+        height: auto;
+    }
+
+    /* === CARRUSEL - SOLO IMÁGENES EN DESKTOP === */
+    .equipo-carousel-section {
+        max-width: 100%;
+        margin: 4rem auto;
+        padding: 3rem 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Ocultar texto del carrusel en desktop */
+    .carousel>article>div,
+    .carousel>article h2,
+    .carousel>article p,
+    .carousel>article a {
+        display: none !important;
+    }
+
+    /* Ajustar grid del article para solo imagen */
+    .carousel>article {
+        grid-template-rows: 1fr !important;
+        height: 400px;
+    }
+
+    .carousel {
+        --carousel-item-height: 400px;
+        margin: 0 auto;
+    }
+
+    .carousel img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+}

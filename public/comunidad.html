@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,72 +9,128 @@
   <link rel="stylesheet" href="css/navbar.css">
   <style>
     /* Estilos específicos para esta página */
-    .community-container { max-width: 900px; margin: 4rem auto; padding: 0 1rem; }
-    
+    .community-container {
+      max-width: 900px;
+      margin: 4rem auto;
+      padding: 0 1rem;
+    }
+
     /* Formulario */
     .upload-box {
-      background: #FDFBF7; 
-      border: 2px dashed #C7B59D; 
+      background: #FDFBF7;
+      border: 2px dashed #C7B59D;
       border-radius: 16px;
-      padding: 2rem; 
-      margin-bottom: 4rem; 
+      padding: 2rem;
+      margin-bottom: 4rem;
       text-align: center;
     }
-    .form-group { margin-bottom: 1.5rem; text-align: left; }
-    .form-group label { display: block; margin-bottom: 0.5rem; font-weight: bold; color: #555; }
-    .form-group input, .form-group textarea, .form-group select {
-      width: 100%; 
-      padding: 0.8rem; 
-      border: 1px solid #ccc; 
-      border-radius: 8px; 
+
+    .form-group {
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      color: #555;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
       font-family: inherit;
       font-size: 1rem;
     }
+
     .btn-submit {
-      background: #a4c3b2; 
-      color: white; 
-      border: none; 
+      background: #a4c3b2;
+      color: white;
+      border: none;
       padding: 1rem 2rem;
-      border-radius: 30px; 
-      cursor: pointer; 
-      font-size: 1rem; 
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1rem;
       margin-top: 1rem;
       transition: background 0.3s ease;
     }
-    .btn-submit:hover { background: #8fa38f; }
-    .btn-submit:disabled { background: #ccc; cursor: not-allowed; }
+
+    .btn-submit:hover {
+      background: #8fa38f;
+    }
+
+    .btn-submit:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
 
     /* Muro de Posts */
-    .posts-grid { display: grid; gap: 2rem; }
-    .post-card {
-      background: white; 
-      border: 1px solid #eee; 
-      border-radius: 12px; 
-      padding: 1.5rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    .posts-grid {
+      display: grid;
+      gap: 2rem;
     }
-    .post-header { display: flex; justify-content: space-between; margin-bottom: 1rem; color: #888; font-size: 0.9rem; }
-    .post-category { 
-      background: #E3D595; 
-      padding: 0.2rem 0.6rem; 
-      border-radius: 4px; 
-      color: #444; 
-      font-size: 0.8rem; 
-      text-transform: uppercase; 
+
+    .post-card {
+      background: white;
+      border: 1px solid #eee;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .post-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      color: #888;
+      font-size: 0.9rem;
+    }
+
+    .post-category {
+      background: #E3D595;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      color: #444;
+      font-size: 0.8rem;
+      text-transform: uppercase;
       font-weight: bold;
     }
-    .post-image { width: 100%; height: auto; border-radius: 8px; margin-top: 1rem; object-fit: cover; max-height: 400px; }
-    .song-link { display: inline-block; margin-top: 1rem; color: #a4c3b2; text-decoration: none; font-weight: bold; }
-    .song-link:hover { text-decoration: underline; }
+
+    .post-image {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-top: 1rem;
+      object-fit: cover;
+      max-height: 400px;
+    }
+
+    .song-link {
+      display: inline-block;
+      margin-top: 1rem;
+      color: #a4c3b2;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .song-link:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
+
 <body>
 
-<header class="navbar">
+  <header class="navbar">
     <a href="index.html" class="logo">
       <img src="assets/images/neuma_logo.svg" alt="neuma">
     </a>
-    
+
     <div class="nav-right">
       <nav class="desktop-links">
         <a href="index.html">Inicio</a>
@@ -90,9 +147,9 @@
       <a href="escucha.html">Escucha</a>
       <a href="siente.html">Siente</a>
       <a href="comunidad.html">Comunidad</a>
-      
+
       <div class="mobile-separator" style="height:1px; background:#eee; width:100%; margin:1rem 0; display:none;"></div>
-      
+
       <a href="index.html" class="mobile-link" style="display:none;">Inicio</a>
       <a href="origen.html" class="mobile-link" style="display:none;">Origen</a>
       <a href="equipo.html" class="mobile-link" style="display:none;">Equipo</a>
@@ -104,11 +161,11 @@
     <p style="text-align: center; margin-bottom: 2rem; color: #666;">
       ¿Tienes una canción, un consejo o una foto que te ayude a desconectar? Compártelo con nosotros.
     </p>
-    
+
     <section class="upload-box">
       <h3>Nueva Aportación</h3>
       <form id="communityForm">
-        
+
         <div class="form-group">
           <label for="title">Título</label>
           <input type="text" id="title" name="title" required placeholder="Ej: Mi rincón de paz">
@@ -119,6 +176,10 @@
           <select name="category" id="category">
             <option value="medita">Meditación</option>
             <option value="escucha">Música/Sonido</option>
+            <option value="naturaleza">🎵 Sonido - Naturaleza</option>
+            <option value="urbano">🎵 Sonido - Urbano</option>
+            <option value="musical">🎵 Sonido - Musical</option>
+            <option value="ambiente">🎵 Sonido - Ambiente</option>
             <option value="siente">Consejo/Hábito</option>
             <option value="otro">Otro</option>
           </select>
@@ -131,7 +192,8 @@
 
         <div class="form-group">
           <label for="description">Descripción / Consejo</label>
-          <textarea id="description" name="description" rows="3" required placeholder="Cuéntanos por qué te ayuda..."></textarea>
+          <textarea id="description" name="description" rows="3" required
+            placeholder="Cuéntanos por qué te ayuda..."></textarea>
         </div>
 
         <div class="form-group">
@@ -140,7 +202,14 @@
         </div>
 
         <div class="form-group">
-          <label for="photos">Foto (Opcional)</label>
+          <label for="audioFile">🎵 Archivo de Sonido (MP3, WAV, OGG) - Opcional</label>
+          <input type="file" id="audioFile" name="audioFile" accept="audio/mp3,audio/wav,audio/ogg,audio/mpeg">
+          <small style="color: #888; display: block; margin-top: 0.3rem;">Máximo 60MB. Si subes un sonido, aparecerá en
+            la sección "Escucha"</small>
+        </div>
+
+        <div class="form-group">
+          <label for="photos">Foto / Imagen de Portada (Opcional)</label>
           <input type="file" id="photos" name="photos" accept="image/*">
         </div>
 
@@ -154,7 +223,7 @@
   </main>
 
   <script src="js/navbar.js"></script>
-  
+
   <script>
     const API_URL = '/api/community'; // URL relativa
 
@@ -162,7 +231,7 @@
     async function loadPosts() {
       try {
         const res = await fetch(API_URL);
-        
+
         if (!res.ok) {
           throw new Error(`Error del servidor: ${res.status}`);
         }
@@ -178,13 +247,13 @@
 
         posts.forEach(post => {
           // Procesar imagen si existe
-          const imgHtml = post.photos && post.photos.length > 0 
-            ? `<img src="${post.photos[0].url}" alt="${post.title}" class="post-image" loading="lazy">` 
+          const imgHtml = post.photos && post.photos.length > 0
+            ? `<img src="${post.photos[0].url}" alt="${post.title}" class="post-image" loading="lazy">`
             : '';
-          
+
           // Procesar link si existe
-          const linkHtml = post.songUrl 
-            ? `<a href="${post.songUrl}" target="_blank" class="song-link">🎵 Escuchar Canción</a>` 
+          const linkHtml = post.songUrl
+            ? `<a href="${post.songUrl}" target="_blank" class="song-link">🎵 Escuchar Canción</a>`
             : '';
 
           // Crear tarjeta HTML
@@ -211,28 +280,62 @@
     // 2. ENVIAR FORMULARIO (POST)
     document.getElementById('communityForm').addEventListener('submit', async (e) => {
       e.preventDefault(); // Evitar recarga de página
-      
+
       const form = e.target;
-      const formData = new FormData(form); // Recoge todos los inputs y archivos automáticamente
       const btn = form.querySelector('button');
+
+      // Verificar si hay un archivo de audio
+      const audioFile = document.getElementById('audioFile').files[0];
+      const hasAudio = audioFile && audioFile.size > 0;
+
+      // Validar tamaño de archivo de audio (60MB max)
+      if (hasAudio && audioFile.size > 60 * 1024 * 1024) {
+        alert('El archivo de audio es demasiado grande. Máximo 60MB.');
+        return;
+      }
 
       // Estado de carga
       btn.textContent = 'Enviando...';
       btn.disabled = true;
 
       try {
-        console.log("Enviando datos a:", API_URL);
-        
-        const res = await fetch(API_URL, {
+        let endpoint = '/api/community';
+        let formDataToSend = new FormData();
+
+        if (hasAudio) {
+          // Si hay audio, enviar a /api/sounds
+          endpoint = '/api/sounds';
+          formDataToSend.append('title', form.title.value);
+          formDataToSend.append('description', form.description.value);
+          formDataToSend.append('category', form.category.value);
+          formDataToSend.append('audioFile', audioFile);
+
+          // Añadir imagen de portada si existe
+          const photoFile = form.photos.files[0];
+          if (photoFile) {
+            formDataToSend.append('coverImage', photoFile);
+          }
+        } else {
+          // Si no hay audio, enviar a /api/community (comportamiento original)
+          formDataToSend = new FormData(form);
+        }
+
+        console.log("Enviando datos a:", endpoint);
+
+        const res = await fetch(endpoint, {
           method: 'POST',
-          body: formData 
+          body: formDataToSend
         });
 
         console.log("Respuesta status:", res.status);
 
         if (res.ok) {
           const data = await res.json();
-          alert('¡Éxito! Tu aportación ha sido enviada para revisión.');
+          if (hasAudio) {
+            alert('¡Éxito! Tu sonido ha sido enviado para revisión y aparecerá en "Escucha" una vez aprobado.');
+          } else {
+            alert('¡Éxito! Tu aportación ha sido enviada para revisión.');
+          }
           form.reset(); // Limpiar formulario
         } else {
           const errorData = await res.json();
@@ -253,9 +356,15 @@
   </script>
   <style>
     @media (max-width: 850px) {
-      .mobile-link { display: block !important; }
-      .mobile-separator { display: block !important; }
+      .mobile-link {
+        display: block !important;
+      }
+
+      .mobile-separator {
+        display: block !important;
+      }
     }
   </style>
 </body>
+
 </html>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neuma | Hoguera</title>
+    <title id="pageTitle">Neuma | Sonido</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -33,43 +33,15 @@
 
     <main>
         <section class="sound-detail-page">
-            <div class="sound-detail-container">
-                <!-- Imagen ampliada con controles -->
-                <div class="sound-detail-image">
-                    <img src="assets/images/hoguera.jpg" alt="Hoguera" class="detail-bg-image">
-
-                    <!-- Controles de audio superpuestos -->
-                    <div class="sound-detail-controls">
-                        <button class="audio-btn-large prev" id="prevBtn">⏮</button>
-                        <button class="audio-btn-large play" id="playBtn">▶</button>
-                        <button class="audio-btn-large next" id="nextBtn">⏭</button>
-                    </div>
-                </div>
-
-                <!-- Título -->
-                <h1 class="sound-detail-title">Hoguera</h1>
-
-                <!-- Descripción -->
-                <div class="sound-detail-description">
-                    <p>
-                        La calidez y tranquilidad de la chimenea transformadas en un audio envolvente que invita al
-                        descanso. El suave crepitar de las llamas crea una sensación reconfortante que transmite la
-                        misma paz que si estuvieras junto al fuego. Perfecto para relajarse al final del día y
-                        desconectar del ritmo acelerado de la vida cotidiana.
-                    </p>
-                </div>
-
-                <!-- Botón volver -->
-                <a href="escucha.html" class="btn-back">← Volver a Escucha</a>
+            <div class="sound-detail-container" id="soundDetailContainer">
+                <p style="text-align:center; padding: 3rem;">Cargando sonido...</p>
             </div>
-
-            <!-- Audio oculto -->
-            <audio id="audioPlayer" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
         </section>
     </main>
 
     <footer class="simple-footer">
         <div class="footer-logo"><img src="assets/images/neuma_logo.svg" alt="neuma"></div>
+        <hr class="footer-separator">
         <div class="footer-links">
             <a href="index.html">Inicio</a>
             <a href="medita.html">Medita</a>
@@ -82,32 +54,118 @@
 
     <script src="js/navbar.js"></script>
     <script>
-        const audio = document.getElementById('audioPlayer');
-        const playBtn = document.getElementById('playBtn');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
+        // Obtener ID del sonido desde la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const soundId = urlParams.get('id');
 
-        playBtn.addEventListener('click', () => {
-            if (audio.paused) {
-                audio.play();
-                playBtn.textContent = '❚❚';
-                playBtn.classList.remove('play');
-                playBtn.classList.add('pause');
-            } else {
-                audio.pause();
-                playBtn.textContent = '▶';
-                playBtn.classList.remove('pause');
-                playBtn.classList.add('play');
+        if (!soundId) {
+            // Si no hay ID, mostrar error y redirigir
+            document.getElementById('soundDetailContainer').innerHTML = `
+                <div style="text-align:center; padding: 3rem;">
+                    <h2>Sonido no encontrado</h2>
+                    <p>No se especificó qué sonido mostrar.</p>
+                    <a href="escucha.html" class="btn-back">← Volver a Escucha</a>
+                </div>
+            `;
+        } else {
+            // Cargar datos del sonido
+            loadSoundDetail(soundId);
+        }
+
+        async function loadSoundDetail(id) {
+            try {
+                const res = await fetch(`/api/sounds/${id}`);
+
+                if (!res.ok) {
+                    if (res.status === 404) {
+                        throw new Error('Sonido no encontrado');
+                    } else {
+                        throw new Error('Error al cargar el sonido');
+                    }
+                }
+
+                const sound = await res.json();
+                renderSoundDetail(sound);
+            } catch (err) {
+                console.error('Error:', err);
+                document.getElementById('soundDetailContainer').innerHTML = `
+                    <div style="text-align:center; padding: 3rem;">
+                        <h2>Error</h2>
+                        <p>${err.message}</p>
+                        <a href="escucha.html" class="btn-back">← Volver a Escucha</a>
+                    </div>
+                `;
             }
-        });
+        }
 
-        prevBtn.addEventListener('click', () => {
-            audio.currentTime = Math.max(0, audio.currentTime - 10);
-        });
+        function renderSoundDetail(sound) {
+            const container = document.getElementById('soundDetailContainer');
 
-        nextBtn.addEventListener('click', () => {
-            audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
-        });
+            // Actualizar título de la página
+            document.getElementById('pageTitle').textContent = `Neuma | ${sound.title}`;
+
+            // Imagen de portada
+            const imgSrc = sound.coverImage?.url || 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=1200&q=80';
+
+            // URL del audio
+            const audioSrc = sound.audioFile?.url || '';
+
+            container.innerHTML = `
+                <!-- Imagen ampliada con controles -->
+                <div class="sound-detail-image">
+                    <img src="${imgSrc}" alt="${sound.title}" class="detail-bg-image">
+
+                    <!-- Controles de audio superpuestos -->
+                    <div class="sound-detail-controls">
+                        <button class="audio-btn-large prev" id="prevBtn">⏮</button>
+                        <button class="audio-btn-large play" id="playBtn">▶</button>
+                        <button class="audio-btn-large next" id="nextBtn">⏭</button>
+                    </div>
+                </div>
+
+                <!-- Título -->
+                <h1 class="sound-detail-title">${sound.title}</h1>
+
+                <!-- Descripción -->
+                <div class="sound-detail-description">
+                    <p>${sound.description}</p>
+                </div>
+
+                <!-- Botón volver -->
+                <a href="escucha.html" class="btn-back">← Volver a Escucha</a>
+
+                <!-- Audio oculto -->
+                <audio id="audioPlayer" src="${audioSrc}"></audio>
+            `;
+
+            // Event listeners para los controles
+            const audio = document.getElementById('audioPlayer');
+            const playBtn = document.getElementById('playBtn');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) {
+                    audio.play();
+                    playBtn.textContent = '❚❚';
+                    playBtn.classList.remove('play');
+                    playBtn.classList.add('pause');
+                } else {
+                    audio.pause();
+                    playBtn.textContent = '▶';
+                    playBtn.classList.remove('pause');
+                    playBtn.classList.add('play');
+                }
+            });
+
+            prevBtn.addEventListener('click', () => {
+                audio.currentTime = Math.max(0, audio.currentTime - 10);
+            });
+
+            nextBtn.addEventListener('click', () => {
+                audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+            });
+        }
     </script>
 </body>
 

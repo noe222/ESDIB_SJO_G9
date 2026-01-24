@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Neuma | Equipo</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/carrusel.css">
+  <link rel="stylesheet" href="css/equipo-desktop.css">
+  <link rel="stylesheet" href="css/equipo-footer.css">
 </head>
 
 <body>
@@ -37,86 +40,128 @@
     </section>
 
     <section class="equipo-intro">
-      <h2>Quién</h2>
-      <p>El equipo combina perfiles creativos y técnicos con un objetivo común: desarrollar el frontend y backend de un
-        sitio web responsive.</p>
-      <p>Esta experiencia conjunta permite aplicar, de manera integrada, los conocimientos adquiridos.</p>
+      <div class="column">
+        <h2>Quién</h2>
+        <p>El equipo combina perfiles creativos y técnicos con un objetivo común: desarrollar el frontend y backend de
+          un sitio web responsive.</p>
+      </div>
+      <div class="column">
+        <p>El tema del proyecto es libre, aunque siempre vinculado a cuestiones de carácter social, ambiental o
+          solidario.</p>
+      </div>
+      <div class="column">
+        <p>Esta experiencia conjunta permite aplicar, de manera integrada, los conocimientos adquiridos en cada
+          disciplina y potenciar el trabajo colaborativo entre ambas especialidades.</p>
+      </div>
     </section>
 
-    <section class="equipo-photos">
-      <div class="main-photo">
-        <img src="assets/images/grupo_noe.png" alt="Equipo completo">
+    <section class="equipo-photo-section">
+      <div class="team-photo">
+        <img src="assets/images/grupo_9.png" alt="Equipo completo">
       </div>
 
-      <div class="equipo-grid-small">
-        <div class="member-card-small">
+      <div class="team-formula">
+        <div class="stars">
+          <img src="assets/images/star_filled.png" alt="Star filled">
+          <img src="assets/images/star_outline.png" alt="Star outline">
+        </div>
+
+        <p class="equation">ESJIB + SJO = ♥</p>
+
+        <img src="assets/images/star_outline.png" alt="Star" class="star-left">
+
+        <p class="emoji">:)</p>
+
+        <h3>Proyecto</h3>
+        <p class="proyecto-description">Este proyecto reúne estudiantes del grado superior de ESJIB, estudiantes del
+          colegio Sant Josep Obrer de Palma y estudiantes del CEIP de Son Ferriol, reunidos para hacer posible la
+          integración de aquellas personas con autismo.</p>
+
+        <div class="proyecto-logos">
+          <div class="logo-item">
+            <img src="assets/images/neuma_iconografia_equipo-14.png" alt="Logo ESJIB">
+          </div>
+          <div class="logo-item">
+            <img src="assets/images/neuma_iconografia_equipo-15.png" alt="Logo SJO">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="equipo-carousel-section">
+      <div class="carousel" mask>
+        <article>
           <img src="assets/images/grupo_noe.png" alt="Noe">
-        </div>
-        <div class="member-card-small">
+          <div>
+            <h2>Noe</h2>
+            <p>Miembro del equipo Neuma</p>
+          </div>
+        </article>
+
+        <article>
           <img src="assets/images/grupo_carla.png" alt="Carla">
-        </div>
-        <div class="member-card-small">
+          <div>
+            <h2>Carla</h2>
+            <p>Miembro del equipo Neuma</p>
+          </div>
+        </article>
+
+        <article>
           <img src="assets/images/grupo_fernando.png" alt="Fernando">
-        </div>
-        <div class="member-card-small">
+          <div>
+            <h2>Fernando</h2>
+            <p>Miembro del equipo Neuma</p>
+          </div>
+        </article>
+
+        <article>
           <img src="assets/images/grupo_itxas.png" alt="Itxas">
-        </div>
-        <div class="member-card-small">
-          <img src="assets/images/grupo_noe.png" alt="Miembro 5">
-        </div>
-        <div class="member-card-small">
-          <img src="assets/images/grupo_carla.png" alt="Miembro 6">
-        </div>
-      </div>
-    </section>
-
-    <section class="proyecto-section">
-      <div class="proyecto-content">
-        <div class="proyecto-formula">
-          <div class="formula-item">
-            <img src="assets/images/star_filled.png" alt="Star filled" class="formula-icon">
+          <div>
+            <h2>Itxas</h2>
+            <p>Miembro del equipo Neuma</p>
           </div>
-          <div class="formula-item">
-            <img src="assets/images/star_outline.png" alt="Star outline" class="formula-icon">
-          </div>
-          <div class="formula-equation">
-            <p class="equation-text">ESJIB + SJO = ♥︎</p>
-            <p class="equation-emoji">
-              <img src="assets/images/emoji_smile.png" alt="Smile" class="emoji-icon">
-            </p>
-          </div>
-        </div>
+        </article>
 
-        <div class="proyecto-text">
-          <h3>Proyecto</h3>
-          <p>Este proyecto reúne estudiantes del grado superior de ESJIB, estudiantes del colegio Sant Josep Obrer de
-            Palma y estudiantes del CEIP de Son Ferriol, reunidos para hacer posible la integración de aquellas personas
-            con autismo.</p>
-        </div>
-      </div>
+        <article>
+          <img src="assets/images/grupo_samuel.png" alt="Samuel">
+          <div>
+            <h2>Samuel</h2>
+            <p>Miembro del equipo Neuma</p>
+          </div>
+        </article>
 
-      <div class="proyecto-logos">
-        <div class="logo-item">
-          <div class="logo-circle"></div>
-        </div>
-        <div class="logo-item">
-          <div class="logo-rect"></div>
-        </div>
+        <article>
+          <img src="assets/images/grupo_africa.png" alt="África">
+          <div>
+            <h2>África</h2>
+            <p>Miembro del equipo Neuma</p>
+          </div>
+        </article>
       </div>
     </section>
 
   </main>
 
   <footer class="simple-footer snap-section">
-    <div class="footer-logo"><img src="assets/images/neuma_logo.svg" alt="neuma"></div>
-    <hr class="footer-separator">
-    <div class="footer-links">
-      <a href="index.html">Inicio</a>
-      <a href="medita.html">Medita</a>
-      <a href="origen.html">Origen</a>
-      <a href="escucha.html">Escucha</a>
-      <a href="equipo.html">Equipo</a>
-      <a href="siente.html">Siente</a>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="assets/images/neuma_logo.svg" alt="neuma">
+      </div>
+      <div class="footer-separator-vertical"></div>
+      <div class="footer-nav">
+        <div class="footer-column">
+          <a href="index.html">Inicio</a>
+          <a href="medita.html">Medita</a>
+        </div>
+        <div class="footer-column">
+          <a href="origen.html">Origen</a>
+          <a href="escucha.html">Escucha</a>
+        </div>
+        <div class="footer-column">
+          <a href="equipo.html">Equipo</a>
+          <a href="siente.html">Siente</a>
+        </div>
+      </div>
     </div>
   </footer>
 

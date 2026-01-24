@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Neuma | Escucha</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/escucha.css">
 </head>
 
 <body>
@@ -38,120 +39,16 @@
       <p>Naturaleza sonora.</p>
     </section>
 
-    <section class="escucha-grid">
-      <!-- Hoguera -->
-      <a href="escucha-detalle.html" class="sound-card">
-        <img src="https://images.unsplash.com/photo-1525003909774-7a8ae637c3cd?w=600&q=80" alt="Hoguera"
-          class="sound-card-bg">
-        <div class="sound-card-overlay">
-          <h3>Hoguera</h3>
-        </div>
-      </a>
-
-      <!-- Bosque -->
-      <div class="sound-card">
-        <img src="https://images.unsplash.com/photo-1511497584788-876760111969?w=600&q=80" alt="Bosque"
-          class="sound-card-bg">
-        <div class="sound-card-overlay">
-          <h3>Bosque</h3>
-          <div class="audio-controls">
-            <button class="audio-btn prev" onclick="prevTrack(this)"></button>
-            <button class="audio-btn play" onclick="togglePlay(this)"></button>
-            <button class="audio-btn next" onclick="nextTrack(this)"></button>
-          </div>
-          <audio src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"></audio>
-        </div>
+    <!-- Barra de búsqueda -->
+    <section class="search-section">
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Hoy..." class="search-bar">
       </div>
+    </section>
 
-      <!-- Mar -->
-      <div class="sound-card">
-        <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=600&q=80" alt="Mar"
-          class="sound-card-bg">
-        <div class="sound-card-overlay">
-          <h3>Mar</h3>
-          <div class="audio-controls">
-            <button class="audio-btn prev" onclick="prevTrack(this)"></button>
-            <button class="audio-btn play" onclick="togglePlay(this)"></button>
-            <button class="audio-btn next" onclick="nextTrack(this)"></button>
-          </div>
-          <audio src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"></audio>
-        </div>
-      </div>
-
-      <!-- Playa -->
-      <div class="sound-card">
-        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80" alt="Playa"
-          class="sound-card-bg">
-        <div class="sound-card-overlay">
-          <h3>Playa</h3>
-          <div class="audio-controls">
-            <button class="audio-btn prev" onclick="prevTrack(this)"></button>
-            <button class="audio-btn play" onclick="togglePlay(this)"></button>
-            <button class="audio-btn next" onclick="nextTrack(this)"></button>
-          </div>
-          <audio src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"></audio>
-        </div>
-      </div>
-
-      <!-- Lluvia -->
-      <div class="sound-card">
-        <img src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=600&q=80" alt="Lluvia"
-          class="sound-card-bg">
-        <div class="sound-card-overlay">
-          <h3>Lluvia</h3>
-          <div class="audio-controls">
-            <button class="audio-btn prev" onclick="prevTrack(this)"></button>
-            <button class="audio-btn play" onclick="togglePlay(this)"></button>
-            <button class="audio-btn next" onclick="nextTrack(this)"></button>
-          </div>
-          <audio src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3"></audio>
-        </div>
-      </div>
-
-      <!-- Noche -->
-      <div class="sound-card">
-        <img src="https://images.unsplash.com/photo-1498419727874-5aba1dc1730b?w=600&q=80" alt="Noche"
-          class="sound-card-bg">
-        <div class="sound-card-overlay">
-          <h3>Noche</h3>
-          <div class="audio-controls">
-            <button class="audio-btn prev" onclick="prevTrack(this)"></button>
-            <button class="audio-btn play" onclick="togglePlay(this)"></button>
-            <button class="audio-btn next" onclick="nextTrack(this)"></button>
-          </div>
-          <audio src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3"></audio>
-        </div>
-      </div>
-
-      <!-- Tormenta -->
-      <div class="sound-card">
-        <img src="https://images.unsplash.com/photo-1605727216801-e27ce1d0cc28?w=600&q=80" alt="Tormenta"
-          class="sound-card-bg">
-        <div class="sound-card-overlay">
-          <h3>Tormenta</h3>
-          <div class="audio-controls">
-            <button class="audio-btn prev" onclick="prevTrack(this)"></button>
-            <button class="audio-btn play" onclick="togglePlay(this)"></button>
-            <button class="audio-btn next" onclick="nextTrack(this)"></button>
-          </div>
-          <audio src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3"></audio>
-        </div>
-      </div>
-
-      <!-- Viento -->
-      <div class="sound-card">
-        <img src="https://images.unsplash.com/photo-1500740516770-92bd004b996e?w=600&q=80" alt="Viento"
-          class="sound-card-bg">
-        <div class="sound-card-overlay">
-          <h3>Viento</h3>
-          <div class="audio-controls">
-            <button class="audio-btn prev" onclick="prevTrack(this)"></button>
-            <button class="audio-btn play" onclick="togglePlay(this)"></button>
-            <button class="audio-btn next" onclick="nextTrack(this)"></button>
-          </div>
-          <audio src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3"></audio>
-        </div>
-      </div>
+    <!-- Grid de sonidos (dinámico) -->
+    <section class="escucha-grid" id="soundsGrid">
+      <p style="text-align:center; color: #888; padding: 2rem;">Cargando sonidos...</p>
     </section>
   </main>
 
@@ -169,50 +66,7 @@
   </footer>
 
   <script src="js/navbar.js"></script>
-  <script>
-    // Control de reproducción de audio
-    function togglePlay(btn) {
-      const card = btn.closest('.sound-card');
-      const audio = card.querySelector('audio');
-
-      // Pausar todos los demás audios
-      document.querySelectorAll('.sound-card audio').forEach(a => {
-        if (a !== audio) {
-          a.pause();
-          a.currentTime = 0;
-        }
-      });
-
-      // Cambiar todos los botones a play
-      document.querySelectorAll('.audio-btn.pause').forEach(b => {
-        b.classList.remove('pause');
-        b.classList.add('play');
-      });
-
-      // Toggle play/pause del actual
-      if (audio.paused) {
-        audio.play();
-        btn.classList.remove('play');
-        btn.classList.add('pause');
-      } else {
-        audio.pause();
-        btn.classList.remove('pause');
-        btn.classList.add('play');
-      }
-    }
-
-    function prevTrack(btn) {
-      const card = btn.closest('.sound-card');
-      const audio = card.querySelector('audio');
-      audio.currentTime = Math.max(0, audio.currentTime - 10);
-    }
-
-    function nextTrack(btn) {
-      const card = btn.closest('.sound-card');
-      const audio = card.querySelector('audio');
-      audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
-    }
-  </script>
+  <script src="js/escucha.js"></script>
 </body>
 
 </html>

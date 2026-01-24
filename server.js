@@ -12,14 +12,14 @@ import { fileURLToPath } from 'url';
 
 // --- CONFIGURACIÓN INICIAL ---
 dotenv.config();
-const { 
-  MONGODB_URI, MONGODB_DB, 
-  PORT = 4000, 
-  API_KEY, 
-  AZURE_STORAGE_CONNECTION_STRING, 
-  AZURE_BLOB_CONTAINER, 
-  AZURE_STORAGE_ACCOUNT, 
-  AZURE_SAS_TOKEN 
+const {
+  MONGODB_URI, MONGODB_DB,
+  PORT = 4000,
+  API_KEY,
+  AZURE_STORAGE_CONNECTION_STRING,
+  AZURE_BLOB_CONTAINER,
+  AZURE_STORAGE_ACCOUNT,
+  AZURE_SAS_TOKEN
 } = process.env;
 
 // Cliente Azure
@@ -40,10 +40,10 @@ app.use(helmet({
       // Permitimos scripts normales dentro del HTML
       "script-src": ["'self'", "'unsafe-inline'"],
       // Permitimos botones con onclick (ESTA ES LA LÍNEA NUEVA QUE NECESITAS):
-      "script-src-attr": ["'unsafe-inline'"], 
+      "script-src-attr": ["'unsafe-inline'"],
       "img-src": ["'self'", "https:", "data:", `https://${AZURE_STORAGE_ACCOUNT}.blob.core.windows.net`],
-      "media-src": ["'self'", "https:", "data:", `https://${AZURE_STORAGE_ACCOUNT}.blob.core.windows.net`], 
-      "connect-src": ["'self'", `https://${AZURE_STORAGE_ACCOUNT}.blob.core.windows.net`] 
+      "media-src": ["'self'", "https:", "data:", `https://${AZURE_STORAGE_ACCOUNT}.blob.core.windows.net`],
+      "connect-src": ["'self'", `https://${AZURE_STORAGE_ACCOUNT}.blob.core.windows.net`]
     }
   }
 }));
@@ -52,19 +52,34 @@ app.use(express.json());
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Configuración Multer
-const upload = multer({
+// Configuración Multer para imágenes (comunidad)
+const uploadImages = multer({
   storage: multer.memoryStorage(),
-  limits: { fileSize: 8 * 2048 * 2048, files: 10}, 
+  limits: { fileSize: 60 * 1024 * 1024, files: 10 }, // 60MB max
   fileFilter: (req, file, cb) => {
     const isImage = /image\/(png|jpe?g|webp)/i.test(file.mimetype);
     cb(isImage ? null : new Error('Solo se permiten imágenes (png/jpg/webp)'), isImage);
   }
 });
 
+// Configuración Multer para sonidos (audio + imagen)
+const uploadSound = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 60 * 1024 * 1024, files: 2 }, // 60MB max
+  fileFilter: (req, file, cb) => {
+    const isAudio = /audio\/(mpeg|mp3|wav|ogg|x-wav|x-m4a)/i.test(file.mimetype);
+    const isImage = /image\/(png|jpe?g|webp)/i.test(file.mimetype);
+    if (isAudio || isImage) {
+      cb(null, true);
+    } else {
+      cb(new Error('Solo se permiten archivos de audio (MP3/WAV/OGG) e imágenes (PNG/JPG/WEBP)'), false);
+    }
+  }
+});
+
 // Helpers
-const randomName = (ext='bin') => crypto.randomBytes(8).toString('hex') + '.' + ext;
-const extFromMime = m => (m?.split('/')[1] || 'bin').replace('jpeg','jpg');
+const randomName = (ext = 'bin') => crypto.randomBytes(8).toString('hex') + '.' + ext;
+const extFromMime = m => (m?.split('/')[1] || 'bin').replace('jpeg', 'jpg');
 function blobUrlWithSas(blobName) {
   return `https://${AZURE_STORAGE_ACCOUNT}.blob.core.windows.net/${AZURE_BLOB_CONTAINER}/${blobName}?${AZURE_SAS_TOKEN}`;
 }
@@ -91,7 +106,7 @@ MongoClient.connect(MONGODB_URI).then(client => {
 app.get('/api/community', async (req, res) => {
   try {
     const posts = await db.collection('community')
-      .find({ status: 'approved' }) 
+      .find({ status: 'approved' })
       .sort({ createdAt: -1 })
       .toArray();
     const postsWithUrls = posts.map(post => ({
@@ -105,7 +120,7 @@ app.get('/api/community', async (req, res) => {
 });
 
 // 2. POST PÚBLICO (Subir sugerencia)
-app.post('/api/community', upload.array('photos', 3), async (req, res) => {
+app.post('/api/community', uploadImages.array('photos', 3), async (req, res) => {
   try {
     const { title, author, description, category, songUrl } = req.body;
     if (!title || !description) return res.status(400).json({ error: 'Faltan datos' });
@@ -128,7 +143,7 @@ app.post('/api/community', upload.array('photos', 3), async (req, res) => {
       category: category || 'general',
       songUrl: songUrl ? songUrl.trim() : null,
       photos,
-      status: 'pending', 
+      status: 'pending',
       createdAt: new Date()
     };
 
@@ -171,4 +186,219 @@ app.get('/api/admin/pending', adminGuard, async (req, res) => {
     }));
     res.json(pendingWithUrls);
   } catch (err) { res.status(500).json({ error: 'Error' }); }
+});
+
+
+// --- RUTAS PARA SONIDOS ---
+
+// 1. POST PÚBLICO (Subir sonido)
+app.post('/api/sounds', uploadSound.fields([
+  { name: 'audioFile', maxCount: 1 },
+  { name: 'coverImage', maxCount: 1 }
+]), async (req, res) => {
+  try {
+    const { title, description, category, tags } = req.body;
+
+    if (!title || !description) {
+      return res.status(400).json({ error: 'Título y descripción son obligatorios' });
+    }
+
+    if (!req.files || !req.files.audioFile || req.files.audioFile.length === 0) {
+      return res.status(400).json({ error: 'Debes subir un archivo de audio' });
+    }
+
+    // Procesar archivo de audio
+    const audioFile = req.files.audioFile[0];
+    const audioExt = extFromMime(audioFile.mimetype);
+    const audioBlobName = `sounds/audio/${Date.now()}_${randomName(audioExt)}`;
+    const audioBlockBlobClient = container.getBlockBlobClient(audioBlobName);
+    await audioBlockBlobClient.uploadData(audioFile.buffer, {
+      blobHTTPHeaders: { blobContentType: audioFile.mimetype }
+    });
+
+    // Procesar imagen de portada (si existe)
+    let coverImage = null;
+    if (req.files.coverImage && req.files.coverImage.length > 0) {
+      const imgFile = req.files.coverImage[0];
+      const imgExt = extFromMime(imgFile.mimetype);
+      const imgBlobName = `sounds/images/${Date.now()}_${randomName(imgExt)}`;
+      const imgBlockBlobClient = container.getBlockBlobClient(imgBlobName);
+      await imgBlockBlobClient.uploadData(imgFile.buffer, {
+        blobHTTPHeaders: { blobContentType: imgFile.mimetype }
+      });
+      coverImage = { blobName: imgBlobName, mime: imgFile.mimetype };
+    }
+
+    // Crear documento de sonido
+    const newSound = {
+      title: title.trim(),
+      description: description.trim(),
+      category: category || 'general',
+      tags: tags ? tags.split(',').map(t => t.trim()) : [],
+      audioFile: { blobName: audioBlobName, mime: audioFile.mimetype },
+      coverImage,
+      status: 'pending',
+      contributor: 'Comunidad',
+      createdAt: new Date()
+    };
+
+    const result = await db.collection('sounds').insertOne(newSound);
+    res.status(201).json({ ok: true, id: result.insertedId });
+  } catch (err) {
+    console.error('Error subiendo sonido:', err);
+    res.status(400).json({ error: 'Error al guardar el sonido' });
+  }
+});
+
+// 2. GET PÚBLICO (Obtener sonidos aprobados con filtros)
+app.get('/api/sounds', async (req, res) => {
+  try {
+    const { search, category } = req.query;
+
+    // Construir filtro
+    const filter = { status: 'approved' };
+
+    if (category && category !== '') {
+      filter.category = category;
+    }
+
+    if (search && search.trim() !== '') {
+      const searchRegex = new RegExp(search.trim(), 'i');
+      filter.$or = [
+        { title: searchRegex },
+        { description: searchRegex },
+        { tags: searchRegex }
+      ];
+    }
+
+    const sounds = await db.collection('sounds')
+      .find(filter)
+      .sort({ createdAt: -1 })
+      .toArray();
+
+    // Añadir URLs con SAS token
+    const soundsWithUrls = sounds.map(sound => ({
+      ...sound,
+      audioFile: sound.audioFile ? {
+        ...sound.audioFile,
+        url: blobUrlWithSas(sound.audioFile.blobName)
+      } : null,
+      coverImage: sound.coverImage ? {
+        ...sound.coverImage,
+        url: blobUrlWithSas(sound.coverImage.blobName)
+      } : null
+    }));
+
+    res.json(soundsWithUrls);
+  } catch (err) {
+    console.error('Error cargando sonidos:', err);
+    res.status(500).json({ error: 'Error al cargar sonidos' });
+  }
+});
+
+// 3. GET PÚBLICO (Detalle de un sonido)
+app.get('/api/sounds/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const sound = await db.collection('sounds').findOne({
+      _id: new ObjectId(id),
+      status: 'approved'
+    });
+
+    if (!sound) {
+      return res.status(404).json({ error: 'Sonido no encontrado' });
+    }
+
+    // Añadir URLs con SAS token
+    const soundWithUrls = {
+      ...sound,
+      audioFile: sound.audioFile ? {
+        ...sound.audioFile,
+        url: blobUrlWithSas(sound.audioFile.blobName)
+      } : null,
+      coverImage: sound.coverImage ? {
+        ...sound.coverImage,
+        url: blobUrlWithSas(sound.coverImage.blobName)
+      } : null
+    };
+
+    res.json(soundWithUrls);
+  } catch (err) {
+    console.error('Error obteniendo sonido:', err);
+    res.status(500).json({ error: 'Error al obtener el sonido' });
+  }
+});
+
+// 4. PUT PROTEGIDO (Aprobar sonido)
+app.put('/api/sounds/:id/approve', adminGuard, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await db.collection('sounds').updateOne(
+      { _id: new ObjectId(id) },
+      { $set: { status: 'approved' } }
+    );
+    res.json({ ok: true });
+  } catch (err) {
+    res.status(500).json({ error: 'Error al aprobar' });
+  }
+});
+
+// 5. DELETE PROTEGIDO (Borrar sonido)
+app.delete('/api/sounds/:id', adminGuard, async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Obtener el sonido para eliminar los archivos de Azure
+    const sound = await db.collection('sounds').findOne({ _id: new ObjectId(id) });
+
+    if (sound) {
+      // Eliminar archivo de audio de Azure
+      if (sound.audioFile && sound.audioFile.blobName) {
+        try {
+          const audioBlobClient = container.getBlockBlobClient(sound.audioFile.blobName);
+          await audioBlobClient.delete();
+        } catch (e) {
+          console.warn('Error eliminando audio de Azure:', e);
+        }
+      }
+
+      // Eliminar imagen de portada de Azure
+      if (sound.coverImage && sound.coverImage.blobName) {
+        try {
+          const imgBlobClient = container.getBlockBlobClient(sound.coverImage.blobName);
+          await imgBlobClient.delete();
+        } catch (e) {
+          console.warn('Error eliminando imagen de Azure:', e);
+        }
+      }
+    }
+
+    // Eliminar de MongoDB
+    await db.collection('sounds').deleteOne({ _id: new ObjectId(id) });
+    res.json({ ok: true });
+  } catch (err) {
+    console.error('Error eliminando sonido:', err);
+    res.status(500).json({ error: 'Error al eliminar' });
+  }
+});
+
+// 6. GET PROTEGIDO (Ver sonidos pendientes)
+app.get('/api/admin/sounds/pending', adminGuard, async (req, res) => {
+  try {
+    const pending = await db.collection('sounds').find({ status: 'pending' }).toArray();
+    const pendingWithUrls = pending.map(sound => ({
+      ...sound,
+      audioFile: sound.audioFile ? {
+        ...sound.audioFile,
+        url: blobUrlWithSas(sound.audioFile.blobName)
+      } : null,
+      coverImage: sound.coverImage ? {
+        ...sound.coverImage,
+        url: blobUrlWithSas(sound.coverImage.blobName)
+      } : null
+    }));
+    res.json(pendingWithUrls);
+  } catch (err) {
+    res.status(500).json({ error: 'Error al cargar pendientes' });
+  }
 });
