@@ -11,6 +11,7 @@
 
 /* 1.2 Variables (Root) */
 :root {
+
   /* Tipografía */
   --font-main: 'EB Garamond', serif;
 
@@ -37,7 +38,15 @@
   --spacing-lg: 2rem;
   --spacing-xl: 3rem;
   --spacing-xxl: 4rem;
+
+  .p {
+    !important font-size: 5rem;
+    line-height: 1.6;
+    --font-type: Acumin Pro, extralight;
+  }
 }
+
+
 
 /* === 2. RESET Y BASE === */
 * {

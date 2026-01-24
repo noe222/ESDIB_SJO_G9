@@ -6,6 +6,12 @@
 
 @media (min-width: 768px) {
 
+    .p {
+        font-size: 5rem;
+        line-height: 1.6;
+        --font-type: Acumin Pro, extralight;
+    }
+
     /* === HERO SECTION === */
     .hero-container {
         padding: 4rem 2rem;

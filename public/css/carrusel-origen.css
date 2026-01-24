@@ -1,0 +1,274 @@
+:root {
+    --body-padding: 2rem;
+    --card-width: 300px;
+}
+
+.carousel {
+    display: grid;
+    gap: 2rem;
+    grid-auto-flow: column;
+    scroll-snap-type: x mandatory;
+    overflow-x: auto;
+    anchor-name: --trip-carousel;
+    counter-reset: day;
+
+    /*  "break out" of body padding  */
+    width: 100dvw;
+    margin-left: calc(-1 * var(--body-padding));
+
+    /*  hide scrollbar  */
+    scrollbar-width: none;
+
+    /*  smooth scrolling  */
+    scroll-behavior: smooth;
+
+    /*  add prev/next buttons  */
+    &::scroll-button(left) {
+        content: "arrow_back_ios" / "Scroll Left";
+        position-area: left;
+        padding-left: 0.75rem;
+        transform: translateX(calc(2 * var(--body-padding)));
+    }
+
+    &::scroll-button(right) {
+        content: "arrow_forward_ios" / "Scroll Right";
+        position-area: right;
+        transform: translateX(calc(-2 * var(--body-padding)));
+    }
+
+    &::scroll-button(*) {
+        position: absolute;
+        position-anchor: --trip-carousel;
+        z-index: 1;
+        font-size: 1.5rem;
+        font-family: "Material Symbols Outlined";
+        font-variation-settings: "wght" 100;
+        display: grid;
+        place-items: center;
+        width: 3rem;
+        color: white;
+        aspect-ratio: 1 / 1;
+        border: 2px solid dimgray;
+        background: white;
+        border-radius: 100%;
+        cursor: pointer;
+        transition: font-variation-settings 0.25s ease, scale 0.25s ease;
+        background: #333;
+    }
+
+    &::scroll-button(*):disabled {
+        border: 2px solid blackgray;
+        color: gray;
+    }
+
+    &::scroll-button(*):not(:disabled):hover {
+        font-variation-settings: "wght" 400;
+        scale: 1.05;
+    }
+
+    &::scroll-button(*):focus-visible {
+        outline-offset: 5px;
+    }
+
+    /*  scroll markers  */
+    scroll-marker-group: after;
+
+    &::scroll-marker-group {
+        position: fixed;
+        position-anchor: --trip-carousel;
+        position-area: bottom;
+        margin-top: 2rem;
+        display: none;
+        /* Ocultar los marcadores numéricos */
+        gap: 0.25rem;
+    }
+
+    /*  This doesn't work but it would be cool if it did  -- idea placeholder */
+    /*   &::scroll-marker-group::before {
+    content: 'Day: ';
+    display: block;
+  } */
+
+    li::scroll-marker {
+        content: counter(day-num);
+        aspect-ratio: 1 / 1;
+        width: 1rem;
+        background: #444;
+        padding: 0.2rem;
+        font-size: 0.8rem;
+        color: white;
+        border-radius: 100%;
+        cursor: pointer;
+        display: grid;
+        place-content: center;
+        text-decoration: none;
+        transition: transform 0.2s ease;
+    }
+
+    li::scroll-marker:target-current {
+        anchor-name: --active-target;
+        transform: translateY(-0.5rem);
+    }
+
+    /*  Move first item over a bit  */
+    li:first-child {
+        margin-left: 5rem;
+    }
+}
+
+#week-2 {
+    position: absolute;
+    right: calc(-100dvw + var(--card-width));
+    visibility: hidden;
+}
+
+.day-card {
+    width: var(--card-width);
+    position: relative;
+    overflow: hidden;
+    counter-increment: day-num;
+    scroll-snap-align: center;
+    container-type: scroll-state;
+
+    img {
+        aspect-ratio: 4/5;
+        object-fit: cover;
+        object-position: bottom;
+    }
+
+    &:hover,
+    &:focus {
+        .meta {
+            transform: translateY(0);
+        }
+    }
+
+    .meta {
+        position: absolute;
+        bottom: 0;
+        width: calc(100% - 2rem);
+        transform: translateY(calc(100% - 3rem));
+        background: #333;
+        color: white;
+        padding: 1rem;
+        transition: transform 0.5s ease;
+
+        @container scroll-state(snapped: x) {
+            transform: translateY(0);
+        }
+    }
+
+    .desc {
+        line-height: 1.5;
+        font-weight: 300;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 1rem;
+    }
+
+    &::before {
+        counter-increment: day;
+        content: "Day " counter(day);
+        font-size: 0.8rem;
+        display: none;
+        /* Ocultar el contador de días */
+        position: absolute;
+        top: 0.5rem;
+        left: 0;
+        background: #222;
+        color: white;
+        padding: 0.5rem;
+        border-radius: 0 .75rem .75rem 0;
+    }
+}
+
+.flight,
+.train,
+.car {
+    &::after {
+        content: '';
+        position: absolute;
+        font-family: "Material Symbols Outlined";
+        font-size: 1.25rem;
+        font-family: "Material Symbols Outlined";
+        font-variation-settings: "wght" 100;
+        color: white;
+        background: #222;
+        border-radius: 100% 0 0 100%;
+        top: 0.5rem;
+        right: 0;
+        padding: 0.25rem;
+    }
+}
+
+.flight::after {
+    content: "travel" / "Flight";
+}
+
+.train::after {
+    content: "train" / "Train";
+}
+
+.car::after {
+    content: "directions_car" / "Car";
+}
+
+h1 {
+    font-size: 3rem;
+    line-height: 2;
+}
+
+img {
+    width: 100%;
+}
+
+/* Comentado para no afectar el estilo general de la página
+body {
+    font-family: system-ui;
+    padding: var(--body-padding) var(--body-padding) 8rem;
+    background: black;
+    color: white;
+}
+*/
+
+.action-bar {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 1rem;
+    display: flex;
+    gap: 1rem;
+
+    a {
+        border-bottom: 3px solid;
+        text-decoration: none;
+        padding-bottom: 0.25rem;
+        border-color: dimgray;
+        color: white;
+    }
+}
+
+.plane {
+    position: fixed;
+    width: 1.5rem;
+    display: flex;
+    justify-content: center;
+    position-anchor: --active-target;
+    inset: anchor(inside);
+    margin-top: anchor-size();
+    transition: inset 0.5s linear;
+
+    &::after {
+        font-size: 1.25rem;
+        font-family: "Material Symbols Outlined";
+        content: "navigation";
+    }
+}

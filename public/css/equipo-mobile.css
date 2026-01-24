@@ -1,0 +1,97 @@
+/* ========================================================================
+   EQUIPO-MOBILE.CSS - Estilos específicos para móvil de la página equipo
+   ======================================================================== */
+@media (max-width: 767px) {
+
+    /* Ocultar el carrusel animado  en mobile */
+    .equipo-carousel-section {
+        display: none;
+    }
+
+    /* === AJUSTES DEL LAYOUT MOBILE === */
+
+    /* Título centrado */
+    .equipo-title {
+        text-align: center;
+        font-size: 2rem;
+        margin: 2rem 0;
+    }
+
+    /* Sección intro con padding adecuado */
+    .equipo-intro {
+        padding: 1.5rem;
+        text-align: left;
+    }
+
+    .equipo-intro h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .equipo-intro p {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 0.8rem;
+    }
+
+    /* Foto de grupo a full width */
+    .equipo-group-photo {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .equipo-group-photo img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    /* Sección de fórmula/ecuación apilada verticalmente */
+    .equipo-formula {
+        padding: 2rem 1.5rem;
+        text-align: center;
+    }
+
+    .equipo-formula .star-icon {
+        margin: 0 auto 1rem;
+    }
+
+    .equipo-formula .formula-text {
+        margin: 1rem 0;
+        text-align: center;
+    }
+
+    .equipo-formula .emoji {
+        font-size: 2rem;
+        margin: 1rem 0;
+    }
+
+    .equipo-formula .formula-title {
+        font-size: 1.3rem;
+        margin: 1.5rem 0 0.5rem;
+    }
+
+    .equipo-formula p {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+
+    /* Logo del proyecto centrado */
+    .equipo-LOGOS {
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .equipo-logos img {
+        max-width: 200px;
+        height: auto;
+        margin: 0.5rem;
+    }
+
+    /* Footer mobile - ajustes si es necesario */
+    .simple-footer {
+        padding: 2rem 1.5rem;
+    }
+}
