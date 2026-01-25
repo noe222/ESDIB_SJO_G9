@@ -1,3 +1,8 @@
+/* ========================================================================
+   CARRUSEL-ORIGEN.CSS
+   Estilos avanzados con Scroll Snap y Anchor Positioning
+   ======================================================================== */
+
 :root {
     --body-padding: 2rem;
     --card-width: 300px;
@@ -12,34 +17,38 @@
     anchor-name: --trip-carousel;
     counter-reset: day;
 
-    /*  "break out" of body padding  */
-    width: 100dvw;
-    margin-left: calc(-1 * var(--body-padding));
+    /* --- CORRECCIÓN: LIMITAR ANCHO --- */
+    width: 100%;
+    max-width: 1000px; /* Limitamos el ancho para que no sea infinito */
+    margin: 0 auto;    /* Centramos el carrusel en la pantalla */
+    /* -------------------------------- */
+    
+    padding-bottom: 2rem;
 
-    /*  hide scrollbar  */
+    /* hide scrollbar  */
     scrollbar-width: none;
 
-    /*  smooth scrolling  */
+    /* smooth scrolling  */
     scroll-behavior: smooth;
 
-    /*  add prev/next buttons  */
+    /* Botones de navegación (Solo Desktop / Chrome Canary) */
     &::scroll-button(left) {
         content: "arrow_back_ios" / "Scroll Left";
         position-area: left;
         padding-left: 0.75rem;
-        transform: translateX(calc(2 * var(--body-padding)));
+        transform: translateX(-1rem); 
     }
 
     &::scroll-button(right) {
         content: "arrow_forward_ios" / "Scroll Right";
         position-area: right;
-        transform: translateX(calc(-2 * var(--body-padding)));
+        transform: translateX(1rem);
     }
 
     &::scroll-button(*) {
         position: absolute;
         position-anchor: --trip-carousel;
-        z-index: 1;
+        z-index: 10;
         font-size: 1.5rem;
         font-family: "Material Symbols Outlined";
         font-variation-settings: "wght" 100;
@@ -49,16 +58,16 @@
         color: white;
         aspect-ratio: 1 / 1;
         border: 2px solid dimgray;
-        background: white;
+        background: #333;
         border-radius: 100%;
         cursor: pointer;
         transition: font-variation-settings 0.25s ease, scale 0.25s ease;
-        background: #333;
     }
 
     &::scroll-button(*):disabled {
-        border: 2px solid blackgray;
+        border: 2px solid #555;
         color: gray;
+        opacity: 0.5;
     }
 
     &::scroll-button(*):not(:disabled):hover {
@@ -66,76 +75,54 @@
         scale: 1.05;
     }
 
-    &::scroll-button(*):focus-visible {
-        outline-offset: 5px;
-    }
-
-    /*  scroll markers  */
+    /* Scroll Markers */
     scroll-marker-group: after;
 
     &::scroll-marker-group {
         position: fixed;
         position-anchor: --trip-carousel;
         position-area: bottom;
-        margin-top: 2rem;
-        display: none;
-        /* Ocultar los marcadores numéricos */
-        gap: 0.25rem;
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        z-index: 10;
     }
 
-    /*  This doesn't work but it would be cool if it did  -- idea placeholder */
-    /*   &::scroll-marker-group::before {
-    content: 'Day: ';
-    display: block;
-  } */
-
     li::scroll-marker {
-        content: counter(day-num);
-        aspect-ratio: 1 / 1;
-        width: 1rem;
-        background: #444;
-        padding: 0.2rem;
-        font-size: 0.8rem;
-        color: white;
-        border-radius: 100%;
+        content: '';
+        width: 0.8rem;
+        height: 0.8rem;
+        background: #ccc;
+        border-radius: 50%;
         cursor: pointer;
-        display: grid;
-        place-content: center;
-        text-decoration: none;
-        transition: transform 0.2s ease;
+        transition: transform 0.2s ease, background 0.2s ease;
     }
 
     li::scroll-marker:target-current {
-        anchor-name: --active-target;
-        transform: translateY(-0.5rem);
+        background: var(--color-title);
+        transform: scale(1.2);
     }
-
-    /*  Move first item over a bit  */
-    li:first-child {
-        margin-left: 5rem;
-    }
-}
-
-#week-2 {
-    position: absolute;
-    right: calc(-100dvw + var(--card-width));
-    visibility: hidden;
 }
 
 .day-card {
     width: var(--card-width);
+    height: 400px;
     position: relative;
     overflow: hidden;
     counter-increment: day-num;
     scroll-snap-align: center;
-    container-type: scroll-state;
+    border-radius: 12px;
+    container-type: scroll-state; 
 
     img {
-        aspect-ratio: 4/5;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
-        object-position: bottom;
+        object-position: center;
     }
 
+    /* Efecto Hover para Desktop */
     &:hover,
     &:focus {
         .meta {
@@ -143,132 +130,51 @@
         }
     }
 
+    /* Información de la tarjeta */
     .meta {
         position: absolute;
         bottom: 0;
-        width: calc(100% - 2rem);
-        transform: translateY(calc(100% - 3rem));
-        background: #333;
+        left: 0;
+        width: 100%;
+        transform: translateY(100%); 
+        background: rgba(0, 0, 0, 0.7);
         color: white;
-        padding: 1rem;
-        transition: transform 0.5s ease;
-
-        @container scroll-state(snapped: x) {
-            transform: translateY(0);
-        }
-    }
-
-    .desc {
-        line-height: 1.5;
-        font-weight: 300;
+        padding: 1.5rem;
+        transition: transform 0.4s ease;
+        text-align: left;
     }
 
     h2 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-        letter-spacing: 2px;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        letter-spacing: 1px;
         text-transform: uppercase;
-        font-weight: 500;
-        font-size: 1rem;
+        font-weight: 600;
+        color: #fff;
     }
+    
+    .desc {
+        font-size: 0.9rem;
+        opacity: 0.9;
+    }
+}
 
-    &::before {
-        counter-increment: day;
-        content: "Day " counter(day);
-        font-size: 0.8rem;
+/* =========================================
+   MEDIA QUERY MÓVIL (max-width: 768px)
+   ========================================= */
+@media (max-width: 768px) {
+    
+    .carousel::scroll-button(*) {
         display: none;
-        /* Ocultar el contador de días */
-        position: absolute;
-        top: 0.5rem;
-        left: 0;
-        background: #222;
-        color: white;
-        padding: 0.5rem;
-        border-radius: 0 .75rem .75rem 0;
     }
-}
 
-.flight,
-.train,
-.car {
-    &::after {
-        content: '';
-        position: absolute;
-        font-family: "Material Symbols Outlined";
-        font-size: 1.25rem;
-        font-family: "Material Symbols Outlined";
-        font-variation-settings: "wght" 100;
-        color: white;
-        background: #222;
-        border-radius: 100% 0 0 100%;
-        top: 0.5rem;
-        right: 0;
-        padding: 0.25rem;
+    .day-card {
+        width: 85vw; 
     }
-}
 
-.flight::after {
-    content: "travel" / "Flight";
-}
-
-.train::after {
-    content: "train" / "Train";
-}
-
-.car::after {
-    content: "directions_car" / "Car";
-}
-
-h1 {
-    font-size: 3rem;
-    line-height: 2;
-}
-
-img {
-    width: 100%;
-}
-
-/* Comentado para no afectar el estilo general de la página
-body {
-    font-family: system-ui;
-    padding: var(--body-padding) var(--body-padding) 8rem;
-    background: black;
-    color: white;
-}
-*/
-
-.action-bar {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-weight: 400;
-    font-size: 1rem;
-    display: flex;
-    gap: 1rem;
-
-    a {
-        border-bottom: 3px solid;
-        text-decoration: none;
-        padding-bottom: 0.25rem;
-        border-color: dimgray;
-        color: white;
-    }
-}
-
-.plane {
-    position: fixed;
-    width: 1.5rem;
-    display: flex;
-    justify-content: center;
-    position-anchor: --active-target;
-    inset: anchor(inside);
-    margin-top: anchor-size();
-    transition: inset 0.5s linear;
-
-    &::after {
-        font-size: 1.25rem;
-        font-family: "Material Symbols Outlined";
-        content: "navigation";
+    .day-card .meta {
+        transform: translateY(0) !important;
+        background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0));
+        padding-top: 3rem;
     }
 }

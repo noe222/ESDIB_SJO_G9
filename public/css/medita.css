@@ -1,0 +1,198 @@
+/* ========================================================================
+   MEDITA.CSS
+   ======================================================================== */
+
+/* Variable de color local para fácil clonación en Siente */
+:root {
+  --bg-medita-theme: #EAE0D5; /* Color beige/arena del wireframe */
+  --color-medita-text: #5c5c5c;
+  --color-medita-title: #5C5C5C;
+}
+
+/* === 1. HERO (Fondo Blanco) === */
+.medita-hero {
+  background-color: #fff;
+  padding: 6rem 1.5rem 4rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-icon-container {
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  /*background-color: var(--bg-medita-theme); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.hero-icon {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.page-title {
+  font-size: 4rem;
+  color: var(--color-medita-title);
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+}
+
+.page-subtitle {
+  font-size: 1.2rem;
+  color: var(--color-medita-text);
+  font-style: italic;
+  font-weight: 300;
+}
+
+
+/* === 2. SECCIONES DE CONTENIDO (Fondo Beige) === */
+.bg-medita-theme {
+  background-color: var(--bg-medita-theme);
+  padding: 4rem 1.5rem;
+  min-height: 50vh; /* Asegura que ocupe espacio */
+}
+
+.pt-0 {
+  padding-top: 0 !important;
+}
+
+.section-header {
+  text-align: left;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+.section-header h2 {
+  font-size: 3rem;
+  color: var(--color-medita-title);
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--color-medita-text);
+  font-style: italic;
+}
+
+
+/* === 3. ACORDEONES === */
+.accordion-item {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding-bottom: 2rem;
+}
+
+.accordion-item:last-child {
+  border-bottom: none;
+}
+
+/* Cabecera del item (Clickable) */
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 1rem 0;
+}
+
+.accordion-header h3 {
+  font-size: 1.5rem;
+  color: var(--color-medita-title);
+  font-weight: 500;
+  margin: 0;
+}
+
+.accordion-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.3s ease;
+}
+
+.arrow-icon {
+  width: 20px; /* Tamaño de la flecha */
+  height: auto;
+  display: block;
+}
+
+/* Texto de descripción (siempre visible) */
+.accordion-preview {
+  font-size: 1rem;
+  color: var(--color-medita-text);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  max-width: 90%;
+}
+
+
+/* === 4. CONTENIDO DESPLEGABLE (ZIG-ZAG) === */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+  opacity: 0;
+}
+
+/* Clase activa para abrir */
+.accordion-item.active .accordion-content {
+  max-height: 1000px; /* Altura suficiente para el contenido */
+  opacity: 1;
+  transition: max-height 0.5s ease-in, opacity 0.3s ease-in;
+  margin-top: 2rem;
+}
+
+/* Contenedor Zig-Zag */
+.zig-zag-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0 1rem;
+}
+
+.step {
+  max-width: 70%; /* No ocupan todo el ancho para notar el zig-zag */
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-medita-text);
+  position: relative;
+}
+
+.step strong {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-right: 0.5rem;
+}
+
+/* Lógica Zig-Zag CSS */
+/* Impares a la izquierda */
+.step:nth-child(odd) {
+  align-self: flex-start;
+  text-align: left;
+}
+
+/* Pares a la derecha */
+.step:nth-child(even) {
+  align-self: flex-end;
+  text-align: right;
+}
+
+
+/* === MEDIA QUERIES === */
+@media (min-width: 768px) {
+  .medita-hero { padding: 8rem 2rem 6rem; }
+  .page-title { font-size: 5rem; }
+  
+  .section-header, .accordion-item {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}

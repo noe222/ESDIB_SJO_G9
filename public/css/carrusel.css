@@ -1,185 +1,122 @@
-@layer base, demo;
-@import url(https://fonts.bunny.net/css?family=abel:400);
+/* ========================================================================
+   CARRUSEL.CSS (Versión Marquee Animado)
+   Adaptado para integración en Neuma
+   ======================================================================== */
 
-@layer demo {
+.carousel {
+    /* Variables de configuración */
+    --items: 6; /* Número de miembros */
+    --carousel-duration: 40s;
+    --carousel-item-width: 250px;
+    --carousel-item-height: 380px;
+    --carousel-item-gap: 2rem;
+
+    /* Ancho total del contenedor visible */
+    width: 100%;
+    max-width: 1200px; /* Límite de ancho para que no se desmadre */
+    height: var(--carousel-item-height);
+    
+    position: relative;
+    overflow: hidden; /* Oculta lo que sale */
+    margin: 0 auto;
+
+    /* Máscara de desvanecimiento en los bordes */
+    mask-image: linear-gradient(to right, transparent, black 10% 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10% 90%, transparent);
+}
+
+/* Ajuste de velocidad para pantallas grandes */
+@media (min-width: 768px) {
     .carousel {
-        --items: 6;
-        --carousel-duration: 40s;
-
-        @media (width > 600px) {
-            --carousel-duration: 30s;
-        }
-
-        --carousel-width: min(80vw,
-            800px);
-        /* note - it will "break" if it gets too wide and there aren't enough items */
+        --carousel-duration: 30s;
         --carousel-item-width: 280px;
-        --carousel-item-height: 450px;
-        --carousel-item-gap: 2rem;
-
-        --clr-cta: rgb(0, 132, 209);
-
-        position: relative;
-        width: var(--carousel-width);
-        height: var(--carousel-item-height);
-        overflow: clip;
-
-        &[mask] {
-            /* fade out on sides */
-            mask-image: linear-gradient(to right,
-                    transparent,
-                    black 10% 90%,
-                    transparent);
-        }
-
-        &[reverse]>article {
-            animation-direction: reverse;
-        }
-
-        /* hover pauses animation */
-        &:hover>article {
-            animation-play-state: paused;
-        }
-    }
-
-    .carousel>article {
-        position: absolute;
-        top: 0;
-        left: calc(100% + var(--carousel-item-gap));
-        width: var(--carousel-item-width);
-        height: var(--carousel-item-height);
-        display: grid;
-        grid-template-rows: 200px auto 1fr auto;
-        gap: 0.25rem;
-        border: 1px solid light-dark(rgba(0 0 0 / 0.25), rgba(255 255 255 / 0.15));
-
-        padding-block-end: 1rem;
-        border-radius: 10px;
-        background: light-dark(white, rgba(255 255 255 / 0.05));
-        color: light-dark(rgb(49, 65, 88), white);
-
-        /* animation */
-        will-change: transform;
-        animation-name: marquee;
-        animation-duration: var(--carousel-duration);
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-        animation-delay: calc(var(--carousel-duration) / var(--items) * 1 * var(--i) * -1);
-
-        &:nth-child(1) {
-            --i: 0;
-        }
-
-        &:nth-child(2) {
-            --i: 1;
-        }
-
-        &:nth-child(3) {
-            --i: 2;
-        }
-
-        &:nth-child(4) {
-            --i: 3;
-        }
-
-        &:nth-child(5) {
-            --i: 4;
-        }
-
-        &:nth-child(6) {
-            --i: 5;
-        }
-
-        &:nth-child(7) {
-            --i: 6;
-        }
-
-        &:nth-child(8) {
-            --i: 7;
-        }
-    }
-
-    .carousel img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-
-        border-radius: 10px 10px 0 0;
-    }
-
-    .carousel>article>*:not(img) {
-        padding: 0 1rem;
-    }
-
-    .carousel>article>div {
-        grid-row: span 2;
-        display: grid;
-        grid-template-rows: subgrid;
-        font-size: 0.8rem;
-    }
-
-    .carousel>article h2 {
-        font-size: 1.2rem;
-        font-weight: 300;
-        padding-block: 0.75rem 0.25rem;
-        margin: 0;
-    }
-
-    .carousel>article p {
-        margin: 0;
-    }
-
-    .carousel>article a {
-        text-decoration: none;
-        text-transform: lowercase;
-        border: 1px solid var(--clr-cta);
-        color: light-dark(var(--clr-cta), white);
-        border-radius: 3px;
-        padding: 0.25rem 0.5rem;
-        place-self: start;
-        transition: 150ms ease-in-out;
-
-        &:hover,
-        &:focus-visible {
-            background-color: var(--clr-cta);
-            color: white;
-            outline: none;
-        }
-    }
-
-    @keyframes marquee {
-        100% {
-            transform: translateX(calc((var(--items) * (var(--carousel-item-width) + var(--carousel-item-gap))) * -1));
-        }
     }
 }
 
-/* general styling */
-@layer base {
-    * {
-        box-sizing: border-box;
+/* Pausar animación al pasar el ratón */
+.carousel:hover > article {
+    animation-play-state: paused;
+}
+
+/* --- TARJETA INDIVIDUAL (ARTICLE) --- */
+.carousel > article {
+    position: absolute;
+    top: 0;
+    /* Posición inicial fuera de pantalla a la derecha */
+    left: 100%; 
+    
+    width: var(--carousel-item-width);
+    height: var(--carousel-item-height);
+    
+    display: flex;
+    flex-direction: column;
+    
+    border-radius: 12px;
+    background: #fff; /* Fondo blanco */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Sombra suave */
+    overflow: hidden;
+
+    /* ANIMACIÓN MARQUEE */
+    will-change: transform;
+    animation-name: marquee;
+    animation-duration: var(--carousel-duration);
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    
+    /* Retraso calculado para que salgan en orden: (Duración / Items) * Indice * -1 */
+    animation-delay: calc(var(--carousel-duration) / var(--items) * (var(--items) - var(--i)) * -1);
+}
+
+/* Asignación de índices para el cálculo del delay */
+.carousel > article:nth-child(1) { --i: 1; }
+.carousel > article:nth-child(2) { --i: 2; }
+.carousel > article:nth-child(3) { --i: 3; }
+.carousel > article:nth-child(4) { --i: 4; }
+.carousel > article:nth-child(5) { --i: 5; }
+.carousel > article:nth-child(6) { --i: 6; }
+
+
+/* --- ESTILOS INTERNOS DE LA TARJETA --- */
+.carousel > article img {
+    width: 100%;
+    height: 80%; /* La imagen ocupa el 80% */
+    object-fit: cover;
+    object-position: top center;
+}
+
+.carousel > article > div {
+    padding: 1rem;
+    text-align: center;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.carousel > article h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--color-title);
+    font-family: var(--font-main);
+}
+
+.carousel > article p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--color-text);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- KEYFRAMES --- */
+@keyframes marquee {
+    /* Empieza a la derecha (controlado por left: 100%) y se mueve hacia la izquierda */
+    from {
+        transform: translateX(0);
     }
-
-    :root {
-        color-scheme: light dark;
-
-        --bg-dark: rgb(2, 6, 24);
-        --bg-light: rgb(229, 229, 229);
-        --txt-light: rgb(10, 10, 10);
-        --txt-dark: rgb(245, 245, 245);
-    }
-
-    body {
-        background-color: light-dark(var(--bg-light), var(--bg-dark));
-        color: light-dark(var(--txt-light), var(--txt-dark));
-        min-height: 100svh;
-        margin: 0;
-        padding: 1rem;
-        font-size: 1rem;
-        font-family: "Abel", sans-serif;
-        line-height: 1.5;
-        display: grid;
-        place-items: center;
-        gap: 2rem;
+    to {
+        /* Se mueve la distancia total de todos los items + gaps */
+        transform: translateX(calc((var(--items) * (var(--carousel-item-width) + var(--carousel-item-gap))) * -1));
     }
 }

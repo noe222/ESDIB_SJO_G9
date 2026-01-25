@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Neuma | Siente</title>
-  <link rel="stylesheet" href="css/style.css" />
+  
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/siente.css">
 </head>
-
 <body>
 
   <header class="navbar">
@@ -32,71 +32,107 @@
   </header>
 
   <main>
-    <section class="page-intro snap-section">
-      <div class="intro-icon">
-        <img src="assets/images/estrella.svg" alt="Siente">
+    
+    <section class="siente-hero">
+      <div class="hero-icon-container">
+        <img src="assets/images/estrella.svg" alt="Icono Siente" class="hero-icon">
       </div>
-      <h1>Siente</h1>
-      <p>Reconecta con tus sentidos y el mundo real.</p>
+      
+      <h1 class="page-title">Siente</h1>
+      <p class="page-subtitle">Conecta con tus emociones.</p>
     </section>
 
-    <section class="topic-section">
-      <div class="topic-container split">
-        <div class="topic-visual bg-beige">
-          <span><img src="assets/pictures/libro.jpg" alt="Libro"></span>
-        </div>
-        <div class="topic-text">
-          <h2>Leer un libro es...</h2>
-          <p class="subtitle">Volver a imaginar.</p>
-          <p>El papel no tiene notificaciones. Sumérgete en una historia sin interrupciones.</p>
-          <a href="#" class="btn-more">Pulsa para más &rarr;</a>
-        </div>
+    <section class="content-section bg-siente-theme">
+      
+      <div class="section-header">
+        <h2>Gestión Emocional</h2> <p class="section-subtitle">Herramientas para entender lo que sientes.</p>
       </div>
+
+      <article class="accordion-item">
+        <div class="accordion-header">
+          <h3>Diario de Gratitud</h3> <button class="accordion-toggle">
+            <img src="assets/images/iconos_neuma-07.png" alt="Abrir" class="arrow-icon">
+          </button>
+        </div>
+        <div class="accordion-preview">
+          <p>Escribir diariamente las cosas positivas ayuda a reenfocar la mente.</p>
+        </div>
+        <div class="accordion-content">
+          <div class="zig-zag-steps">
+            <div class="step"><strong>1.</strong> Busca un momento tranquilo del día, preferiblemente por la noche.</div>
+            <div class="step"><strong>2.</strong> Toma un cuaderno y anota 3 cosas buenas que te pasaron hoy.</div>
+            <div class="step"><strong>3.</strong> Reflexiona sobre cómo te hicieron sentir esos momentos.</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="accordion-item">
+        <div class="accordion-header">
+          <h3>Escaneo Corporal</h3>
+          <button class="accordion-toggle">
+            <img src="assets/images/iconos_neuma-07.png" alt="Abrir" class="arrow-icon">
+          </button>
+        </div>
+        <div class="accordion-preview">
+          <p>Detecta dónde se alojan tus emociones físicamente.</p>
+        </div>
+        <div class="accordion-content">
+          <div class="zig-zag-steps">
+            <div class="step"><strong>1.</strong> Siéntate cómodamente y cierra los ojos.</div>
+            <div class="step"><strong>2.</strong> Recorre mentalmente tu cuerpo desde los pies a la cabeza.</div>
+            <div class="step"><strong>3.</strong> Observa sin juzgar cualquier tensión o sensación.</div>
+          </div>
+        </div>
+      </article>
+
     </section>
 
-    <section class="topic-section">
-      <div class="topic-container split reverse">
-        <div class="topic-visual bg-green">
-          <span><img src="assets/pictures/4 foto.png" alt="Naturaleza"></span>
-        </div>
-        <div class="topic-text">
-          <h2>Conectar con la naturaleza...</h2>
-          <p class="subtitle">Respira aire puro.</p>
-          <p>Sal afuera, toca la tierra, mira el cielo. Eres parte de ello.</p>
-          <a href="#" class="btn-more">Pulsa para más &rarr;</a>
-        </div>
+    <section class="content-section bg-siente-theme pt-0">
+      
+      <div class="section-header">
+        <h2>Rutinas</h2>
+        <p class="section-subtitle">Pequeños hábitos para el día a día.</p>
       </div>
+
+      <article class="accordion-item">
+        <div class="accordion-header">
+          <h3>Mañanas Conscientes</h3>
+          <button class="accordion-toggle">
+            <img src="assets/images/iconos_neuma-07.png" alt="Abrir" class="arrow-icon">
+          </button>
+        </div>
+        <div class="accordion-preview">
+          <p>Empieza el día con intención y calma.</p>
+        </div>
+        <div class="accordion-content">
+          <div class="zig-zag-steps">
+             <div class="step"><strong>1.</strong> Evita el móvil durante los primeros 15 minutos.</div>
+             <div class="step"><strong>2.</strong> Bebe un vaso de agua con atención plena.</div>
+             <div class="step"><strong>3.</strong> Establece una intención positiva para tu día.</div>
+          </div>
+        </div>
+      </article>
+      
     </section>
 
-    <section class="topic-section">
-      <div class="topic-container split">
-        <div class="topic-visual bg-beige">
-          <span><img src="assets/pictures/8 foto.png" alt="Desconexión"></span>
-        </div>
-        <div class="topic-text">
-          <h2>Escapa de las tecnologías...</h2>
-          <p class="subtitle">Modo avión activado.</p>
-          <p>Descubre el placer de no estar disponible por un rato.</p>
-          <a href="#" class="btn-more">Pulsa para más &rarr;</a>
-        </div>
-      </div>
-    </section>
   </main>
 
-  <footer class="simple-footer snap-section">
-    <div class="footer-logo"><img src="assets/images/neuma_logo.svg" alt="neuma"></div>
-    <hr class="footer-separator">
+  <footer class="simple-footer">
+    <a href="index.html" class="footer-logo">
+      <img src="assets/images/neuma_logo.svg" alt="neuma">
+    </a>
+    <div class="footer-separator"></div>
     <div class="footer-links">
-      <a href="index.html">Inicio</a>
-      <a href="medita.html">Medita</a>
       <a href="origen.html">Origen</a>
-      <a href="escucha.html">Escucha</a>
       <a href="equipo.html">Equipo</a>
+      <a href="comunidad.html">Comunidad</a>
+      <a href="medita.html">Medita</a>
       <a href="siente.html">Siente</a>
+      <a href="escucha.html">Escucha</a>
     </div>
   </footer>
 
   <script src="js/navbar.js"></script>
+  <script src="js/acordeon.js"></script> 
 </body>
-
 </html>

@@ -1,0 +1,193 @@
+/* ========================================================================
+   SIENTE.CSS
+   Clon de medita.css con cambio de paleta de colores
+   ======================================================================== */
+
+:root {
+  /* CAMBIO DE COLOR: Ajusta este HEX al color oficial de Siente */
+  --bg-siente-theme: #D0DFA3; /* Azul suave por defecto */
+  --color-siente-text: #5C5C5C;
+  --color-siente-title: #5C5C5C;
+}
+
+/* === 1. HERO (Fondo Blanco) === */
+.siente-hero {
+  background-color: #fff;
+  padding: 6rem 1.5rem 4rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-icon-container {
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  /*background-color: var(--bg-medita-theme); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.hero-icon {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.page-title {
+  font-size: 4rem;
+  color: var(--color-siente-title);
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+}
+
+.page-subtitle {
+  font-size: 1.2rem;
+  color: var(--color-siente-text);
+  font-style: italic;
+  font-weight: 300;
+}
+
+
+/* === 2. SECCIONES DE CONTENIDO (Fondo Color) === */
+.bg-siente-theme {
+  background-color: var(--bg-siente-theme);
+  padding: 4rem 1.5rem;
+  min-height: 50vh;
+}
+
+.pt-0 {
+  padding-top: 0 !important;
+}
+
+.section-header {
+  text-align: left;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+.section-header h2 {
+  font-size: 3rem;
+  color: var(--color-siente-title);
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--color-siente-text);
+  font-style: italic;
+}
+
+
+/* === 3. ACORDEONES (Estilos compartidos) === */
+.accordion-item {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding-bottom: 2rem;
+}
+
+.accordion-item:last-child {
+  border-bottom: none;
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 1rem 0;
+}
+
+.accordion-header h3 {
+  font-size: 1.5rem;
+  color: var(--color-siente-title);
+  font-weight: 500;
+  margin: 0;
+}
+
+.accordion-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.3s ease;
+}
+
+.arrow-icon {
+  width: 20px;
+  height: auto;
+  display: block;
+}
+
+.accordion-preview {
+  font-size: 1rem;
+  color: var(--color-siente-text);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  max-width: 90%;
+}
+
+
+/* === 4. CONTENIDO DESPLEGABLE (ZIG-ZAG) === */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+  opacity: 0;
+}
+
+.accordion-item.active .accordion-content {
+  max-height: 1000px;
+  opacity: 1;
+  transition: max-height 0.5s ease-in, opacity 0.3s ease-in;
+  margin-top: 2rem;
+}
+
+.zig-zag-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0 1rem;
+}
+
+.step {
+  max-width: 70%;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-siente-text);
+  position: relative;
+}
+
+.step strong {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-right: 0.5rem;
+}
+
+/* Lógica Zig-Zag */
+.step:nth-child(odd) {
+  align-self: flex-start;
+  text-align: left;
+}
+
+.step:nth-child(even) {
+  align-self: flex-end;
+  text-align: right;
+}
+
+
+/* === MEDIA QUERIES === */
+@media (min-width: 768px) {
+  .siente-hero { padding: 8rem 2rem 6rem; }
+  .page-title { font-size: 5rem; }
+  
+  .section-header, .accordion-item {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
