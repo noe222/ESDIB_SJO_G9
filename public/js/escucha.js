@@ -39,7 +39,7 @@ function renderSounds(sounds) {
 
     sounds.forEach(sound => {
         // Imagen de portada (usar placeholder si no hay)
-        const imgSrc = sound.coverImage?.url || 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=600&q=80';
+        const imgSrc = sound.coverImage?.url || 'https://neumastorage2025.blob.core.windows.net/esdibcontainerg9/imagenes_juntas_Neuma/';
 
         // ID del sonido para MongoDB
         const soundId = sound._id?.$oid || sound._id;

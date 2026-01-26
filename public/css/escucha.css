@@ -1,255 +1,166 @@
 /* ========================================================================
-   ESCUCHA.CSS - Estilos para la galería de sonidos y detalle
-   Dependencias: Requiere base.css cargado previamente
+   ESCUCHA.CSS - Estilos visuales ajustados
    ======================================================================== */
 
-/* === 1. VISTA LISTA (escucha.html) === */
+/* Fondo general color crema/beige suave (según imagen) */
+body.bg-escucha-theme {
+  background-color: #F9F4EF;
+}
 
-/* Intro específica de Escucha */
+/* Navbar transparente o del mismo color en esta página */
+.bg-escucha-theme .navbar {
+  background-color: #F9F4EF; /* Coincide con el fondo */
+}
+
+/* === 1. INTRODUCCIÓN === */
 .page-intro {
-  padding: var(--spacing-xl) 1rem 1rem;
-  background-color: #FDFBF7; /* Fondo suave */
+  padding: 4rem 1rem 2rem;
+  background-color: #F9F4EF;
+  text-align: center;
 }
 
 .intro-icon img {
-  width: 80px;
+  width: 4100px; /* Icono olas grande */
   height: auto;
-  margin: 0 auto 1rem;
+  margin: 0 auto 1.5rem;
   display: block;
+  opacity: 0.8;
 }
 
-/* Barra de Búsqueda */
+.page-intro h1 {
+  font-size: 3.5rem;
+  color: var(--color-title);
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-main);
+}
+
+.page-intro p {
+  font-size: 1.5rem;
+  color: var(--color-text);
+  font-style: italic;
+  font-family: var(--font-main);
+}
+
+
+/* === 2. BARRA DE BÚSQUEDA === */
 .search-section {
-  background-color: #FDFBF7;
-  padding: 0 1rem 2rem;
+  background-color: #F9F4EF;
+  padding: 0 1.5rem 3rem;
   width: 100%;
 }
 
 .search-container {
-  max-width: 600px;
+  max-width: 400px; /* No muy ancha */
   margin: 0 auto;
+  position: relative;
 }
 
 .search-bar {
   width: 100%;
-  padding: 1rem 1.5rem;
+  padding: 1rem 1.5rem 1rem 3rem; /* Padding izq para icono lupa */
   font-family: var(--font-main);
   font-size: 1rem;
-  border: 1px solid #D4C4B0;
-  border-radius: 30px;
-  background-color: #ffffff;
-  color: var(--color-text);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+  border: none;
+  border-radius: 20px; /* Bordes redondeados pero no pill completa */
+  background-color: #E2D5C8; /* Tono más oscuro del beige */
+  color: #5C5C5C;
   transition: all 0.3s ease;
+}
+
+.search-bar::placeholder {
+  color: #7A7A7A;
 }
 
 .search-bar:focus {
   outline: none;
-  border-color: #A89B87;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  background-color: #DCCfc2;
 }
 
-.search-bar::placeholder {
-  color: #999;
-  font-style: italic;
+/* Icono de lupa (pseudo-elemento o imagen de fondo) */
+.search-container::before {
+  content: '🔍'; /* O usa un background-image url() */
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.5;
+  font-size: 1.2rem;
+  pointer-events: none;
 }
 
-/* Grid de Sonidos (Mobile First: Columna) */
+
+/* === 3. GRID DE SONIDOS (LISTA) === */
 .escucha-grid {
-  background-color: #FDFBF7;
+  background-color: #F9F4EF;
   display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  padding: 0 1.5rem 4rem;
-  max-width: 1200px;
+  flex-direction: column; /* Móvil: Columna */
+  gap: 2rem;
+  padding: 0 1.5rem 6rem;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
-/* Tarjeta de Sonido */
+/* TARJETA DE SONIDO (Estilo "Pastilla") */
 .sound-card {
   position: relative;
-  height: 200px; /* Altura visible en móvil */
-  border-radius: 20px;
+  height: 250px; /* Altura generosa en móvil */
+  border-radius: 50px; /* Bordes MUY redondeados como en la imagen */
   overflow: hidden;
   text-decoration: none;
   display: block;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Sombra marcada */
+  transition: transform 0.3s ease;
 }
 
 .sound-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform: scale(1.02);
 }
 
 .sound-card-bg {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  filter: brightness(0.85); /* Un poco oscurecida para leer texto */
 }
 
-.sound-card:hover .sound-card-bg {
-  transform: scale(1.05);
-}
-
+/* Título sobre la imagen */
 .sound-card-overlay {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 60%);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 1.5rem;
+  padding: 2rem;
+  text-align: center;
+  /* Degradado sutil solo abajo */
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
 }
 
 .sound-card h3 {
   color: #ffffff;
-  font-size: 1.5rem;
-  font-weight: 500;
+  font-size: 2rem; /* Texto grande */
+  font-weight: 400;
   margin: 0;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: var(--font-main); /* Serif */
+  letter-spacing: 0.5px;
 }
 
 
-/* === 2. VISTA DETALLE (escucha-detalle.html) === */
-
-.sound-detail-page {
-  min-height: 100vh;
-  padding: 6rem 1.5rem 3rem;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start; /* Alineado arriba para evitar cortes */
-  background-color: #FDFBF7;
-}
-
-.sound-detail-container {
-  width: 100%;
-  max-width: 600px; /* Ancho lectura cómodo */
-  text-align: center;
-}
-
-/* Imagen Principal con Controles */
-.sound-detail-image {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1/1; /* Cuadrada */
-  border-radius: 30px;
-  overflow: hidden;
-  margin-bottom: 2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-}
-
-.detail-bg-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Controles Flotantes */
-.sound-detail-controls {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 1.5rem;
-  background-color: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  padding: 0.8rem 2rem;
-  border-radius: 50px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-/* Botones de Reproducción */
-.audio-btn-large {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #ffffff;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2rem;
-  color: var(--color-title);
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.audio-btn-large:hover {
-  transform: scale(1.1);
-}
-
-.audio-btn-large.play { font-size: 1.5rem; width: 60px; height: 60px; }
-
-/* Textos Detalle */
-.sound-detail-title {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: var(--color-title);
-}
-
-.sound-detail-description {
-  margin-bottom: 3rem;
-  color: var(--color-text);
-  line-height: 1.8;
-  font-size: 1rem;
-}
-
-
-/* ========================================================================
-   MEDIA QUERIES DESKTOP (Min-width: 768px)
-   ======================================================================== */
+/* === 4. MEDIA QUERIES DESKTOP === */
 @media (min-width: 768px) {
   
-  /* Ajustes Lista */
-  .page-intro {
-    padding: 4rem 2rem 2rem;
-  }
+  .page-intro { padding-top: 6rem; }
 
+  /* Grid 3 columnas */
   .escucha-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas en desktop */
-    gap: 2rem;
-    padding: 0 2rem 6rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
   }
 
+  /* Tarjetas menos altas en desktop para mantener proporción */
   .sound-card {
-    height: 250px; /* Más altas en desktop */
-  }
-
-  /* Ajustes Detalle */
-  .sound-detail-page {
-    align-items: center; /* Centrado vertical en desktop */
-    padding-top: 4rem;
-  }
-
-  .sound-detail-container {
-    max-width: 900px;
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Dos columnas: imagen | texto */
-    gap: 4rem;
-    text-align: left;
-    align-items: center;
-  }
-
-  .sound-detail-image {
-    margin-bottom: 0;
-  }
-
-  .sound-detail-title {
-    font-size: 3.5rem;
-    line-height: 1.1;
-  }
-  
-  /* Botón volver alineado a la izquierda en desktop */
-  .sound-detail-container .btn-back {
-    margin-top: 1rem;
-    display: inline-block;
+    height: 300px;
+    border-radius: 40px;
   }
 }
