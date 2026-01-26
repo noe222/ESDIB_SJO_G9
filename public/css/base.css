@@ -425,7 +425,7 @@ body.no-scroll {
 
   /* Separador Vertical */
   .footer-separator {
-    width: 1px;
+    width: 3px;
     height: 80px; /* Altura de la línea */
     background-color: var(--color-title);
     border: none;
@@ -445,6 +445,6 @@ body.no-scroll {
   
   .footer-links a {
     text-align: left;
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
 }

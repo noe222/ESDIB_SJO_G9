@@ -42,7 +42,7 @@
 }
 
 .hero-subtitle {
-  font-size: 1rem;
+  font-size: 1.9rem;
   margin-bottom: var(--spacing-md);
 }
 
@@ -50,7 +50,7 @@
 .hero-corner-right {
   position: absolute;
   bottom: var(--spacing-lg);
-  font-size: 0.9rem;
+  font-size: 1.9rem;
 }
 
 .hero-corner-left { left: var(--spacing-lg); }
@@ -86,25 +86,26 @@
 }
 
 .card-content h2 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   margin-bottom: var(--spacing-xs);
   font-weight: 500;
   color: var(--color-title);
 }
 
 .card-content .card-subtitle {
-  font-size: 1rem;
+  font-size: 1.7rem;
   margin-bottom: var(--spacing-md);
   color: var(--color-text);
   line-height: 1.5;
 }
 
 .card-content .card-description {
-  font-size: 0.85rem;
+  font-size: 1.3rem;
   margin-bottom: var(--spacing-md);
   color: var(--color-text);
-  line-height: 1.6;
+  line-height: 1.4;
   max-width: 320px;
+  align-items: stretch;
 }
 
 /* Círculo con Icono */
@@ -138,12 +139,12 @@
 .card-content .card-subtitle { order: 2; }    /* 2. Subtítulo */
 .circle-icon { 
   order: 3;                                   /* 3. Logo en grande */
-  margin: 1rem 0;                             /* Espaciado extra */
+  margin: 0.7rem 0;                             /* Espaciado extra */
 } 
 .card-content .card-description { order: 4; } /* 4. Párrafo */
 .big-arrow-link { 
   order: 5;                                   /* 5. Flecha */
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 /* ========================================================================
@@ -204,8 +205,8 @@
 
   /* Ajuste del Logo Desktop (Sin fondo, solo icono flotante) */
   .circle-icon {
-    width: 550px;
-    height: 550px;
+    width: 625px;
+    height: 625px;
     margin: 0;
     background-color: transparent; 
     box-shadow: none;            
@@ -223,9 +224,9 @@
 
   /* --- DIRECCIONES (ZIG ZAG) --- */
   .normal-order .text-side { margin-right: auto; }
-  .normal-order .visual-side { right: -140px; }
+  .normal-order .visual-side { right: -220px; }
 
   .reverse-order { flex-direction: row-reverse; }
   .reverse-order .text-side { margin-left: auto; text-align: right; align-items: flex-end; }
-  .reverse-order .visual-side { left: -140px; }
+  .reverse-order .visual-side { left: -160px; }
 }

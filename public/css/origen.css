@@ -24,7 +24,7 @@
 }
 
 .intro-header h1 {
-  font-size: 3rem;
+  font-size: 5rem;
   color: var(--color-title);
   margin-bottom: 1rem;
 }
@@ -45,14 +45,14 @@
 }
 
 .origin-column h3 {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 500;
   color: var(--color-title);
   margin-bottom: 1rem;
 }
 
 .origin-column p {
-  font-size: 1rem;
+  font-size: 1.3rem;
   line-height: 1.6;
   color: var(--color-text);
   padding: 0 1rem;
@@ -79,14 +79,14 @@
 }
 
 .values-title {
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-bottom: 1.5rem;
   font-weight: 400;
   color: var(--color-title);
 }
 
 .definition-text {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   line-height: 1.6;
   color: var(--color-text);
 }
@@ -125,7 +125,7 @@
   .values-section { padding: 4rem 2rem; }
   .visual-gallery { padding: 0 2rem 6rem; }
   
-  .intro-header h1 { font-size: 4rem; }
+  .intro-header h1 { font-size: 5rem; }
 
   /* Columnas Intro */
   .origin-columns {

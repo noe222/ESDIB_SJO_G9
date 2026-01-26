@@ -39,14 +39,14 @@
 }
 
 .page-title {
-  font-size: 4rem;
+  font-size: 5rem;
   color: var(--color-siente-title);
   margin-bottom: 0.5rem;
   font-weight: 400;
 }
 
 .page-subtitle {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: var(--color-siente-text);
   font-style: italic;
   font-weight: 300;
@@ -71,13 +71,13 @@
 }
 
 .section-header h2 {
-  font-size: 3rem;
+  font-size: 2.3rem;
   color: var(--color-siente-title);
   margin-bottom: 0.5rem;
 }
 
 .section-subtitle {
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   color: var(--color-siente-text);
   font-style: italic;
 }
@@ -104,7 +104,7 @@
 }
 
 .accordion-header h3 {
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: var(--color-siente-title);
   font-weight: 500;
   margin: 0;
@@ -157,7 +157,7 @@
 
 .step {
   max-width: 70%;
-  font-size: 1rem;
+  font-size: 1.4rem;
   line-height: 1.6;
   color: var(--color-siente-text);
   position: relative;
