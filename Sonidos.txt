@@ -1,0 +1,64 @@
+Sonido 1:
+- Título: Hoguera
+- Audio Azure: sounds/audio/hoguera.mp3
+- Imagen Azure: imagenes_juntas_Neuma/sonidos_hoguera.png
+- Descripción: (si quieres cambiarla)
+- Categoría: naturaleza
+- Tags: fuego, calidez, relajación
+
+Sonido 2:
+- Título: Bosque
+- Audio Azure: sounds/audio/bosque.mp3
+- Imagen Azure: imagenes_juntas_Neuma/sonidos_bosque.png
+- Descripción: (si quieres cambiarla)
+- Categoría: naturaleza
+- Tags: bosque, silencio, relajación
+
+Sonido 3:
+-Título: Mar
+-Audio Azure: sounds/audio/mar.mp3
+-Imagen Azure: imagenes_juntas_Neuma/sonidos_mar.png
+-Descripción: (si quieres cambiarla)
+-Categoría: naturaleza
+-Tags: mar, calidez, relajación
+
+Sonido 4:
+-Título: Lluvia
+-Audio Azure: sounds/audio/lluvia.mp3
+-Imagen Azure: imagenes_juntas_Neuma/sonidos_lluvia.png
+-Descripción: (si quieres cambiarla)
+-Categoría: naturaleza
+-Tags: lluvia, calidez, relajación
+
+Sonido 5:
+-Título: Tormenta
+-Audio Azure: sounds/audio/tormenta.mp3
+-Imagen Azure: imagenes_juntas_Neuma/sonidos_tormenta.png
+-Descripción: (si quieres cambiarla)
+-Categoría: naturaleza
+-Tags: tormenta, calidez, relajación
+
+Sonido 6:
+-Título: Playa
+-Audio Azure: sounds/audio/playa.mp3
+-Imagen Azure: imagenes_juntas_Neuma/sonidos_playa.png
+-Descripción: (si quieres cambiarla)
+-Categoría: naturaleza
+-Tags: playa, calidez, relajación
+
+Sonido 7:
+-Título: Viento
+-Audio Azure: sounds/audio/viento.mp3
+-Imagen Azure: imagenes_juntas_Neuma/sonidos_viento.png
+-Descripción: (si quieres cambiarla)
+-Categoría: naturaleza
+-Tags: viento, calidez, relajación
+
+Sonido 8:
+-Título: Noche
+-Audio Azure: sounds/audio/noche.mp3
+-Imagen Azure: imagenes_juntas_Neuma/sonidos_noche.png
+-Descripción: (si quieres cambiarla)
+-Categoría: naturaleza
+-Tags: noche, calidez, relajación
+

@@ -2,17 +2,16 @@
    ESCUCHA.CSS - Estilos visuales ajustados
    ======================================================================== */
 
-/* Fondo general color crema/beige suave (según imagen) */
+/* --- 1. CONFIGURACIÓN GENERAL Y NAVBAR --- */
 body.bg-escucha-theme {
   background-color: #F9F4EF;
 }
 
-/* Navbar transparente o del mismo color en esta página */
 .bg-escucha-theme .navbar {
-  background-color: #F9F4EF; /* Coincide con el fondo */
+  background-color: #F9F4EF;
 }
 
-/* === 1. INTRODUCCIÓN === */
+/* --- 2. INTRODUCCIÓN --- */
 .page-intro {
   padding: 4rem 1rem 2rem;
   background-color: #F9F4EF;
@@ -20,7 +19,8 @@ body.bg-escucha-theme {
 }
 
 .intro-icon img {
-  width: 4100px; /* Icono olas grande */
+  width: 100%;
+  max-width: 400px;
   height: auto;
   margin: 0 auto 1.5rem;
   display: block;
@@ -42,8 +42,7 @@ body.bg-escucha-theme {
   font-family: var(--font-main);
 }
 
-
-/* === 2. BARRA DE BÚSQUEDA === */
+/* --- 3. BARRA DE BÚSQUEDA --- */
 .search-section {
   background-color: #F9F4EF;
   padding: 0 1.5rem 3rem;
@@ -51,19 +50,19 @@ body.bg-escucha-theme {
 }
 
 .search-container {
-  max-width: 400px; /* No muy ancha */
+  max-width: 400px;
   margin: 0 auto;
   position: relative;
 }
 
 .search-bar {
   width: 100%;
-  padding: 1rem 1.5rem 1rem 3rem; /* Padding izq para icono lupa */
+  padding: 1rem 1.5rem 1rem 3rem;
   font-family: var(--font-main);
   font-size: 1rem;
   border: none;
-  border-radius: 20px; /* Bordes redondeados pero no pill completa */
-  background-color: #E2D5C8; /* Tono más oscuro del beige */
+  border-radius: 20px;
+  background-color: #E2D5C8;
   color: #5C5C5C;
   transition: all 0.3s ease;
 }
@@ -77,39 +76,41 @@ body.bg-escucha-theme {
   background-color: #DCCfc2;
 }
 
-/* Icono de lupa (pseudo-elemento o imagen de fondo) */
+/* Icono Lupa */
 .search-container::before {
-  content: '🔍'; /* O usa un background-image url() */
+  content: '';
+  background-image: url(https://neumastorage2025.blob.core.windows.net/esdibcontainerg9/imagenes_juntas_Neuma/iconografia_lupa.png);
+  background-size: contain;
+  background-repeat: no-repeat;
   position: absolute;
   left: 1rem;
   top: 50%;
   transform: translateY(-50%);
   opacity: 0.5;
-  font-size: 1.2rem;
+  width: 2rem;
+  height: 1.9rem;
   pointer-events: none;
 }
 
-
-/* === 3. GRID DE SONIDOS (LISTA) === */
+/* --- 4. GRID DE SONIDOS (VISTA GALERÍA) --- */
 .escucha-grid {
   background-color: #F9F4EF;
   display: flex;
-  flex-direction: column; /* Móvil: Columna */
+  flex-direction: column;
   gap: 2rem;
   padding: 0 1.5rem 6rem;
   max-width: 1000px;
   margin: 0 auto;
 }
 
-/* TARJETA DE SONIDO (Estilo "Pastilla") */
 .sound-card {
   position: relative;
-  height: 250px; /* Altura generosa en móvil */
-  border-radius: 50px; /* Bordes MUY redondeados como en la imagen */
+  height: 250px;
+  border-radius: 50px;
   overflow: hidden;
   text-decoration: none;
   display: block;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Sombra marcada */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease;
 }
 
@@ -121,10 +122,9 @@ body.bg-escucha-theme {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.85); /* Un poco oscurecida para leer texto */
+  filter: brightness(0.85);
 }
 
-/* Título sobre la imagen */
 .sound-card-overlay {
   position: absolute;
   bottom: 0;
@@ -132,35 +132,195 @@ body.bg-escucha-theme {
   width: 100%;
   padding: 2rem;
   text-align: center;
-  /* Degradado sutil solo abajo */
   background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
 }
 
 .sound-card h3 {
   color: #ffffff;
-  font-size: 2rem; /* Texto grande */
+  font-size: 2rem;
   font-weight: 400;
   margin: 0;
-  font-family: var(--font-main); /* Serif */
+  font-family: var(--font-main);
   letter-spacing: 0.5px;
 }
 
 
-/* === 4. MEDIA QUERIES DESKTOP === */
+/* --- 5. VISTA DETALLE (VISTA REPRODUCTOR) --- */
+.sound-detail-page {
+    padding: 2rem 1.5rem 4rem; /* Padding reducido en móvil */
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    background-color: #F9F4EF;
+}
+
+.sound-detail-container {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* Imagen Principal */
+.sound-detail-image {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    aspect-ratio: 1 / 1;
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    background-color: #fff;
+}
+
+.detail-bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Controles Flotantes (Contenedor) */
+.sound-detail-controls {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    
+    background: rgba(255, 255, 255, 0.3); /* Un poco más visible */
+    backdrop-filter: blur(15px);
+    padding: 10px 25px;
+    border-radius: 60px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    
+    /* Asegura que el contenedor crezca si los botones crecen */
+    width: auto; 
+    min-width: 300px;
+}
+
+/* Botones base */
+.audio-btn-large {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+    padding: 0;
+}
+
+.audio-btn-large:hover {
+    transform: scale(1.1);
+}
+
+.audio-btn-large:active {
+    transform: scale(0.95);
+}
+
+/* === TAMAÑO DE ICONOS (MÓVIL) === */
+.icon-control {
+    width: 35px; /* Tamaño decente para móvil */
+    height: auto;
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3));
+}
+
+.icon-play-pause {
+    width: 40px; /* Play destaca más */
+    height: auto;
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3));
+}
+
+/* Textos Detalle */
+.sound-detail-title {
+    font-size: 2rem;
+    color: var(--color-title, #5C5C5C);
+    margin: 0;
+    font-weight: 400;
+}
+
+.sound-detail-description {
+    font-size: 0.5rem;
+    line-height: 1.2;
+    color: var(--color-text, #5C5C5C);
+    max-width: 500px;
+}
+
+.btn-back {
+    display: inline-block;
+    margin-top: 1rem;
+    text-decoration: none;
+    color: #ffffff;
+    border: 1px solid #ccc;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+    background-color: #333;
+    color: #fff;
+    border-color: #333;
+}
+
+
+/* ========================================================================
+   6. MEDIA QUERIES DESKTOP (Min-width: 768px)
+   Aquí está todo lo que cambia en pantallas grandes
+   ======================================================================== */
 @media (min-width: 768px) {
   
+  /* Ajustes Generales */
   .page-intro { padding-top: 6rem; }
 
-  /* Grid 3 columnas */
+  /* --- GRID DE SONIDOS (Escritorio) --- */
   .escucha-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 3rem;
   }
 
-  /* Tarjetas menos altas en desktop para mantener proporción */
   .sound-card {
     height: 300px;
     border-radius: 40px;
+  }
+
+  /* --- VISTA DETALLE / REPRODUCTOR (Escritorio) --- */
+  .sound-detail-page {
+    padding-top: 6rem;
+  }
+
+  /* Hacemos la imagen del reproductor más grande en escritorio */
+  .sound-detail-image {
+    max-width: 600px; 
+    border-radius: 60px;
+  }
+
+  /* Controles más grandes y espaciados */
+  .sound-detail-controls {
+    padding: 10px 20px;
+    gap: 2.5rem;
+    bottom: 10px;
+  }
+
+  /* === TAMAÑO DE ICONOS (ESCRITORIO - MÁS GRANDES) === */
+  .icon-control {
+    width: 120px; /* Avanzar/Retroceder grandes */
+  }
+
+  .icon-play-pause {
+    width: 60px; /* Play muy grande */
+  }
+
+  .sound-detail-title {
+    font-size: 3.5rem;
   }
 }

@@ -13,11 +13,11 @@ const defaultSounds = [
         category: 'naturaleza',
         tags: ['fuego', 'calidez', 'relajación'],
         audioFile: {
-            blobName: 'sounds/hoguera.mp3', // Tendrás que subir el archivo real
+            blobName: 'sounds/audio/hoguera.mp3',
             mime: 'audio/mpeg'
         },
         coverImage: {
-            blobName: 'sounds/images/hoguera.jpg',
+            blobName: 'imagenes_juntas_Neuma/sonidos_hoguera.jpg',
             mime: 'image/jpeg'
         },
         status: 'approved',
@@ -28,13 +28,13 @@ const defaultSounds = [
         title: 'Bosque',
         description: 'Los susurros del bosque te envuelven en una experiencia auditiva única. El canto de los pájaros, el murmullo de las hojas y la brisa entre los árboles crean una atmósfera perfecta para la meditación.',
         category: 'naturaleza',
-        tags: ['bosque', 'naturaleza', 'pájaros'],
+        tags: ['bosque', 'silencio', 'relajación'],
         audioFile: {
-            blobName: 'sounds/bosque.mp3',
+            blobName: 'sounds/audio/bosque.mp3',
             mime: 'audio/mpeg'
         },
         coverImage: {
-            blobName: 'sounds/images/bosque.jpg',
+            blobName: 'imagenes_juntas_Neuma/sonidos_bosque.jpg',
             mime: 'image/jpeg'
         },
         status: 'approved',
@@ -45,31 +45,14 @@ const defaultSounds = [
         title: 'Mar',
         description: 'Las olas del mar rompen suavemente en la orilla, creando un ritmo natural y relajante. Perfecto para desconectar y encontrar la calma interior.',
         category: 'naturaleza',
-        tags: ['mar', 'olas', 'playa'],
+        tags: ['mar', 'calidez', 'relajación'],
         audioFile: {
-            blobName: 'sounds/mar.mp3',
+            blobName: 'sounds/audio/mar.mp3',
             mime: 'audio/mpeg'
         },
         coverImage: {
-            blobName: 'sounds/images/mar.jpg',
-            mime: 'image/jpeg'
-        },
-        status: 'approved',
-        contributor: 'Neuma',
-        createdAt: new Date()
-    },
-    {
-        title: 'Playa',
-        description: 'El sonido de la playa combina las olas del mar con la brisa marina, transportándote a un lugar de paz y serenidad.',
-        category: 'naturaleza',
-        tags: ['playa', 'mar', 'olas'],
-        audioFile: {
-            blobName: 'sounds/playa.mp3',
-            mime: 'audio/mpeg'
-        },
-        coverImage: {
-            blobName: 'sounds/images/playa.jpg',
-            mime: 'image/jpeg'
+            blobName: 'imagenes_juntas_Neuma/sonidos_mar.png',
+            mime: 'image/png'
         },
         status: 'approved',
         contributor: 'Neuma',
@@ -79,31 +62,14 @@ const defaultSounds = [
         title: 'Lluvia',
         description: 'El sonido rítmico de la lluvia cayendo suavemente, perfecto para concentrarse, relajarse o conciliar el sueño.',
         category: 'naturaleza',
-        tags: ['lluvia', 'agua', 'relajación'],
+        tags: ['lluvia', 'calidez', 'relajación'],
         audioFile: {
-            blobName: 'sounds/lluvia.mp3',
+            blobName: 'sounds/audio/lluvia.mp3',
             mime: 'audio/mpeg'
         },
         coverImage: {
-            blobName: 'sounds/images/lluvia.jpg',
-            mime: 'image/jpeg'
-        },
-        status: 'approved',
-        contributor: 'Neuma',
-        createdAt: new Date()
-    },
-    {
-        title: 'Noche',
-        description: 'Los sonidos nocturnos de la naturaleza: grillos, búhos y la calma de la noche estrellada.',
-        category: 'ambiente',
-        tags: ['noche', 'naturaleza', 'calma'],
-        audioFile: {
-            blobName: 'sounds/noche.mp3',
-            mime: 'audio/mpeg'
-        },
-        coverImage: {
-            blobName: 'sounds/images/noche.jpg',
-            mime: 'image/jpeg'
+            blobName: 'imagenes_juntas_Neuma/sonidos_lluvia.png',
+            mime: 'image/png'
         },
         status: 'approved',
         contributor: 'Neuma',
@@ -113,14 +79,31 @@ const defaultSounds = [
         title: 'Tormenta',
         description: 'El poder de la naturaleza capturado en el sonido de una tormenta: truenos lejanos, lluvia intensa y el viento.',
         category: 'naturaleza',
-        tags: ['tormenta', 'lluvia', 'truenos'],
+        tags: ['tormenta', 'calidez', 'relajación'],
         audioFile: {
-            blobName: 'sounds/tormenta.mp3',
+            blobName: 'sounds/audio/tormenta.mp3',
             mime: 'audio/mpeg'
         },
         coverImage: {
-            blobName: 'sounds/images/tormenta.jpg',
-            mime: 'image/jpeg'
+            blobName: 'imagenes_juntas_Neuma/sonidos_tormenta.png',
+            mime: 'image/png'
+        },
+        status: 'approved',
+        contributor: 'Neuma',
+        createdAt: new Date()
+    },
+    {
+        title: 'Playa',
+        description: 'El sonido de la playa combina las olas del mar con la brisa marina, transportándote a un lugar de paz y serenidad.',
+        category: 'naturaleza',
+        tags: ['playa', 'calidez', 'relajación'],
+        audioFile: {
+            blobName: 'sounds/audio/playa.mp3',
+            mime: 'audio/mpeg'
+        },
+        coverImage: {
+            blobName: 'imagenes_juntas_Neuma/sonidos_playa.png',
+            mime: 'image/png'
         },
         status: 'approved',
         contributor: 'Neuma',
@@ -130,13 +113,30 @@ const defaultSounds = [
         title: 'Viento',
         description: 'La brisa suave del viento entre los árboles y la hierba, un sonido que conecta con la esencia de la naturaleza.',
         category: 'naturaleza',
-        tags: ['viento', 'brisa', 'naturaleza'],
+        tags: ['viento', 'calidez', 'relajación'],
         audioFile: {
-            blobName: 'sounds/viento.mp3',
+            blobName: 'sounds/audio/viento.mp3',
             mime: 'audio/mpeg'
         },
         coverImage: {
-            blobName: 'sounds/images/viento.jpg',
+            blobName: 'imagenes_juntas_Neuma/sonidos_viento.png',
+            mime: 'image/png'
+        },
+        status: 'approved',
+        contributor: 'Neuma',
+        createdAt: new Date()
+    },
+    {
+        title: 'Noche',
+        description: 'Los sonidos nocturnos de la naturaleza: grillos, búhos y la calma de la noche estrellada.',
+        category: 'naturaleza',
+        tags: ['noche', 'calidez', 'relajación'],
+        audioFile: {
+            blobName: 'sounds/audio/noche.mp3',
+            mime: 'audio/mpeg'
+        },
+        coverImage: {
+            blobName: 'imagenes_juntas_Neuma/sonidos_noche.jpg',
             mime: 'image/jpeg'
         },
         status: 'approved',
@@ -160,8 +160,8 @@ async function seedSounds() {
         if (count > 0) {
             console.log(`⚠️  Ya hay ${count} sonidos en la base de datos.`);
             console.log('¿Quieres eliminarlos y empezar de cero? Comenta la línea de abajo:');
-            // await soundsCollection.deleteMany({});
-            // console.log('🗑️  Sonidos anteriores eliminados');
+            await soundsCollection.deleteMany({});
+            console.log('🗑️  Sonidos anteriores eliminados');
         }
 
         // Insertar sonidos por defecto

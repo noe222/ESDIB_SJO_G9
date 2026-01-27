@@ -137,7 +137,7 @@ body.no-scroll {
 
 /* Flecha de enlace grande */
 .big-arrow-link img {
-  width: 60px;
+  width: 100px;
   margin-top: var(--spacing-sm);
   transition: transform 0.3s ease;
 }
@@ -250,7 +250,7 @@ body.no-scroll {
 
 /* === 6. FOOTER GLOBAL (SIMPLE) === */
 .simple-footer {
-  background-color: var(--footer-bg);
+  background-color: var(--footºer-bg);
   padding: var(--spacing-xxl) var(--spacing-lg);
   text-align: center;
   min-height: 40vh;
