@@ -21,8 +21,7 @@
 }
 
 .intro-header h1 {
-  font-size: 3rem;
-  color: var(--color-title);
+
   margin-bottom: 1rem;
 }
 
@@ -170,7 +169,7 @@
 @media (min-width: 768px) {
   
   .page-intro-section { padding: 6rem 2rem 4rem; }
-  .intro-header h1 { font-size: 4rem; }
+  .intro-header h1 { font-size: 5rem; }
 
   /* 3 Columnas */
   .equipo-columns {

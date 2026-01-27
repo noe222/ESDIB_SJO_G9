@@ -89,7 +89,7 @@ h3 { font-size: 1.5rem; }
 h4 { font-size: 1.25rem; }
 
 p {
-  font-size: 2rem;
+  font-size: 1rem;
   line-height: 1.6;
 }
 
@@ -302,6 +302,23 @@ body.no-scroll {
    MEDIA QUERIES GLOBALES (DESKTOP > 768px)
    ======================================================================== */
 @media (min-width: 768px) {
+
+/* Tipografía Base */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-main);
+  font-weight: 500;
+  color: var(--color-title);
+  line-height: 1.2;
+}
+
+h1, h2 { font-size: 5.125rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
 
   /* --- Navbar Desktop --- */
   .navbar {
