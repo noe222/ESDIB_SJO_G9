@@ -145,7 +145,7 @@
     }
 
     h2 {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         margin-bottom: 0.5rem;
         letter-spacing: 1px;
         text-transform: uppercase;
@@ -154,7 +154,7 @@
     }
     
     .desc {
-        font-size: 0.9rem;
+        font-size: 1rem;
         opacity: 0.9;
     }
 }
@@ -176,5 +176,18 @@
         transform: translateY(0) !important;
         background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0));
         padding-top: 3rem;
+    }
+
+        h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: #fff;
+    }
+    
+    .desc {
+        font-size: 0.7rem;
     }
 }

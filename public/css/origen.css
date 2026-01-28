@@ -44,14 +44,14 @@
 }
 
 .origin-column h3 {
-  font-size: 2rem;
+  font-size: 2.15rem;
   font-weight: 500;
   color: var(--color-title);
   margin-bottom: 1rem;
 }
 
 .origin-column p {
-  font-size: 1.3rem;
+  font-size: 1rem;
   line-height: 1.6;
   color: var(--color-text);
   padding: 0 1rem;
@@ -78,16 +78,22 @@
 }
 
 .values-title {
-  font-size: 2rem;
+  font-size: 1.7rem;
   margin-bottom: 1.5rem;
   font-weight: 400;
   color: var(--color-title);
+  width: 60%;
+  text-align: left;
+  justify-self: center;
 }
 
 .definition-text {
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 1.6;
   color: var(--color-text);
+  max-width: 60%;
+  text-align: left;
+  justify-self: center;
 }
 
 .identity-img {
@@ -152,12 +158,12 @@
   }
 
   .values-title {
-    font-size: 3.5rem;
-    margin-bottom: 2rem;
+    font-size: 2.1rem;
+    margin-bottom: 1.8rem;
   }
   
   .definition-text {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
   }
 
   .identity-image-side {
