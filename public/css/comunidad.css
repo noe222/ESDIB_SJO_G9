@@ -2,8 +2,16 @@
     .community-container {
       max-width: 900px;
       margin: 4rem auto;
-      padding: 0 1rem;
+      padding: 1.5rem 1rem;
     }
+    
+    .community-container p{
+      font-size: 1rem;
+      text-align: left; 
+      margin-bottom: 2rem; 
+      color: #666;
+    }
+
 
     /* Formulario */
     .upload-box {

@@ -11,28 +11,28 @@
 @font-face {
   font-family: 'Acumin Pro';
   src: url('https://neumastorage2025.blob.core.windows.net/esdibcontainerg9/fonts/Acumin-RPro.otf') format('opentype');
-  font-weight: 400;
+  font-weight: 200;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Acumin Pro';
   src: url('https://neumastorage2025.blob.core.windows.net/esdibcontainerg9/fonts/Acumin-ItPro.otf') format('opentype');
-  font-weight: 400;
+  font-weight: 200;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Acumin Pro';
   src: url('https://neumastorage2025.blob.core.windows.net/esdibcontainerg9/fonts/Acumin-BdPro.otf') format('opentype');
-  font-weight: 400;
+  font-weight: 200;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Acumin Pro';
   src: url('https://neumastorage2025.blob.core.windows.net/esdibcontainerg9/fonts/Acumin-BdItPro.otf') format('opentype');
-  font-weight: 400;
+  font-weight: 200;
   font-style: italic;
 }
 
@@ -79,7 +79,6 @@
 }
 
 html {
-  font-size: 1rem; /* Base 1rem = 16px */
   scroll-behavior: smooth; /* Mantenemos el scroll suave nativo */
   height: 100%;
 }
@@ -115,12 +114,12 @@ ul {
 /* Títulos (EB Garamond) */
 h1, h2, h3, h4, h5, h6, .page-title, .logo-text {
   font-family: var(--font-title);
-  font-weight: 700;
+  font-weight: 650;
   color: var(--color-title);
   line-height: 1.2;
 }
 
-h1, h2 { font-size: 5.3rem; }
+h1, h2 { font-size: 3rem; }
 h3 { font-size: 1.5rem; }
 h4 { font-size: 1.2rem; }
 h5 {
@@ -223,7 +222,7 @@ body.no-scroll {
 }
 
 .logo img {
-  width: 80px;
+  width: 90px;
   height: auto;
 }
 
@@ -323,8 +322,9 @@ body.no-scroll {
 }
 
 .footer-logo img {
-  width: 100px;
+  width: 150px;
   margin: 0 auto;
+  padding-top: 1rem;
 }
 
 .footer-separator {
@@ -363,12 +363,12 @@ body.no-scroll {
   /* Tipografía Base Desktop */
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-title);
-    font-weight: 700;
+    font-weight: 650;
     color: var(--color-title);
     line-height: 1.2;
   }
 
-  h1, h2 { font-size: 5.3rem; }
+  h1, h2 { font-size: 3rem; }
   h3 { font-size: 1.5rem; }
   h4 { font-size: 1.25rem; }
 
@@ -383,7 +383,7 @@ body.no-scroll {
   }
 
   .logo img {
-    width: 120px;
+    width: 110px;
   }
 
   /* Menú Hamburguesa: VISIBLE en Desktop */
@@ -477,15 +477,16 @@ body.no-scroll {
   }
   .footer-logo img {
     width: 140px;
+    margin: 0 3rem 0 7rem;
   }
 
   .footer-separator {
-    width: 3px;
-    height: 80px; 
+    width: 0.1rem;
+    height: 5rem; 
     background-color: var(--color-title);
     border: none;
-    margin: 0 3rem; 
-    opacity: 0.3;
+    margin: 0 3rem;
+    opacity: 0.7;
   }
 
   .footer-links {

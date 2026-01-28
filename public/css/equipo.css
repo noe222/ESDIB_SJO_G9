@@ -18,11 +18,13 @@
 .intro-header {
   text-align: left;
   margin-bottom: 3rem;
+  max-width: 90%;
 }
 
 .intro-header h1 {
 
   margin-bottom: 1rem;
+  padding-top: 2rem;
 }
 
 .intro-separator {
@@ -30,6 +32,7 @@
   border-top: 1px solid var(--color-title);
   width: 100%;
   opacity: 0.5;
+  margin-top: 1rem;
 }
 
 /* Columnas de Texto */
@@ -42,10 +45,10 @@
 }
 
 .column h3 {
-  font-size: 1.7rem;
+  font-size: 2.15rem;
   font-weight: 500;
   color: var(--color-title);
-  margin-bottom: 1rem;
+  margin: 1rem 0 1rem;
 }
 
 .column p {

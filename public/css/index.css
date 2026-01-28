@@ -44,7 +44,7 @@
 
 /* 2. Logo Central */
 .hero-logo {
-  width: 200px;
+  width: 250px;
   filter: brightness(0) invert(1); /* Blanco */
   order: 2; /* Va segundo */
   margin-bottom: 1rem;
@@ -164,7 +164,7 @@
   }
 
   .hero-logo {
-    width: 255px;
+    width: 300px;
     margin-bottom: var(--spacing-lg);
     order: unset; /* Quitamos el orden flex */
   }

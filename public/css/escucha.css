@@ -4,17 +4,17 @@
 
 /* --- 1. CONFIGURACIÓN GENERAL Y NAVBAR --- */
 body.bg-escucha-theme {
-  background-color: #F9F4EF;
+  background-color: #ffffff;
 }
 
 .bg-escucha-theme .navbar {
-  background-color: #F9F4EF;
+  background-color: #ffffff;
 }
 
 /* --- 2. INTRODUCCIÓN --- */
 .page-intro {
   padding: 4rem 1rem 2rem;
-  background-color: #F9F4EF;
+  background-color: #ffffff;
   text-align: center;
 }
 
@@ -24,15 +24,15 @@ body.bg-escucha-theme {
   height: auto;
   margin: 0 auto 1.5rem;
   display: block;
-  opacity: 0.8;
+  object-fit: contain;
 }
 
 .page-intro h1 {
   font-size: 3.5rem;
   color: var(--color-title);
-  font-weight: 400;
+  font-weight: 500;
   margin-bottom: 0.5rem;
-  font-family: var(--font-main);
+  font-family: var(--font-title);
 }
 
 .page-intro p {
@@ -44,7 +44,7 @@ body.bg-escucha-theme {
 
 /* --- 3. BARRA DE BÚSQUEDA --- */
 .search-section {
-  background-color: #F9F4EF;
+  background-color: #ffffff;
   padding: 0 1.5rem 3rem;
   width: 100%;
 }
@@ -94,7 +94,7 @@ body.bg-escucha-theme {
 
 /* --- 4. GRID DE SONIDOS (VISTA GALERÍA) --- */
 .escucha-grid {
-  background-color: #F9F4EF;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   gap: 2rem;
