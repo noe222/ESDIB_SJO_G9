@@ -201,6 +201,11 @@
   .step {
     font-size: 1.8rem;
   }
+
+.accordion-preview {
+    font-size: 1.2rem;
+  }
+
 }
 
 /* ... resto del código anterior ... */
@@ -208,9 +213,9 @@
 .yoga-posture-img {
   /* Control de tamaño */
   width: 100%;          /* Ocupa el ancho disponible */
-  max-width: 200px;     /* Ancho máximo razonable (puedes bajarlo a 400px si las quieres más pequeñas) */
+  max-width: 400px;     /* Ancho máximo razonable (puedes bajarlo a 400px si las quieres más pequeñas) */
   height: auto;         /* IMPORTANTE: Esto mantiene la proporción original sin deformar */
-  max-height: 300px;    /* Límite de altura para que las fotos verticales no sean eternas */
+  max-height: 400px;    /* Límite de altura para que las fotos verticales no sean eternas */
   
   /* Visualización */
   object-fit: contain;  /* Asegura que se vea la imagen entera sin recortes */
@@ -221,13 +226,13 @@
   margin-top: 1.5rem;
   margin-left: auto;
   margin-right: auto;
-  
-  /* Estética */
+}
+  /* 
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
 }
 
-/* Efecto opcional al pasar el ratón */
 .yoga-posture-img:hover {
   transform: scale(1.02);
 }
+*/
