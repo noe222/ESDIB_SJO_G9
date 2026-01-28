@@ -37,14 +37,14 @@
   order: 1;         /* Va primero */
   color: #ffffff;
   font-style: italic;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   letter-spacing: 0.5px;
   margin-bottom: auto; /* Empuja el resto hacia abajo */
 }
 
 /* 2. Logo Central */
 .hero-logo {
-  width: 150px;
+  width: 200px;
   filter: brightness(0) invert(1); /* Blanco */
   order: 2; /* Va segundo */
   margin-bottom: 1rem;
@@ -53,7 +53,7 @@
 /* 3. Subtítulo: "Deja el estrés atrás" */
 .hero-subtitle {
   order: 3; /* Va tercero */
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: #ffffff;
   font-style: italic;
   letter-spacing: 0.5px;
@@ -66,7 +66,7 @@
   order: 4;         /* Va último */
   color: #ffffff;
   font-style: italic;
-  font-size: 1.7rem;
+  font-size: 1.25rem;
   letter-spacing: 0.5px;
   margin-top: 2rem;
 }
@@ -101,14 +101,14 @@
 }
 
 .card-content h2 {
-  font-size: 3rem;
+  font-size: 4rem;
   margin-bottom: var(--spacing-xs);
   font-weight: 500;
   color: var(--color-title);
 }
 
 .card-content .card-subtitle {
-  font-size: 1.7rem;
+  font-size: 1.6rem;
   margin-bottom: var(--spacing-md);
   color: var(--color-text);
   line-height: 1.5;
@@ -116,7 +116,7 @@
 
 /* En móvil limitamos el ancho para que no sea ilegible */
 .card-content .card-description {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   margin-bottom: var(--spacing-md);
   color: var(--color-text);
   line-height: 1.4;
@@ -164,13 +164,13 @@
   }
 
   .hero-logo {
-    width: 250px;
+    width: 255px;
     margin-bottom: var(--spacing-lg);
     order: unset; /* Quitamos el orden flex */
   }
 
   .hero-subtitle {
-    font-size: 1.9rem;
+    font-size: 1.2rem;
     margin-bottom: var(--spacing-md);
     order: unset; /* Quitamos el orden flex */
   }
@@ -180,7 +180,7 @@
   .hero-corner-right {
     position: absolute;
     bottom: var(--spacing-lg);
-    font-size: 1.9rem;
+    font-size: 1.2rem;
     margin: 0;
     order: unset;
   }

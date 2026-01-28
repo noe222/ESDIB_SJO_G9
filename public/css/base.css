@@ -79,7 +79,7 @@
 }
 
 html {
-  font-size: 16px; /* Base 1rem = 16px */
+  font-size: 1rem; /* Base 1rem = 16px */
   scroll-behavior: smooth; /* Mantenemos el scroll suave nativo */
   height: 100%;
 }
@@ -115,12 +115,12 @@ ul {
 /* Títulos (EB Garamond) */
 h1, h2, h3, h4, h5, h6, .page-title, .logo-text {
   font-family: var(--font-title);
-  font-weight: 500;
+  font-weight: 700;
   color: var(--color-title);
   line-height: 1.2;
 }
 
-h1, h2 { font-size: 5.125rem; }
+h1, h2 { font-size: 5.3rem; }
 h3 { font-size: 1.5rem; }
 h4 { font-size: 1.25rem; }
 
@@ -140,7 +140,7 @@ p, span, li, button, input, textarea {
 .hero-corner-right {
   font-family: var(--font-body);
   font-style: italic;
-  font-weight: 400; /* Usará Acumin-ItPro.otf */
+  font-weight: 200; /* Usará Acumin-ItPro.otf */
 }
 
 /* === 4. UTILIDADES === */
@@ -340,7 +340,7 @@ body.no-scroll {
 
 .footer-links a {
   font-family: var(--font-body);
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--color-text);
   text-align: center;
   transition: color 0.3s ease;
@@ -358,17 +358,17 @@ body.no-scroll {
   /* Tipografía Base Desktop */
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-title);
-    font-weight: 500;
+    font-weight: 700;
     color: var(--color-title);
     line-height: 1.2;
   }
 
-  h1, h2 { font-size: 5.125rem; }
+  h1, h2 { font-size: 5.3rem; }
   h3 { font-size: 1.5rem; }
   h4 { font-size: 1.25rem; }
 
   p {
-    font-size: 1rem;
+    font-size: 0.85rem;
     line-height: 1.6;
   }
 
@@ -494,6 +494,6 @@ body.no-scroll {
   
   .footer-links a {
     text-align: left;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 }
