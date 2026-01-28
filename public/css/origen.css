@@ -60,7 +60,7 @@
 
 /* --- 2. IDENTIDAD (Fondo Color + Ancho Completo) --- */
 .values-section {
-  background-color: var(--footer-bg); /* Beige unificado */
+  background-color: #ffff; /* Beige unificado */
   width: 100%;
   max-width: none;
   padding: 0 1.5rem 4rem; /* Sin padding superior para unir con la anterior */
@@ -99,7 +99,7 @@
 
 /* --- 3. CARRUSEL (Fondo Color + Ancho Completo) --- */
 .visual-gallery {
-  background-color: var(--footer-bg); /* Beige unificado: AQUÍ ESTABA EL CAMBIO */
+  background-color: #ffff; /* Beige unificado: AQUÍ ESTABA EL CAMBIO */
   width: 100%;
   max-width: none; /* Permitimos que el fondo ocupe todo */
   padding: 0 1.5rem 6rem; /* Padding inferior generoso antes del footer */

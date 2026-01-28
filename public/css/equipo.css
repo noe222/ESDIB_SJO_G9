@@ -181,7 +181,7 @@
   /* El espaciador simula la altura del título "Quién" */
   .spacer {
     display: block;
-    height: 3.5rem; 
+    height: 4rem; 
   }
 
   /* Layout Visual: Foto Izq (50%) - Contenido Der (40%) */
