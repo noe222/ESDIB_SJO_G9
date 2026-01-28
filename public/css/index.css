@@ -114,12 +114,13 @@
   line-height: 1.5;
 }
 
+/* En móvil limitamos el ancho para que no sea ilegible */
 .card-content .card-description {
   font-size: 1.3rem;
   margin-bottom: var(--spacing-md);
   color: var(--color-text);
   line-height: 1.4;
-  max-width: 320px;
+  max-width: 320px; 
 }
 
 /* Círculo con Icono */
@@ -188,7 +189,7 @@
   .hero-corner-right { right: var(--spacing-lg); }
 
 
-  /* --- 2. TARJETAS ZIG-ZAG (Sin cambios) --- */
+  /* --- 2. TARJETAS ZIG-ZAG (Ajustes de Texto) --- */
   .full-width-card {
     min-height: auto;
     padding: 4rem 2rem;
@@ -214,7 +215,7 @@
   .text-side {
     display: flex;
     flex-direction: column;
-    width: 60%;
+    width: 60%; /* Ocupa el 60% de la tarjeta */
     text-align: left;
     align-items: flex-start;
     z-index: 5;
@@ -231,7 +232,12 @@
   }
 
   .text-side h2 { font-size: 3.5rem; margin-bottom: 0.5rem; }
-  .text-side p { font-size: 1rem; }
+  
+  /* CORRECCIÓN: Quitamos el límite de ancho en desktop para que se reparta bien */
+  .card-content .card-description {
+    max-width: 100%; /* Permite que el texto llene el contenedor text-side */
+    font-size: 1.3rem;
+  }
 
   .circle-icon {
     width: 625px;
