@@ -24,15 +24,15 @@
             </nav>
             <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
         </div>
-    <div class="dropdown-menu" id="dropdown-menu">
-      <a href="index.html">Inicio</a>
-      <a href="origen.html">Origen</a>
-      <a href="equipo.html">Equipo</a>
-      <a href="medita.html">Medita</a>
-      <a href="escucha.html">Escucha</a>
-      <a href="siente.html">Siente</a>
-      <a href="comunidad.html">Comunidad</a>
-    </div>
+        <div class="dropdown-menu" id="dropdown-menu">
+            <a href="index.html">Inicio</a>
+            <a href="origen.html">Origen</a>
+            <a href="equipo.html">Equipo</a>
+            <a href="medita.html">Medita</a>
+            <a href="escucha.html">Escucha</a>
+            <a href="siente.html">Siente</a>
+            <a href="comunidad.html">Comunidad</a>
+        </div>
     </header>
 
     <main>
@@ -63,11 +63,11 @@
     </footer>
 
     <script src="js/navbar.js"></script>
-<script>
+    <script>
         // --- CONFIGURACIÓN DE RUTAS ---
         // Base URL de tus imágenes en Azure
         const azureBaseUrl = "https://neumastorage2025.blob.core.windows.net/esdibcontainerg9/imagenes_juntas_Neuma/";
-        
+
         // Nombres de tus iconos (¡CAMBIA ESTOS NOMBRES SI SON DIFERENTES EN TU AZURE!)
         const icons = {
             play: azureBaseUrl + "iconografia_despausa.png",        // Icono de Play
@@ -143,7 +143,7 @@
                     <p>${sound.description || 'Disfruta de este paisaje sonoro.'}</p>
                 </div>
 
-                <a href="escucha.html" class="btn-back"><img src="${icons.flecha}" alt="Volver" style="transform: rotate(180deg); width: 80px; height: 80px; filter: invert(1);" class="flecha-icon"></a>
+                <a href="escucha.html" class="btn-back"><img src="${icons.flecha}" alt="Volver" style="transform: rotate(180deg); width: 80px; height: 80px;" class="flecha-icon"></a>
 
                 <audio id="audioPlayer" src="${audioSrc}"></audio>
             `;

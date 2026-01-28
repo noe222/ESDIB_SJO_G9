@@ -13,7 +13,7 @@ const defaultSounds = [
         category: 'naturaleza',
         tags: ['fuego', 'calidez', 'relajación'],
         audioFile: {
-            blobName: 'sounds/audio/hoguera.mp3',
+            blobName: 'sounds/audio/fuego.mp3',
             mime: 'audio/mpeg'
         },
         coverImage: {
