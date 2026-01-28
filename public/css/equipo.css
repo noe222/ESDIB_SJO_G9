@@ -38,6 +38,7 @@
   flex-direction: column;
   gap: 2rem;
   text-align: left; /* Alineación izquierda general */
+  max-width: 90%;
 }
 
 .column h3 {
@@ -48,7 +49,7 @@
 }
 
 .column p {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: var(--color-text);
   line-height: 1.6;
 }
@@ -139,15 +140,21 @@
 }
 
 /* Texto Proyecto */
+
+.proyecto-text-area{
+  max-width: 80%;
+  align-self: center;
+}
+
 .proyecto-text-area h3 {
   font-size: 1.8rem;
   color: var(--color-title);
   margin-bottom: 1rem;
-  font-family: var(--font-main);
-}
+  font-family: var(--font-title);
+  }
 
 .proyecto-text-area p {
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 1.6;
   color: var(--color-text);
   max-width: 500px; /* Ancho de lectura cómodo */
