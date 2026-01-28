@@ -191,3 +191,29 @@
     padding-right: 2rem;
   }
 }
+
+.siente-img {
+  /* Control de tamaño inteligente */
+  width: 100%;
+  max-width: 200px;     /* Ancho máximo para que no sea enorme en PC */
+  height: auto;         /* Mantiene proporción original */
+  max-height: 300px;    /* Límite de altura */
+  
+  /* Visualización */
+  object-fit: contain;
+  border-radius: 20px;
+  
+  /* Posicionamiento */
+  display: block;
+  margin-top: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  
+  /* Estética */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.siente-img:hover {
+  transform: scale(1.02);
+}
