@@ -1,146 +1,180 @@
 /* ========================================================================
-   ESCUCHA.CSS - Estilos para la galería de sonidos y detalle
-   Dependencias: Requiere base.css cargado previamente
+   ESCUCHA.CSS - Estilos visuales ajustados
    ======================================================================== */
 
-/* === 1. VISTA LISTA (escucha.html) === */
+/* --- 1. CONFIGURACIÓN GENERAL Y NAVBAR --- */
+body.bg-escucha-theme {
+  background-color: #ffffff;
+}
 
-/* Intro específica de Escucha */
+.bg-escucha-theme .navbar {
+  background-color: #ffffff;
+}
+
+/* --- 2. INTRODUCCIÓN --- */
 .page-intro {
-  padding: var(--spacing-xl) 1rem 1rem;
-  background-color: #FDFBF7; /* Fondo suave */
+  padding: 4rem 1rem 2rem;
+  background-color: #ffffff;
+  text-align: center;
 }
 
 .intro-icon img {
-  width: 80px;
+  width: 100%;
+  max-width: 400px;
   height: auto;
-  margin: 0 auto 1rem;
+  margin: 0 auto 1.5rem;
   display: block;
+  object-fit: contain;
 }
 
-/* Barra de Búsqueda */
+.page-intro h1 {
+  font-size: 3.5rem;
+  color: var(--color-title);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-title);
+}
+
+.page-intro p {
+  font-size: 1.5rem;
+  color: var(--color-text);
+  font-style: italic;
+  font-family: var(--font-main);
+}
+
+/* --- 3. BARRA DE BÚSQUEDA --- */
 .search-section {
-  background-color: #FDFBF7;
-  padding: 0 1rem 2rem;
+  background-color: #ffffff;
+  padding: 0 1.5rem 3rem;
   width: 100%;
 }
 
 .search-container {
-  max-width: 600px;
+  max-width: 400px;
   margin: 0 auto;
+  position: relative;
 }
 
 .search-bar {
   width: 100%;
-  padding: 1rem 1.5rem;
+  padding: 1rem 1.5rem 1rem 3rem;
   font-family: var(--font-main);
   font-size: 1rem;
-  border: 1px solid #D4C4B0;
-  border-radius: 30px;
-  background-color: #ffffff;
-  color: var(--color-text);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+  border: none;
+  border-radius: 20px;
+  background-color: #E2D5C8;
+  color: #5C5C5C;
   transition: all 0.3s ease;
+}
+
+.search-bar::placeholder {
+  color: #7A7A7A;
 }
 
 .search-bar:focus {
   outline: none;
-  border-color: #A89B87;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  background-color: #DCCfc2;
 }
 
-.search-bar::placeholder {
-  color: #999;
-  font-style: italic;
+/* Icono Lupa */
+.search-container::before {
+  content: '';
+  background-image: url(https://neumastorage2025.blob.core.windows.net/esdibcontainerg9/imagenes_juntas_Neuma/iconografia_lupa.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.5;
+  width: 2rem;
+  height: 1.9rem;
+  pointer-events: none;
 }
 
-/* Grid de Sonidos (Mobile First: Columna) */
+/* --- 4. GRID DE SONIDOS (VISTA GALERÍA) --- */
 .escucha-grid {
-  background-color: #FDFBF7;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  padding: 0 1.5rem 4rem;
-  max-width: 1200px;
+  gap: 2rem;
+  padding: 0 1.5rem 6rem;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
-/* Tarjeta de Sonido */
 .sound-card {
   position: relative;
-  height: 200px; /* Altura visible en móvil */
-  border-radius: 20px;
+  height: 250px;
+  border-radius: 50px;
   overflow: hidden;
   text-decoration: none;
   display: block;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
 }
 
 .sound-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform: scale(1.02);
 }
 
 .sound-card-bg {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.sound-card:hover .sound-card-bg {
-  transform: scale(1.05);
+  filter: brightness(0.85);
 }
 
 .sound-card-overlay {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 60%);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 1.5rem;
+  padding: 2rem;
+  text-align: center;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
 }
 
 .sound-card h3 {
   color: #ffffff;
-  font-size: 1.5rem;
-  font-weight: 500;
+  font-size: 2rem;
+  font-weight: 400;
   margin: 0;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: var(--font-main);
+  letter-spacing: 0.5px;
 }
 
 
-/* === 2. VISTA DETALLE (escucha-detalle.html) === */
-
+/* --- 5. VISTA DETALLE (VISTA REPRODUCTOR) --- */
 .sound-detail-page {
-  min-height: 100vh;
-  padding: 6rem 1.5rem 3rem;
+  padding: 5rem 1.5rem 4rem;
+  /* Padding superior aumentado para evitar solapamiento con navbar en móvil */
+  min-height: 80vh;
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Alineado arriba para evitar cortes */
-  background-color: #FDFBF7;
+  background-color: #F9F4EF;
 }
 
 .sound-detail-container {
   width: 100%;
-  max-width: 600px; /* Ancho lectura cómodo */
+  max-width: 600px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
 }
 
-/* Imagen Principal con Controles */
+/* Imagen Principal */
 .sound-detail-image {
   position: relative;
   width: 100%;
-  aspect-ratio: 1/1; /* Cuadrada */
-  border-radius: 30px;
+  max-width: 450px;
+  aspect-ratio: 1 / 1;
+  border-radius: 40px;
   overflow: hidden;
-  margin-bottom: 2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
 }
 
 .detail-bg-image {
@@ -149,107 +183,155 @@
   object-fit: cover;
 }
 
-/* Controles Flotantes */
+/* Controles Flotantes (Contenedor) */
 .sound-detail-controls {
   position: absolute;
-  bottom: 2rem;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
+
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 1.5rem;
-  background-color: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  padding: 0.8rem 2rem;
-  border-radius: 50px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  background: rgba(255, 255, 255, 0.3);
+  /* Un poco más visible */
+  backdrop-filter: blur(15px);
+  padding: 10px 25px;
+  border-radius: 60px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+
+  /* Asegura que el contenedor crezca si los botones crecen */
+  width: auto;
+  min-width: 300px;
 }
 
-/* Botones de Reproducción */
+/* Botones base */
 .audio-btn-large {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #ffffff;
+  background: none;
   border: none;
   cursor: pointer;
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 1.2rem;
-  color: var(--color-title);
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  justify-content: center;
+  transition: transform 0.2s ease;
+  padding: 0;
 }
 
 .audio-btn-large:hover {
   transform: scale(1.1);
 }
 
-.audio-btn-large.play { font-size: 1.5rem; width: 60px; height: 60px; }
+.audio-btn-large:active {
+  transform: scale(0.95);
+}
+
+/* === TAMAÑO DE ICONOS (MÓVIL) === */
+.icon-control {
+  width: 35px;
+  /* Tamaño decente para móvil */
+  height: auto;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
+}
+
+.icon-play-pause {
+  width: 40px;
+  /* Play destaca más */
+  height: auto;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
+}
 
 /* Textos Detalle */
 .sound-detail-title {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: var(--color-title);
+  font-size: 2rem;
+  color: var(--color-title, #5C5C5C);
+  margin: 0;
+  font-weight: 400;
 }
 
 .sound-detail-description {
-  margin-bottom: 3rem;
-  color: var(--color-text);
-  line-height: 1.8;
-  font-size: 1rem;
+  font-size: 0.5rem;
+  line-height: 1.2;
+  color: var(--color-text, #5C5C5C);
+  max-width: 500px;
 }
+
+.btn-back {
+  display: inline-block;
+  margin-top: 1rem;
+  text-decoration: none;
+  color: #ffffff;
+  border: none;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+/*
+.btn-back:hover {
+  background-color: #333;
+  color: #fff;
+  border-color: #333;
+}
+*/
 
 
 /* ========================================================================
-   MEDIA QUERIES DESKTOP (Min-width: 768px)
+   6. MEDIA QUERIES DESKTOP (Min-width: 768px)
+   Aquí está todo lo que cambia en pantallas grandes
    ======================================================================== */
 @media (min-width: 768px) {
-  
-  /* Ajustes Lista */
+
+  /* Ajustes Generales */
   .page-intro {
-    padding: 4rem 2rem 2rem;
+    padding-top: 6rem;
   }
 
+  /* --- GRID DE SONIDOS (Escritorio) --- */
   .escucha-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas en desktop */
-    gap: 2rem;
-    padding: 0 2rem 6rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
   }
 
   .sound-card {
-    height: 250px; /* Más altas en desktop */
+    height: 300px;
+    border-radius: 40px;
   }
 
-  /* Ajustes Detalle */
+  /* --- VISTA DETALLE / REPRODUCTOR (Escritorio) --- */
   .sound-detail-page {
-    align-items: center; /* Centrado vertical en desktop */
-    padding-top: 4rem;
+    padding-top: 6rem;
   }
 
-  .sound-detail-container {
-    max-width: 900px;
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Dos columnas: imagen | texto */
-    gap: 4rem;
-    text-align: left;
-    align-items: center;
-  }
-
+  /* Hacemos la imagen del reproductor más grande en escritorio */
   .sound-detail-image {
-    margin-bottom: 0;
+    max-width: 600px;
+    border-radius: 60px;
+  }
+
+  /* Controles más grandes y espaciados */
+  .sound-detail-controls {
+    padding: 10px 20px;
+    gap: 2.5rem;
+    bottom: 10px;
+  }
+
+  /* === TAMAÑO DE ICONOS (ESCRITORIO - MÁS GRANDES) === */
+  .icon-control {
+    width: 120px;
+    /* Avanzar/Retroceder grandes */
+  }
+
+  .icon-play-pause {
+    width: 60px;
+    /* Play muy grande */
   }
 
   .sound-detail-title {
     font-size: 3.5rem;
-    line-height: 1.1;
-  }
-  
-  /* Botón volver alineado a la izquierda en desktop */
-  .sound-detail-container .btn-back {
-    margin-top: 1rem;
-    display: inline-block;
   }
 }

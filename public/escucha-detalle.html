@@ -7,13 +7,15 @@
     <title id="pageTitle">Neuma | Sonido</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/escucha.css">
-    
+
 </head>
 
 <body>
 
     <header class="navbar">
-        <a href="index.html" class="logo"><img src="assets/images/neuma_logo.svg" alt="neuma"></a>
+        <a href="index.html" class="logo"><img
+                src="https://neumastorage2025.blob.core.windows.net/esdibcontainerg9/imagenes_juntas_Neuma/neuma_logo.png"
+                alt="neuma"></a>
         <div class="nav-right">
             <nav class="desktop-links">
                 <a href="index.html">Inicio</a>
@@ -24,10 +26,10 @@
         </div>
         <div class="dropdown-menu" id="dropdown-menu">
             <a href="index.html">Inicio</a>
-            <a href="medita.html">Medita</a>
             <a href="origen.html">Origen</a>
-            <a href="escucha.html">Escucha</a>
             <a href="equipo.html">Equipo</a>
+            <a href="medita.html">Medita</a>
+            <a href="escucha.html">Escucha</a>
             <a href="siente.html">Siente</a>
             <a href="comunidad.html">Comunidad</a>
         </div>
@@ -43,16 +45,17 @@
 
     <footer class="simple-footer">
         <a href="index.html" class="footer-logo">
-        <img src="assets/images/neuma_logo.svg" alt="neuma">
+            <img src="https://neumastorage2025.blob.core.windows.net/esdibcontainerg9/imagenes_juntas_Neuma/neuma_logo.png"
+                alt="neuma">
         </a>
-  
+
         <div class="footer-separator"></div>
-  
+
         <div class="footer-links">
             <a href="origen.html">Origen</a>
             <a href="equipo.html">Equipo</a>
             <a href="comunidad.html">Comunidad</a>
-    
+
             <a href="medita.html">Medita</a>
             <a href="siente.html">Siente</a>
             <a href="escucha.html">Escucha</a>
@@ -61,116 +64,124 @@
 
     <script src="js/navbar.js"></script>
     <script>
-        // Obtener ID del sonido desde la URL
+        // --- CONFIGURACIÓN DE RUTAS ---
+        // Base URL de tus imágenes en Azure
+        const azureBaseUrl = "https://neumastorage2025.blob.core.windows.net/esdibcontainerg9/imagenes_juntas_Neuma/";
+
+        // Nombres de tus iconos (¡CAMBIA ESTOS NOMBRES SI SON DIFERENTES EN TU AZURE!)
+        const icons = {
+            play: azureBaseUrl + "iconografia_despausa.png",        // Icono de Play
+            pause: azureBaseUrl + "iconografia_pausa.png",      // Icono de Pausa
+            back10: azureBaseUrl + "iconografia_menos10.png", // Icono retroceder 10s
+            fwd10: azureBaseUrl + "iconografia_mas10.png",   // Icono avanzar 10s
+            flecha: azureBaseUrl + "flecha.svg"    // Icono de flecha para volver
+        };
+
+        // --- LÓGICA DE LA PÁGINA ---
         const urlParams = new URLSearchParams(window.location.search);
         const soundId = urlParams.get('id');
 
         if (!soundId) {
-            // Si no hay ID, mostrar error y redirigir
             document.getElementById('soundDetailContainer').innerHTML = `
                 <div style="text-align:center; padding: 3rem;">
                     <h2>Sonido no encontrado</h2>
-                    <p>No se especificó qué sonido mostrar.</p>
                     <a href="escucha.html" class="btn-back">← Volver a Escucha</a>
-                </div>
-            `;
+                </div>`;
         } else {
-            // Cargar datos del sonido
             loadSoundDetail(soundId);
         }
 
         async function loadSoundDetail(id) {
             try {
+                // Fetch a tu API (Asegúrate de que esta ruta es correcta en tu backend)
                 const res = await fetch(`/api/sounds/${id}`);
 
-                if (!res.ok) {
-                    if (res.status === 404) {
-                        throw new Error('Sonido no encontrado');
-                    } else {
-                        throw new Error('Error al cargar el sonido');
-                    }
-                }
+                if (!res.ok) throw new Error('Error al cargar el sonido');
 
                 const sound = await res.json();
                 renderSoundDetail(sound);
             } catch (err) {
-                console.error('Error:', err);
+                console.error(err);
                 document.getElementById('soundDetailContainer').innerHTML = `
                     <div style="text-align:center; padding: 3rem;">
-                        <h2>Error</h2>
-                        <p>${err.message}</p>
-                        <a href="escucha.html" class="btn-back">← Volver a Escucha</a>
-                    </div>
-                `;
+                        <h2>Error cargando sonido</h2>
+                        <a href="escucha.html" class="btn-back">← Volver</a>
+                    </div>`;
             }
         }
 
         function renderSoundDetail(sound) {
             const container = document.getElementById('soundDetailContainer');
-
-            // Actualizar título de la página
             document.getElementById('pageTitle').textContent = `Neuma | ${sound.title}`;
 
-            // Imagen de portada
-            const imgSrc = sound.coverImage?.url || 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=1200&q=80';
-
-            // URL del audio
+            // Imagen de portada (Fallback si no hay imagen)
+            const imgSrc = sound.coverImage?.url || 'assets/images/placeholder.png';
             const audioSrc = sound.audioFile?.url || '';
 
             container.innerHTML = `
-                <!-- Imagen ampliada con controles -->
                 <div class="sound-detail-image">
                     <img src="${imgSrc}" alt="${sound.title}" class="detail-bg-image">
 
-                    <!-- Controles de audio superpuestos -->
                     <div class="sound-detail-controls">
-                        <button class="audio-btn-large prev" id="prevBtn">⏮</button>
-                        <button class="audio-btn-large play" id="playBtn">▶</button>
-                        <button class="audio-btn-large next" id="nextBtn">⏭</button>
+                        <button class="audio-btn-large" id="prevBtn" title="-10 segundos">
+                            <img src="${icons.back10}" alt="-10s" class="icon-control">
+                        </button>
+                        
+                        <button class="audio-btn-large" id="playBtn" title="Reproducir">
+                            <img src="${icons.play}" alt="Play" class="icon-control icon-play-pause" id="playIconImg">
+                        </button>
+                        
+                        <button class="audio-btn-large" id="nextBtn" title="+10 segundos">
+                            <img src="${icons.fwd10}" alt="+10s" class="icon-control">
+                        </button>
                     </div>
                 </div>
 
-                <!-- Título -->
                 <h1 class="sound-detail-title">${sound.title}</h1>
 
-                <!-- Descripción -->
                 <div class="sound-detail-description">
-                    <p>${sound.description}</p>
+                    <p>${sound.description || 'Disfruta de este paisaje sonoro.'}</p>
                 </div>
 
-                <!-- Botón volver -->
-                <a href="escucha.html" class="btn-back">← Volver a Escucha</a>
+                <a href="escucha.html" class="btn-back"><img src="${icons.flecha}" alt="Volver" style="transform: rotate(180deg); width: 80px; height: 80px;" class="flecha-icon"></a>
 
-                <!-- Audio oculto -->
                 <audio id="audioPlayer" src="${audioSrc}"></audio>
             `;
 
-            // Event listeners para los controles
+            // --- FUNCIONALIDAD DE LOS BOTONES ---
             const audio = document.getElementById('audioPlayer');
             const playBtn = document.getElementById('playBtn');
+            const playIconImg = document.getElementById('playIconImg');
             const prevBtn = document.getElementById('prevBtn');
             const nextBtn = document.getElementById('nextBtn');
 
+            // 1. Play / Pause
             playBtn.addEventListener('click', () => {
                 if (audio.paused) {
                     audio.play();
-                    playBtn.textContent = '❚❚';
-                    playBtn.classList.remove('play');
-                    playBtn.classList.add('pause');
+                    playIconImg.src = icons.pause; // Cambiar a icono de pausa
                 } else {
                     audio.pause();
-                    playBtn.textContent = '▶';
-                    playBtn.classList.remove('pause');
-                    playBtn.classList.add('play');
+                    playIconImg.src = icons.play;  // Cambiar a icono de play
                 }
             });
 
+            // 2. Retroceder 10s
             prevBtn.addEventListener('click', () => {
                 audio.currentTime = Math.max(0, audio.currentTime - 10);
             });
 
+            // 3. Avanzar 10s
             nextBtn.addEventListener('click', () => {
-                audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+                // Si el audio no ha cargado duración, evitamos errores
+                if (audio.duration) {
+                    audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+                }
+            });
+
+            // 4. Resetear icono cuando el audio termina
+            audio.addEventListener('ended', () => {
+                playIconImg.src = icons.play;
             });
         }
     </script>

@@ -8,15 +8,18 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  align-items: center; /* Centrado horizontal */
+  
   /* Gradiente animado */
   background: linear-gradient(180deg, var(--gradient-green) 0%, var(--gradient-yellow) 50%, var(--gradient-beige) 100%);
   background-size: 100% 200%;
   animation: gradientShift 15s ease infinite;
+  
   text-align: center;
-  padding: var(--spacing-lg);
   position: relative;
+  
+  /* AJUSTE MÓVIL: Padding superior para evitar el navbar y distribuir espacio */
+  padding: 7rem 2rem 3rem; 
 }
 
 /* Animación del fondo */
@@ -26,21 +29,38 @@
   100% { background-position: 0% 0%; }
 }
 
-.hero-logo {
-  width: 120px;
-  margin-bottom: var(--spacing-lg);
-  filter: brightness(0) invert(1); /* Logo blanco */
+/* --- ESTILOS BASE (MÓVIL - ORDEN VERTICAL) --- */
+
+/* 1. Texto Superior: "Disfruta de tu momento" */
+.hero-corner-right {
+  position: static; /* En móvil no es absoluto */
+  order: 1;         /* Va primero */
+  color: #ffffff;
+  font-style: italic;
+  font-size: 1.25rem;
+  letter-spacing: 0.5px;
+  margin-bottom: auto; /* Empuja el resto hacia abajo */
 }
 
-/* Textos del Hero */
-.hero-subtitle,
-.hero-corner-left,
-.hero-corner-right {
+/* 2. Logo Central */
+.hero-logo {
+  width: 250px;
+  filter: brightness(0) invert(1); /* Blanco */
+  order: 2; /* Va segundo */
+  margin-bottom: 1rem;
+}
+
+/* 3. Subtítulo: "Deja el estrés atrás" */
+.hero-subtitle {
+  order: 3; /* Va tercero */
+  font-size: 1.25rem;
   color: #ffffff;
   font-style: italic;
   letter-spacing: 0.5px;
+  margin-bottom: auto; /* Empuja el texto inferior hacia abajo */
 }
 
+<<<<<<< HEAD
 .hero-subtitle {
   font-size: 1.5rem;
   margin-bottom: var(--spacing-md);
@@ -56,12 +76,25 @@
 .hero-corner-left { left: var(--spacing-lg); }
 .hero-corner-right { right: var(--spacing-lg); }
 
+=======
+/* 4. Texto Inferior: "Nos alegra verte" */
+.hero-corner-left {
+  position: static; /* En móvil no es absoluto */
+  order: 4;         /* Va último */
+  color: #ffffff;
+  font-style: italic;
+  font-size: 1.25rem;
+  letter-spacing: 0.5px;
+  margin-top: 2rem;
+}
+
+>>>>>>> 16a0d20abfae37c5a6d3974c82e217257f624a96
 
 /* === 2. SECCIONES PRINCIPALES (Medita, Escucha, Siente) === */
 
 /* Contenedor de tarjeta (Mobile: Columna vertical) */
 .full-width-card {
-  min-height: 100vh; /* Ocupa toda la pantalla en móvil */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -70,12 +103,12 @@
   padding: var(--spacing-xl) var(--spacing-md);
 }
 
-/* Fondos de color (Usando variables de base.css) */
+/* Fondos de color */
 .bg-medita { background-color: var(--bg-medita); }
 .bg-escucha { background-color: var(--bg-escucha); }
 .bg-siente { background-color: var(--bg-siente); }
 
-/* Contenido interno de la tarjeta */
+/* Contenido interno */
 .card-content {
   display: flex;
   flex-direction: column;
@@ -86,25 +119,26 @@
 }
 
 .card-content h2 {
-  font-size: 2.5rem;
+  font-size: 4rem;
   margin-bottom: var(--spacing-xs);
   font-weight: 500;
   color: var(--color-title);
 }
 
 .card-content .card-subtitle {
-  font-size: 1rem;
+  font-size: 1.6rem;
   margin-bottom: var(--spacing-md);
   color: var(--color-text);
   line-height: 1.5;
 }
 
+/* En móvil limitamos el ancho para que no sea ilegible */
 .card-content .card-description {
-  font-size: 0.85rem;
+  font-size: 1.2rem;
   margin-bottom: var(--spacing-md);
   color: var(--color-text);
-  line-height: 1.6;
-  max-width: 320px;
+  line-height: 1.4;
+  max-width: 320px; 
 }
 
 /* Círculo con Icono */
@@ -112,7 +146,6 @@
   width: 250px;
   height: 250px;
   border-radius: 50%;
-  /*background-color: var(--circle-bg);*/
   display: flex;
   justify-content: center;
   align-items: center;
@@ -126,36 +159,55 @@
   object-fit: contain;
 }
 
+/* AJUSTE MOBILE: Reordenamiento visual interno de las tarjetas */
+.text-side, .visual-side { display: contents; }
 
-/* === AJUSTE MOBILE: Reordenamiento visual (Display Contents) === */
-/* Hacemos que los contenedores 'desaparezcan' en móvil para reordenar sus hijos */
-.text-side, .visual-side {
-  display: contents; 
-}
+.card-content h2 { order: 1; }
+.card-content .card-subtitle { order: 2; }
+.circle-icon { order: 3; margin: 0.7rem 0; }
+.card-content .card-description { order: 4; }
+.big-arrow-link { order: 5; margin-top: 0.5rem; }
 
-/* Asignamos el orden específico para móvil */
-.card-content h2 { order: 1; }                /* 1. Título */
-.card-content .card-subtitle { order: 2; }    /* 2. Subtítulo */
-.circle-icon { 
-  order: 3;                                   /* 3. Logo en grande */
-  margin: 1rem 0;                             /* Espaciado extra */
-} 
-.card-content .card-description { order: 4; } /* 4. Párrafo */
-.big-arrow-link { 
-  order: 5;                                   /* 5. Flecha */
-  margin-top: 1rem;
-}
 
 /* ========================================================================
    MEDIA QUERIES DESKTOP (Min-width: 768px)
+   Aquí restauramos el diseño original que ya te gustaba
    ======================================================================== */
 @media (min-width: 768px) {
 
-  /* Ajustes Hero Desktop */
-  .hero-logo { width: 250px; }
-  
-  /* --- TARJETAS FLOTANTES ZIG-ZAG --- */
-  
+  /* --- 1. HERO RESTAURADO PARA ESCRITORIO --- */
+  .hero-container {
+    padding: var(--spacing-lg);
+    justify-content: center; /* Centrado vertical clásico */
+  }
+
+  .hero-logo {
+    width: 300px;
+    margin-bottom: var(--spacing-lg);
+    order: unset; /* Quitamos el orden flex */
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: var(--spacing-md);
+    order: unset; /* Quitamos el orden flex */
+  }
+
+  /* Restauramos posición absoluta en las esquinas */
+  .hero-corner-left,
+  .hero-corner-right {
+    position: absolute;
+    bottom: var(--spacing-lg);
+    font-size: 1.2rem;
+    margin: 0;
+    order: unset;
+  }
+
+  .hero-corner-left { left: var(--spacing-lg); }
+  .hero-corner-right { right: var(--spacing-lg); }
+
+
+  /* --- 2. TARJETAS ZIG-ZAG (Ajustes de Texto) --- */
   .full-width-card {
     min-height: auto;
     padding: 4rem 2rem;
@@ -178,18 +230,17 @@
   .bg-escucha .card-content { background-color: var(--bg-escucha); }
   .bg-siente .card-content { background-color: var(--bg-siente); }
 
-  /* --- RESTAURACIÓN DE CAJAS (Importante para anular display: contents) --- */
   .text-side {
-    display: flex; /* Restauramos la caja flex */
+    display: flex;
     flex-direction: column;
-    width: 60%;
+    width: 60%; /* Ocupa el 60% de la tarjeta */
     text-align: left;
     align-items: flex-start;
     z-index: 5;
   }
   
   .visual-side {
-    display: block; /* Restauramos la caja bloque para posicionamiento absoluto */
+    display: block;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -197,35 +248,29 @@
     height: auto;
     z-index: 10;
   }
-  /* ----------------------------------------------------------------------- */
 
   .text-side h2 { font-size: 3.5rem; margin-bottom: 0.5rem; }
-  .text-side p { font-size: 1rem; }
+  
+  /* CORRECCIÓN: Quitamos el límite de ancho en desktop para que se reparta bien */
+  .card-content .card-description {
+    max-width: 100%; /* Permite que el texto llene el contenedor text-side */
+    font-size: 1.3rem;
+  }
 
-  /* Ajuste del Logo Desktop (Sin fondo, solo icono flotante) */
   .circle-icon {
-    width: 550px;
-    height: 550px;
+    width: 625px;
+    height: 625px;
     margin: 0;
     background-color: transparent; 
-    box-shadow: none;            
     border-radius: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* En desktop el 'order' se ignora porque las cajas padre (.text-side) lo aíslan */
   }
   
-  .circle-icon img {
-    width: 90%;
-    height: auto;
-  }
+  .circle-icon img { width: 90%; height: auto; }
 
-  /* --- DIRECCIONES (ZIG ZAG) --- */
   .normal-order .text-side { margin-right: auto; }
-  .normal-order .visual-side { right: -140px; }
+  .normal-order .visual-side { right: -220px; }
 
   .reverse-order { flex-direction: row-reverse; }
   .reverse-order .text-side { margin-left: auto; text-align: right; align-items: flex-end; }
-  .reverse-order .visual-side { left: -140px; }
+  .reverse-order .visual-side { left: -160px; }
 }

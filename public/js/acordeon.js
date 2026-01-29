@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // Configuración de las imágenes de flecha
-    const arrowClosed = 'assets/images/iconos_neuma-07.png'; // Flecha hacia abajo/cerrada
-    const arrowOpen = 'assets/images/iconos_neuma-08.png';   // Flecha hacia arriba/abierta
+    const arrowClosed = 'https://neumastorage2025.blob.core.windows.net/esdibcontainerg9/imagenes_juntas_Neuma/iconografia_flecha_abajo.png';
+    const arrowOpen = 'https://neumastorage2025.blob.core.windows.net/esdibcontainerg9/imagenes_juntas_Neuma/iconografia_flecha_arriba.png';   // Flecha hacia arriba/abierta
 
     const items = document.querySelectorAll('.accordion-item');
 

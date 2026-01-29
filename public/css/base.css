@@ -4,12 +4,49 @@
    ======================================================================== */
 
 /* === 1. IMPORTACIÓN DE FUENTES === */
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+/* EB Garamond (Desde Google Fonts) */
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+
+/* Acumin Pro (Desde tu Azure Storage) */
+@font-face {
+  font-family: 'Acumin Pro';
+  src: url('https://neumastorage2025.blob.core.windows.net/esdibcontainerg9/fonts/Acumin-RPro.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Acumin Pro';
+  src: url('https://neumastorage2025.blob.core.windows.net/esdibcontainerg9/fonts/Acumin-ItPro.otf') format('opentype');
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Acumin Pro';
+  src: url('https://neumastorage2025.blob.core.windows.net/esdibcontainerg9/fonts/Acumin-BdPro.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Acumin Pro';
+  src: url('https://neumastorage2025.blob.core.windows.net/esdibcontainerg9/fonts/Acumin-BdItPro.otf') format('opentype');
+  font-weight: 200;
+  font-style: italic;
+}
+
 
 /* === 2. VARIABLES (ROOT) === */
 :root {
+<<<<<<< HEAD
   /* Tipografía */
   --font-main: 'Acunmin pro', extralight, sans-serif;
+=======
+  /* Tipografía Definida */
+  --font-title: 'EB Garamond', serif;     /* Para Títulos */
+  --font-body: 'Acumin Pro', sans-serif;  /* Para Textos */
+>>>>>>> 16a0d20abfae37c5a6d3974c82e217257f624a96
 
   /* Paleta de Colores - Textos */
   --color-bg: #ffffff;
@@ -47,24 +84,25 @@
 }
 
 html {
-  font-size: 16px; /* Base 1rem = 16px */
   scroll-behavior: smooth; /* Mantenemos el scroll suave nativo */
   height: 100%;
 }
 
 body {
-  font-family: var(--font-main);
+  font-family: var(--font-body); /* Todo el cuerpo usa Acumin Pro por defecto */
   background-color: var(--color-bg);
   color: var(--color-text);
   line-height: 1.6;
   overflow-x: hidden;
   min-height: 100%;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
   text-decoration: none;
   color: inherit;
   transition: all 0.3s ease;
+  font-family: var(--font-body);
 }
 
 img {
@@ -76,21 +114,43 @@ ul {
   list-style: none;
 }
 
-/* Tipografía Base */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-main);
-  font-weight: 500;
+/* === TIPOGRAFÍA APLICADA === */
+
+/* Títulos (EB Garamond) */
+h1, h2, h3, h4, h5, h6, .page-title, .logo-text {
+  font-family: var(--font-title);
+  font-weight: 650;
   color: var(--color-title);
   line-height: 1.2;
 }
 
-h1, h2 { font-size: 5.125rem; }
+h1, h2 { font-size: 3rem; }
 h3 { font-size: 1.5rem; }
-h4 { font-size: 1.25rem; }
+h4 { font-size: 1.2rem; }
+h5 {
+  font-size: 0.9rem; 
+  font-weight: 400; 
+  font-family: var(--font-main);
+  margin-top: 0.25rem;
+}
 
-p {
-  font-size: 2rem;
+/* Textos (Acumin Pro) */
+p, span, li, button, input, textarea {
+  font-family: var(--font-body);
+  font-size: 1rem;
   line-height: 1.6;
+}
+
+/* Subtítulos Específicos (Acumin Pro Italic) */
+.hero-subtitle, 
+.card-subtitle, 
+.page-subtitle, 
+.section-subtitle,
+.hero-corner-left, 
+.hero-corner-right {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-weight: 200; /* Usará Acumin-ItPro.otf */
 }
 
 /* === 4. UTILIDADES === */
@@ -113,6 +173,7 @@ body.no-scroll {
   text-decoration: none;
   transition: all 0.3s ease;
   font-size: 1rem;
+  font-family: var(--font-body);
 }
 
 .btn-back:hover {
@@ -129,6 +190,7 @@ body.no-scroll {
   padding-bottom: 4px;
   font-size: 0.9rem;
   transition: opacity 0.3s ease;
+  font-family: var(--font-body);
 }
 
 .btn-more:hover {
@@ -137,7 +199,7 @@ body.no-scroll {
 
 /* Flecha de enlace grande */
 .big-arrow-link img {
-  width: 60px;
+  width: 100px;
   margin-top: var(--spacing-sm);
   transition: transform 0.3s ease;
 }
@@ -165,7 +227,7 @@ body.no-scroll {
 }
 
 .logo img {
-  width: 80px;
+  width: 90px;
   height: auto;
 }
 
@@ -237,7 +299,7 @@ body.no-scroll {
 }
 
 .dropdown-menu a {
-  font-family: var(--font-main);
+  font-family: var(--font-title); /* Títulos en el menú móvil quedan bien en Garamond */
   font-size: 1.8rem;
   color: var(--color-text);
   font-weight: 400;
@@ -265,9 +327,9 @@ body.no-scroll {
 }
 
 .footer-logo img {
-  width: 100px;
+  width: 150px;
   margin: 0 auto;
-  filter: brightness(0);
+  padding-top: 1rem;
 }
 
 .footer-separator {
@@ -287,8 +349,8 @@ body.no-scroll {
 }
 
 .footer-links a {
-  font-family: var(--font-main);
-  font-size: 1.1rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
   color: var(--color-text);
   text-align: center;
   transition: color 0.3s ease;
@@ -303,22 +365,39 @@ body.no-scroll {
    ======================================================================== */
 @media (min-width: 768px) {
 
+  /* Tipografía Base Desktop */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-title);
+    font-weight: 650;
+    color: var(--color-title);
+    line-height: 1.2;
+  }
+
+  h1, h2 { font-size: 3rem; }
+  h3 { font-size: 1.5rem; }
+  h4 { font-size: 1.25rem; }
+
+  p {
+    font-size: 0.8rem;
+    line-height: 1.6;
+  }
+
   /* --- Navbar Desktop --- */
   .navbar {
-    padding: 1.5rem 3rem; /* Más aire a los lados */
+    padding: 1.5rem 3rem; 
   }
 
   .logo img {
-    width: 120px;
+    width: 110px;
   }
 
-  /* 1. Menú Hamburguesa: VISIBLE en Desktop ahora */
+  /* Menú Hamburguesa: VISIBLE en Desktop */
   .menu-toggle {
-    display: flex; /* Lo mostramos */
+    display: flex; 
     margin-left: 2rem;
   }
 
-  /* 2. Enlaces visibles directos */
+  /* Enlaces visibles directos */
   .desktop-links {
     display: flex;
     gap: 2.5rem;
@@ -326,7 +405,7 @@ body.no-scroll {
   }
 
   .desktop-links a {
-    font-family: var(--font-main);
+    font-family: var(--font-body);
     font-size: 1.1rem;
     color: var(--color-text);
     transition: all 0.3s ease;
@@ -338,20 +417,13 @@ body.no-scroll {
     font-weight: 600;
   }
 
-  /* 3. Dropdown Menu (Estilo "Pop-up" Pequeño) */
-/* En public/css/base.css -> Dentro de @media (min-width: 768px) */
-
-  /* 3. Dropdown Menu (Estilo "Pop-up" Pequeño) */
+  /* Dropdown Menu (Estilo "Pop-up" Pequeño) */
   .dropdown-menu {
-    /* Reseteamos estilos de móvil */
     display: flex !important;
     position: absolute;
     top: 100%;
-    
-    /* CORRECCIÓN IMPORTANTE: */
-    left: auto;      /* Desactiva el left: 0 del móvil para que no se pegue a la izquierda */
-    right: 3rem;     /* Ahora sí, se alineará a la derecha */
-    
+    left: auto;      
+    right: 3rem;     
     width: 250px;
     height: auto;
     background-color: #ffffff;
@@ -360,8 +432,6 @@ body.no-scroll {
     padding: 1.5rem;
     align-items: flex-start;
     z-index: 1000;
-    
-    /* Estado inicial oculto */
     opacity: 0;
     visibility: hidden;
     transform: translateY(10px);
@@ -374,6 +444,7 @@ body.no-scroll {
   }
 
   .dropdown-menu a {
+    font-family: var(--font-body); /* En el popup de desktop queda mejor la Sans */
     font-size: 1.1rem;
     padding: 0.5rem 0;
     width: 100%;
@@ -385,16 +456,12 @@ body.no-scroll {
     border-bottom: none;
   }
 
-  /* OCULTAR opciones que ya están fuera (Inicio, Origen, Equipo) */
+  /* OCULTAR opciones que ya están fuera */
   .dropdown-menu a[href="index.html"],
   .dropdown-menu a[href="origen.html"],
   .dropdown-menu a[href="equipo.html"] {
     display: none;
   }
-
-
-  /* --- Footer Desktop (Diseño Grid Nuevo) --- */
-/* En public/css/base.css -> Dentro de @media (min-width: 768px) */
 
   /* --- Footer Desktop (Diseño Full Width) --- */
   .simple-footer {
@@ -402,49 +469,42 @@ body.no-scroll {
     justify-content: space-between;
     align-items: center;
     text-align: left;
-    
-    /* CAMBIO CLAVE: Ancho completo para el fondo */
     width: 100%;
-    max-width: none; /* Quitamos el límite al contenedor principal */
+    max-width: none;
     margin: 0;
     background-color: var(--footer-bg);
-    
-    /* TRUCO: Padding dinámico para centrar el contenido (máximo 1400px de ancho real) */
-    /* Esto mantiene el contenido alineado con el resto de la web, pero el fondo se extiende */
     padding: 3rem max(4rem, calc((100% - 1400px) / 2));
   }
 
-  /* Columna Izquierda: Logo */
   .footer-logo {
     margin-bottom: 0;
     flex-shrink: 0;
   }
   .footer-logo img {
     width: 140px;
+    margin: 0 3rem 0 7rem;
   }
 
-  /* Separador Vertical */
   .footer-separator {
-    width: 1px;
-    height: 80px; /* Altura de la línea */
+    width: 0.1rem;
+    height: 5rem; 
     background-color: var(--color-title);
     border: none;
-    margin: 0 3rem; /* Separación lateral */
-    opacity: 0.3;
+    margin: 0 3rem;
+    opacity: 0.7;
   }
 
-  /* Columna Derecha: Grid de Links (3 columnas x 2 filas) */
   .footer-links {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, auto);
-    gap: 1rem 3rem; /* Gap filas / Gap columnas */
+    gap: 1rem 3rem; 
     flex-grow: 1;
     max-width: 600px;
   }
   
   .footer-links a {
     text-align: left;
-    font-size: 1rem;
+    font-size: 1.4rem;
   }
 }

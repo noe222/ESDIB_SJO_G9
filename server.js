@@ -52,20 +52,25 @@ app.use(express.json());
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Configuración Multer para imágenes (comunidad)
-const uploadImages = multer({
+// Configuración Multer para posts de comunidad (imágenes + audio opcional)
+const uploadCommunity = multer({
   storage: multer.memoryStorage(),
-  limits: { fileSize: 60 * 1024 * 1024, files: 10 }, // 60MB max
+  limits: { fileSize: 150 * 1024 * 1024, files: 10 }, // 150MB max
   fileFilter: (req, file, cb) => {
     const isImage = /image\/(png|jpe?g|webp)/i.test(file.mimetype);
-    cb(isImage ? null : new Error('Solo se permiten imágenes (png/jpg/webp)'), isImage);
+    const isAudio = /audio\/(mpeg|mp3|wav|ogg|x-wav|x-m4a)/i.test(file.mimetype);
+    if (isImage || isAudio) {
+      cb(null, true);
+    } else {
+      cb(new Error('Solo se permiten imágenes (png/jpg/webp) y audio (MP3/WAV/OGG)'), false);
+    }
   }
 });
 
 // Configuración Multer para sonidos (audio + imagen)
 const uploadSound = multer({
   storage: multer.memoryStorage(),
-  limits: { fileSize: 60 * 1024 * 1024, files: 2 }, // 60MB max
+  limits: { fileSize: 150 * 1024 * 1024, files: 2 }, // 150MB max
   fileFilter: (req, file, cb) => {
     const isAudio = /audio\/(mpeg|mp3|wav|ogg|x-wav|x-m4a)/i.test(file.mimetype);
     const isImage = /image\/(png|jpe?g|webp)/i.test(file.mimetype);
@@ -111,7 +116,8 @@ app.get('/api/community', async (req, res) => {
       .toArray();
     const postsWithUrls = posts.map(post => ({
       ...post,
-      photos: post.photos ? post.photos.map(p => ({ ...p, url: blobUrlWithSas(p.blobName) })) : []
+      photos: post.photos ? post.photos.map(p => ({ ...p, url: blobUrlWithSas(p.blobName) })) : [],
+      audioFile: post.audioFile ? { ...post.audioFile, url: blobUrlWithSas(post.audioFile.blobName) } : null
     }));
     res.json(postsWithUrls);
   } catch (err) {
@@ -120,20 +126,36 @@ app.get('/api/community', async (req, res) => {
 });
 
 // 2. POST PÚBLICO (Subir sugerencia)
-app.post('/api/community', uploadImages.array('photos', 3), async (req, res) => {
+app.post('/api/community', uploadCommunity.fields([
+  { name: 'photos', maxCount: 3 },
+  { name: 'audioFile', maxCount: 1 }
+]), async (req, res) => {
   try {
     const { title, author, description, category, songUrl } = req.body;
     if (!title || !description) return res.status(400).json({ error: 'Faltan datos' });
 
     const photos = [];
-    if (req.files) {
-      for (const f of req.files) {
+    if (req.files && req.files.photos) {
+      for (const f of req.files.photos) {
         const ext = extFromMime(f.mimetype);
         const blobName = `community/${Date.now()}_${randomName(ext)}`;
         const blockBlobClient = container.getBlockBlobClient(blobName);
         await blockBlobClient.uploadData(f.buffer, { blobHTTPHeaders: { blobContentType: f.mimetype } });
         photos.push({ blobName, mime: f.mimetype });
       }
+    }
+
+    // Procesar archivo de audio si existe
+    let audioFile = null;
+    if (req.files && req.files.audioFile && req.files.audioFile.length > 0) {
+      const audio = req.files.audioFile[0];
+      const audioExt = extFromMime(audio.mimetype);
+      const audioBlobName = `community/audio/${Date.now()}_${randomName(audioExt)}`;
+      const audioBlockBlobClient = container.getBlockBlobClient(audioBlobName);
+      await audioBlockBlobClient.uploadData(audio.buffer, {
+        blobHTTPHeaders: { blobContentType: audio.mimetype }
+      });
+      audioFile = { blobName: audioBlobName, mime: audio.mimetype };
     }
 
     const newPost = {
@@ -143,6 +165,7 @@ app.post('/api/community', uploadImages.array('photos', 3), async (req, res) => 
       category: category || 'general',
       songUrl: songUrl ? songUrl.trim() : null,
       photos,
+      audioFile,
       status: 'pending',
       createdAt: new Date()
     };
@@ -182,7 +205,8 @@ app.get('/api/admin/pending', adminGuard, async (req, res) => {
     const pending = await db.collection('community').find({ status: 'pending' }).toArray();
     const pendingWithUrls = pending.map(post => ({
       ...post,
-      photos: post.photos ? post.photos.map(p => ({ ...p, url: blobUrlWithSas(p.blobName) })) : []
+      photos: post.photos ? post.photos.map(p => ({ ...p, url: blobUrlWithSas(p.blobName) })) : [],
+      audioFile: post.audioFile ? { ...post.audioFile, url: blobUrlWithSas(post.audioFile.blobName) } : null
     }));
     res.json(pendingWithUrls);
   } catch (err) { res.status(500).json({ error: 'Error' }); }

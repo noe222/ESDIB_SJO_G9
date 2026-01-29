@@ -4,10 +4,12 @@
 
 /* --- 1. INTRODUCCIÓN (Fondo Color + Ancho Completo) --- */
 .about-intro {
-  background-color: var(--footer-bg); /* Beige unificado */
+  background-color: var(--footer-bg);
+  /* Beige unificado */
   width: 100%;
-  max-width: none; 
-  padding: 4rem 1.5rem 0; /* Quitamos padding inferior para unir con la siguiente */
+  max-width: none;
+  padding: 4rem 1.5rem 0;
+  /* Quitamos padding inferior para unir con la siguiente */
   margin: 0;
 }
 
@@ -21,12 +23,13 @@
 .intro-header {
   text-align: left;
   margin-bottom: 3rem;
+  max-width: 90%;
 }
 
 .intro-header h1 {
-  font-size: 3rem;
-  color: var(--color-title);
+
   margin-bottom: 1rem;
+  padding-top: 2rem;
 }
 
 .intro-separator {
@@ -40,77 +43,95 @@
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  text-align: center;
-  padding-bottom: 4rem; /* Espacio visual antes de la siguiente sección */
+  text-align: left;
+  max-width: 90%;
+  padding-bottom: 4rem;
+  /* Espacio visual antes de la siguiente sección */
 }
 
 .origin-column h3 {
-  font-size: 1.5rem;
+  font-size: 2.15rem;
   font-weight: 500;
   color: var(--color-title);
-  margin-bottom: 1rem;
+  margin: 1rem 0 1rem;
 }
 
 .origin-column p {
   font-size: 1rem;
   line-height: 1.6;
   color: var(--color-text);
-  padding: 0 1rem;
+  padding: 0;
 }
 
 
 /* --- 2. IDENTIDAD (Fondo Color + Ancho Completo) --- */
 .values-section {
-  background-color: var(--footer-bg); /* Beige unificado */
+  background-color: #ffff;
+  /* Beige unificado */
   width: 100%;
   max-width: none;
-  padding: 0 1.5rem 4rem; /* Sin padding superior para unir con la anterior */
+  padding: 50px 1.5rem 4rem;
+  /* Sin padding superior para unir con la anterior */
   margin: 0;
 }
 
 .values-content {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   gap: 3rem;
   max-width: 1000px;
   margin: 0 auto;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
 }
 
 .values-title {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-  font-weight: 400;
+  font-size: 1.7rem;
   color: var(--color-title);
+  margin: 1rem 0 1rem;
+  font-family: var(--font-title);
+  line-height: 1.6;
+  width: 60%;
+  text-align: left;
+  justify-self: center;
 }
 
 .definition-text {
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.6;
   color: var(--color-text);
+  max-width: 60%;
+  text-align: left;
+  justify-self: center;
 }
 
 .identity-img {
   width: 100%;
-  max-width: 300px; 
+  max-width: 400px;
   height: auto;
+  margin: 1rem 0 1rem;
+  max-width: 90%;
+  justify-self: center;
 }
 
 
 /* --- 3. CARRUSEL (Fondo Color + Ancho Completo) --- */
 .visual-gallery {
-  background-color: var(--footer-bg); /* Beige unificado: AQUÍ ESTABA EL CAMBIO */
+  background-color: #ffff;
+  /* Beige unificado: AQUÍ ESTABA EL CAMBIO */
   width: 100%;
-  max-width: none; /* Permitimos que el fondo ocupe todo */
-  padding: 0 1.5rem 6rem; /* Padding inferior generoso antes del footer */
+  max-width: none;
+  /* Permitimos que el fondo ocupe todo */
+  padding: 0 1.5rem 6rem;
+  /* Padding inferior generoso antes del footer */
   margin: 0;
 }
 
 /* Contenedor interno para limitar el ancho visual del carrusel pero no el fondo */
 .carousel-container-origen {
   width: 100%;
-  max-width: 1000px; /* El carrusel sigue contenido */
+  max-width: 1000px;
+  /* El carrusel sigue contenido */
   margin: 0 auto;
 }
 
@@ -119,13 +140,23 @@
    MEDIA QUERIES DESKTOP (Min-width: 768px)
    ======================================================================== */
 @media (min-width: 768px) {
-  
+
   /* Ajustes padding desktop */
-  .about-intro { padding: 6rem 2rem 0; }
-  .values-section { padding: 4rem 2rem; }
-  .visual-gallery { padding: 0 2rem 6rem; }
-  
-  .intro-header h1 { font-size: 4rem; }
+  .about-intro {
+    padding: 6rem 2rem 0;
+  }
+
+  .values-section {
+    padding: 4rem 2rem;
+  }
+
+  .visual-gallery {
+    padding: 0 2rem 6rem;
+  }
+
+  .intro-header h1 {
+    font-size: 5rem;
+  }
 
   /* Columnas Intro */
   .origin-columns {
@@ -133,10 +164,17 @@
     justify-content: space-between;
     gap: 4rem;
     text-align: left;
-    padding-bottom: 6rem; /* Más aire en desktop */
+    padding-bottom: 6rem;
+    /* Más aire en desktop */
   }
-  .origin-column { flex: 1; }
-  .origin-column p { padding: 0; }
+
+  .origin-column {
+    flex: 1;
+  }
+
+  .origin-column p {
+    padding: 0;
+  }
 
   /* Identidad Desktop */
   .values-content {
@@ -153,12 +191,12 @@
   }
 
   .values-title {
-    font-size: 3.5rem;
-    margin-bottom: 2rem;
+    font-size: 2.1rem;
+    margin-bottom: 1.8rem;
   }
-  
+
   .definition-text {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
   }
 
   .identity-image-side {

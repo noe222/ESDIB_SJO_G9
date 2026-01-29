@@ -5,7 +5,7 @@
 
 .carousel {
     /* Variables de configuración */
-    --items: 6; /* Número de miembros */
+    --items: 8; /* Número de miembros */
     --carousel-duration: 40s;
     --carousel-item-width: 250px;
     --carousel-item-height: 380px;
@@ -74,7 +74,8 @@
 .carousel > article:nth-child(4) { --i: 4; }
 .carousel > article:nth-child(5) { --i: 5; }
 .carousel > article:nth-child(6) { --i: 6; }
-
+.carousel > article:nth-child(7) { --i: 7; }
+.carousel > article:nth-child(8) { --i: 8; }
 
 /* --- ESTILOS INTERNOS DE LA TARJETA --- */
 .carousel > article img {

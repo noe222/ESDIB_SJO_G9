@@ -2,8 +2,16 @@
     .community-container {
       max-width: 900px;
       margin: 4rem auto;
-      padding: 0 1rem;
+      padding: 1.5rem 1rem;
     }
+    
+    .community-container p{
+      font-size: 1rem;
+      text-align: left; 
+      margin-bottom: 2rem; 
+      color: #666;
+    }
+
 
     /* Formulario */
     .upload-box {
@@ -110,4 +118,15 @@
 
     .song-link:hover {
       text-decoration: underline;
+    }
+
+    .post-audio {
+      width: 100%;
+      margin-top: 1rem;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    .post-audio::-webkit-media-controls-panel {
+      background-color: #f5f5f5;
     }

@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="https://neumastorage2025.blob.core.windows.net/esdibcontainerg9/imagenes_juntas_Neuma/iconografia_logo_pestaña.png">
   <title>Neuma | Comunidad</title>
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/comunidad.css">
@@ -13,7 +14,8 @@
 
   <header class="navbar">
     <a href="index.html" class="logo">
-      <img src="assets/images/neuma_logo.svg" alt="neuma">
+      <img src="https://neumastorage2025.blob.core.windows.net/esdibcontainerg9/imagenes_juntas_Neuma/neuma_logo.png"
+        alt="neuma">
     </a>
 
     <div class="nav-right">
@@ -28,22 +30,19 @@
     </div>
 
     <div class="dropdown-menu" id="dropdown-menu">
+      <a href="index.html">Inicio</a>
+      <a href="origen.html">Origen</a>
+      <a href="equipo.html">Equipo</a>
       <a href="medita.html">Medita</a>
       <a href="escucha.html">Escucha</a>
       <a href="siente.html">Siente</a>
       <a href="comunidad.html">Comunidad</a>
-
-      <div class="mobile-separator" style="height:1px; background:#eee; width:100%; margin:1rem 0; display:none;"></div>
-
-      <a href="index.html" class="mobile-link" style="display:none;">Inicio</a>
-      <a href="origen.html" class="mobile-link" style="display:none;">Origen</a>
-      <a href="equipo.html" class="mobile-link" style="display:none;">Equipo</a>
     </div>
   </header>
 
   <main class="community-container">
     <h1>Comparte tu calma</h1>
-    <p style="text-align: center; margin-bottom: 2rem; color: #666;">
+    <p>
       ¿Tienes una canción, un consejo o una foto que te ayude a desconectar? Compártelo con nosotros.
     </p>
 
@@ -89,8 +88,8 @@
         <div class="form-group">
           <label for="audioFile">🎵 Archivo de Sonido (MP3, WAV, OGG) - Opcional</label>
           <input type="file" id="audioFile" name="audioFile" accept="audio/mp3,audio/wav,audio/ogg,audio/mpeg">
-          <small style="color: #888; display: block; margin-top: 0.3rem;">Máximo 60MB. Si subes un sonido, aparecerá en
-            la sección "Escucha"</small>
+          <small style="color: #888; display: block; margin-top: 0.3rem;">Máximo 150MB. Las categorías de sonido
+            (Música/Sonido, Naturaleza, Urbano, Musical, Ambiente) aparecerán en "Escucha"</small>
         </div>
 
         <div class="form-group">
@@ -131,6 +130,20 @@
         }
 
         posts.forEach(post => {
+          // Mapeo de categorías a nombres legibles
+          const categoryNames = {
+            'medita': 'Meditación',
+            'escucha': 'Música/Sonido',
+            'naturaleza': '🎵 Sonido - Naturaleza',
+            'urbano': '🎵 Sonido - Urbano',
+            'musical': '🎵 Sonido - Musical',
+            'ambiente': '🎵 Sonido - Ambiente',
+            'siente': 'Consejo/Hábito',
+            'otro': 'Otro'
+          };
+
+          const categoryDisplay = categoryNames[post.category] || post.category;
+
           // Procesar imagen si existe
           const imgHtml = post.photos && post.photos.length > 0
             ? `<img src="${post.photos[0].url}" alt="${post.title}" class="post-image" loading="lazy">`
@@ -141,16 +154,25 @@
             ? `<a href="${post.songUrl}" target="_blank" class="song-link">🎵 Escuchar Canción</a>`
             : '';
 
+          // Procesar archivo de audio si existe
+          const audioHtml = post.audioFile && post.audioFile.url
+            ? `<audio controls class="post-audio">
+                 <source src="${post.audioFile.url}" type="${post.audioFile.mime}">
+                 Tu navegador no soporta el elemento de audio.
+               </audio>`
+            : '';
+
           // Crear tarjeta HTML
           const card = `
             <article class="post-card">
               <div class="post-header">
                 <span>${post.author || 'Anónimo'}</span>
-                <span class="post-category">${post.category}</span>
+                <span class="post-category">${categoryDisplay}</span>
               </div>
               <h2>${post.title}</h2>
               <p>${post.description}</p>
               ${imgHtml}
+              ${audioHtml}
               ${linkHtml}
             </article>
           `;
@@ -169,13 +191,26 @@
       const form = e.target;
       const btn = form.querySelector('button');
 
+      // Obtener la categoría seleccionada
+      const selectedCategory = form.category.value;
+
+      // Categorías que deben ir a "Escucha" (sonidos)
+      const soundCategories = ['escucha', 'naturaleza', 'urbano', 'musical', 'ambiente'];
+      const isSoundCategory = soundCategories.includes(selectedCategory);
+
       // Verificar si hay un archivo de audio
       const audioFile = document.getElementById('audioFile').files[0];
       const hasAudio = audioFile && audioFile.size > 0;
 
-      // Validar tamaño de archivo de audio (60MB max)
-      if (hasAudio && audioFile.size > 60 * 1024 * 1024) {
-        alert('El archivo de audio es demasiado grande. Máximo 60MB.');
+      // Validar que las categorías de sonido tengan archivo de audio
+      if (isSoundCategory && !hasAudio) {
+        alert('Para categorías de sonido debes subir un archivo de audio.');
+        return;
+      }
+
+      // Validar tamaño de archivo de audio (150MB max)
+      if (hasAudio && audioFile.size > 150 * 1024 * 1024) {
+        alert('El archivo de audio es demasiado grande. Máximo 150MB.');
         return;
       }
 
@@ -187,8 +222,8 @@
         let endpoint = '/api/community';
         let formDataToSend = new FormData();
 
-        if (hasAudio) {
-          // Si hay audio, enviar a /api/sounds
+        if (isSoundCategory) {
+          // Si la categoría es de sonido, enviar a /api/sounds
           endpoint = '/api/sounds';
           formDataToSend.append('title', form.title.value);
           formDataToSend.append('description', form.description.value);
@@ -201,8 +236,29 @@
             formDataToSend.append('coverImage', photoFile);
           }
         } else {
-          // Si no hay audio, enviar a /api/community (comportamiento original)
-          formDataToSend = new FormData(form);
+          // Para otras categorías (siente, medita, otro), enviar a /api/community
+          formDataToSend.append('title', form.title.value);
+          formDataToSend.append('description', form.description.value);
+          formDataToSend.append('category', form.category.value);
+          formDataToSend.append('author', form.author.value || 'Anónimo');
+
+          // Añadir songUrl si existe
+          if (form.songUrl.value) {
+            formDataToSend.append('songUrl', form.songUrl.value);
+          }
+
+          // Añadir archivo de audio si existe (opcional para comunidad)
+          if (hasAudio) {
+            formDataToSend.append('audioFile', audioFile);
+          }
+
+          // Añadir fotos si existen
+          const photoFiles = form.photos.files;
+          if (photoFiles.length > 0) {
+            for (let i = 0; i < photoFiles.length; i++) {
+              formDataToSend.append('photos', photoFiles[i]);
+            }
+          }
         }
 
         console.log("Enviando datos a:", endpoint);
@@ -216,10 +272,10 @@
 
         if (res.ok) {
           const data = await res.json();
-          if (hasAudio) {
+          if (isSoundCategory) {
             alert('¡Éxito! Tu sonido ha sido enviado para revisión y aparecerá en "Escucha" una vez aprobado.');
           } else {
-            alert('¡Éxito! Tu aportación ha sido enviada para revisión.');
+            alert('¡Éxito! Tu aportación ha sido enviada para revisión y aparecerá en "Comunidad" una vez aprobada.');
           }
           form.reset(); // Limpiar formulario
         } else {

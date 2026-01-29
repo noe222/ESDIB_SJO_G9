@@ -18,12 +18,13 @@
 .intro-header {
   text-align: left;
   margin-bottom: 3rem;
+  max-width: 90%;
 }
 
 .intro-header h1 {
-  font-size: 3rem;
-  color: var(--color-title);
+
   margin-bottom: 1rem;
+  padding-top: 2rem;
 }
 
 .intro-separator {
@@ -31,6 +32,7 @@
   border-top: 1px solid var(--color-title);
   width: 100%;
   opacity: 0.5;
+  margin-top: 1rem;
 }
 
 /* Columnas de Texto */
@@ -39,13 +41,14 @@
   flex-direction: column;
   gap: 2rem;
   text-align: left; /* Alineación izquierda general */
+  max-width: 90%;
 }
 
 .column h3 {
-  font-size: 1.5rem;
+  font-size: 2.15rem;
   font-weight: 500;
   color: var(--color-title);
-  margin-bottom: 1rem;
+  margin: 1rem 0 1rem;
 }
 
 .column p {
@@ -90,14 +93,14 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 1.5rem;
 }
 
 /* Área de Gráficos (Collage) */
 .graphics-area {
   position: relative;
   width: 100%;
-  height: 250px; /* Altura para distribuir iconos */
+  height: 450px; /* Altura para distribuir iconos */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,47 +108,53 @@
 
 /* Posicionamiento relativo de iconos para imitar el dibujo */
 .icon-formula {
-  width: 220px; /* ESDIB + SJO = EXITO */
+  width: 320px; /* ESDIB + SJO = EXITO */
   z-index: 2;
 }
 
 .icon-star-filled {
   position: absolute;
   top: 0;
-  left: 20%;
-  width: 35px;
+  left: -10%;
+  width: 200px;
 }
 
 .icon-star-outline {
   position: absolute;
   top: 10px;
-  right: 20%;
-  width: 30px;
+  right: -10%;
+  width: 250px;
 }
 
 .icon-star-small {
   position: absolute;
-  bottom: 20px;
-  left: 15%;
-  width: 30px;
+  bottom: -30px;
+  left: -15%;
+  width: 250px;
   transform: rotate(-15deg);
 }
 
 .icon-smile {
   position: absolute;
   bottom: 0;
-  right: 25%;
-  width: 40px;
+  right: -10%;
+  width: 200px;
   transform: rotate(10deg);
 }
 
 /* Texto Proyecto */
+
+.proyecto-text-area{
+  max-width: 80%;
+  align-self: center;
+}
+
 .proyecto-text-area h3 {
   font-size: 1.8rem;
   color: var(--color-title);
   margin-bottom: 1rem;
-  font-family: var(--font-main);
-}
+  font-family: var(--font-title);
+  }
 
 .proyecto-text-area p {
   font-size: 1rem;
@@ -170,7 +179,7 @@
 @media (min-width: 768px) {
   
   .page-intro-section { padding: 6rem 2rem 4rem; }
-  .intro-header h1 { font-size: 4rem; }
+  .intro-header h1 { font-size: 5rem; }
 
   /* 3 Columnas */
   .equipo-columns {
@@ -182,7 +191,7 @@
   /* El espaciador simula la altura del título "Quién" */
   .spacer {
     display: block;
-    height: 3.5rem; 
+    height: 4rem; 
   }
 
   /* Layout Visual: Foto Izq (50%) - Contenido Der (40%) */
