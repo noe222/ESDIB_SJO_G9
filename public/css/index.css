@@ -42,7 +42,7 @@
 }
 
 .hero-subtitle {
-  font-size: 1rem;
+  font-size: 1.5rem;
   margin-bottom: var(--spacing-md);
 }
 
@@ -50,7 +50,7 @@
 .hero-corner-right {
   position: absolute;
   bottom: var(--spacing-lg);
-  font-size: 0.9rem;
+  font-size: 1.25rem;
 }
 
 .hero-corner-left { left: var(--spacing-lg); }

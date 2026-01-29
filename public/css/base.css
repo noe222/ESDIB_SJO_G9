@@ -9,7 +9,7 @@
 /* === 2. VARIABLES (ROOT) === */
 :root {
   /* Tipografía */
-  --font-main: 'EB Garamond', serif;
+  --font-main: 'Acunmin pro', extralight, sans-serif;
 
   /* Paleta de Colores - Textos */
   --color-bg: #ffffff;
