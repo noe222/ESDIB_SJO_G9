@@ -5,11 +5,12 @@
   <meta charset="UTF-8">
   <link rel="icon" type="image/png" href="https://neumastorage2025.blob.core.windows.net/esdibcontainerg9/imagenes_juntas_Neuma/iconografia_logo_pestaña.png">
   <title>Admin - Neuma</title>
+  <!--Estilo interno decisión de los de 2º SJO, responsables del backend-->
   <style>
     body {
       font-family: sans-serif;
       padding: 2rem;
-      max-width: 900px;
+      max-width: 56.25rem;
       margin: 0 auto;
       background: #f4f4f4;
     }
@@ -23,16 +24,16 @@
     .login-box {
       background: white;
       padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 0.5rem;
+      box-shadow: 0 0.125rem 0.313rem rgba(0, 0, 0, 0.1);
       margin-bottom: 2rem;
     }
 
     input[type="text"] {
       padding: 0.5rem;
-      width: 300px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
+      width: 18.75rem;
+      border: 0.063rem solid #ddd;
+      border-radius: 0.25rem;
     }
 
     button {
@@ -41,7 +42,7 @@
       background: #333;
       color: white;
       border: none;
-      border-radius: 4px;
+      border-radius: 0.25rem;
     }
 
     button:hover {
@@ -51,11 +52,11 @@
     /* Lista de Pendientes */
     .pending-item {
       background: white;
-      border-left: 5px solid orange;
+      border-left: 0.313rem solid orange;
       margin-bottom: 1rem;
       padding: 1rem;
-      border-radius: 4px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      border-radius: 0.25rem;
+      box-shadow: 0 0.063rem 0.188rem rgba(0, 0, 0, 0.1);
       display: flex;
       gap: 1rem;
     }
@@ -89,8 +90,8 @@
     }
 
     .preview-img {
-      max-height: 100px;
-      border-radius: 4px;
+      max-height: 6.25rem;
+      border-radius: 0.25rem;
       margin-top: 0.5rem;
     }
   </style>
@@ -111,7 +112,7 @@
     <p>Introduce la clave para ver publicaciones pendientes.</p>
   </div>
 
-  <h2 style="margin-top: 3rem;">🎵 Sonidos Pendientes</h2>
+  <h2 style="margin-top: 3rem;"> Sonidos Pendientes</h2>
   <div id="soundsList">
     <p>Introduce la clave para ver sonidos pendientes.</p>
   </div>
@@ -165,7 +166,7 @@
                 </div>
                 <h3>${post.title}</h3>
                 <p>${post.description}</p>
-                ${post.songUrl ? `<a href="${post.songUrl}" target="_blank">🎵 Link Canción</a><br>` : ''}
+                ${post.songUrl ? `<a href="${post.songUrl}" target="_blank"> Link Canción</a><br>` : ''}
                 ${imgHtml}
               </div>
               <div class="pending-actions">

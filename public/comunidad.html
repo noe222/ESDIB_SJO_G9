@@ -60,10 +60,10 @@
           <select name="category" id="category">
             <option value="medita">Meditación</option>
             <option value="escucha">Música/Sonido</option>
-            <option value="naturaleza">🎵 Sonido - Naturaleza</option>
-            <option value="urbano">🎵 Sonido - Urbano</option>
-            <option value="musical">🎵 Sonido - Musical</option>
-            <option value="ambiente">🎵 Sonido - Ambiente</option>
+            <option value="naturaleza"> Sonido - Naturaleza</option>
+            <option value="urbano"> Sonido - Urbano</option>
+            <option value="musical"> Sonido - Musical</option>
+            <option value="ambiente"> Sonido - Ambiente</option>
             <option value="siente">Consejo/Hábito</option>
             <option value="otro">Otro</option>
           </select>
@@ -86,7 +86,7 @@
         </div>
 
         <div class="form-group">
-          <label for="audioFile">🎵 Archivo de Sonido (MP3, WAV, OGG) - Opcional</label>
+          <label for="audioFile"> Archivo de Sonido (MP3, WAV, OGG) - Opcional</label>
           <input type="file" id="audioFile" name="audioFile" accept="audio/mp3,audio/wav,audio/ogg,audio/mpeg">
           <small style="color: #888; display: block; margin-top: 0.3rem;">Máximo 150MB. Las categorías de sonido
             (Música/Sonido, Naturaleza, Urbano, Musical, Ambiente) aparecerán en "Escucha"</small>
@@ -134,10 +134,10 @@
           const categoryNames = {
             'medita': 'Meditación',
             'escucha': 'Música/Sonido',
-            'naturaleza': '🎵 Sonido - Naturaleza',
-            'urbano': '🎵 Sonido - Urbano',
-            'musical': '🎵 Sonido - Musical',
-            'ambiente': '🎵 Sonido - Ambiente',
+            'naturaleza': ' Sonido - Naturaleza',
+            'urbano': ' Sonido - Urbano',
+            'musical': ' Sonido - Musical',
+            'ambiente': ' Sonido - Ambiente',
             'siente': 'Consejo/Hábito',
             'otro': 'Otro'
           };
@@ -151,7 +151,7 @@
 
           // Procesar link si existe
           const linkHtml = post.songUrl
-            ? `<a href="${post.songUrl}" target="_blank" class="song-link">🎵 Escuchar Canción</a>`
+            ? `<a href="${post.songUrl}" target="_blank" class="song-link"> Escuchar Canción</a>`
             : '';
 
           // Procesar archivo de audio si existe
